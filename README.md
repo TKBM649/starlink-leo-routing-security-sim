@@ -1,7 +1,7 @@
 # 🛰️ Starlink LEO Routing Security Sim
 
 > **基于真实 TLE 的 Starlink LEO 星座路由安全仿真平台**
-> DV 距离矢量路由协议 · E2 干扰 / E3 黑洞 / E4 Sybil 对抗攻击 · 4284 节点全规模仿真
+> DV 距离矢量路由协议 · E2 干扰 / E3 黑洞对抗攻击 · 4284 节点全规模仿真
 
 [![Python 3.11](https://img.shields.io/badge/python-3.11.9-blue.svg)](https://www.python.org/downloads/release/python-3119/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#-license)
