@@ -1,0 +1,57 @@
+{
+  "delivery_ratio": 0.94,
+  "avg_hops": 3.1675,
+  "avg_latency_ms": 0.0,
+  "avg_success_hops": 3.36968085106383,
+  "avg_success_latency_ms": 0.0,
+  "num_success": 376,
+  "num_trials": 400,
+  "attacked_count": 0,
+  "dropped_by_attacker": 0,
+  "total_loops": 0,
+  "loop_paths": [],
+  "attacker_stats": [],
+  "seed": 44,
+  "config": {
+    "experiment": {
+      "name": "e2_jamming",
+      "duration": 120,
+      "seed": null
+    },
+    "topology": {
+      "tle_file": "data/tle/starlink_20260822.tfl",
+      "shell": "53°",
+      "epoch_interval": 30,
+      "use_lattice": true,
+      "isl_distance_limit": 800.0,
+      "gimbal_limit": 60.0
+    },
+    "routing": {
+      "protocol": "dv",
+      "t_adv": 2.0,
+      "tick": 0.2,
+      "max_hops": 30
+    },
+    "traffic": {
+      "num_flows": 100,
+      "flow_duration": 10.0,
+      "start_offset": 5.0
+    },
+    "attack": {
+      "type": "JammingAttacker",
+      "count": 0,
+      "placement": "degree",
+      "active_since": 20.0,
+      "active_until": 40.0,
+      "params": {
+        "jamming_ratio": 0.9,
+        "inf_metric": 9999
+      }
+    },
+    "output": {
+      "raw_dir": "results/raw/",
+      "agg_dir": "results/aggregated/",
+      "figures_dir": "results/figures/"
+    }
+  }
+}

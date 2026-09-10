@@ -1,0 +1,39 @@
+# configs/experiments/e2_jamming.yaml
+experiment:
+  name: "e2_jamming"
+  duration: 120              # 仿真时长（秒）
+  seed: null                 # 由命令行传入
+
+topology:
+  tle_file: "data/tle/starlink.tle"   # 根据实际路径调整
+  shell: "53°"                # 使用主壳层
+  epoch_interval: 30          # 拓扑快照间隔（秒）
+  use_lattice: true
+  isl_distance_limit: 800.0   # km
+  gimbal_limit: 60.0          # 度
+
+routing:
+  protocol: "dv"
+  t_adv: 2.0                  # DV 广告周期（秒）
+  tick: 0.2                   # 控制面步长（秒）
+  max_hops: 30                # 最大跳数（防计数到无穷）
+
+traffic:
+  num_flows: 100              # 数据流数量
+  flow_duration: 10.0         # 每条流持续时间（秒）
+  start_offset: 5.0           # 流开始偏移（秒）
+
+attack:
+  type: "JammingAttacker"
+  count: 10                    # 攻击者数量
+  placement: "degree"         # 按历史度数最高选择（与 E3 一致）
+  active_since: 20.0          # 攻击开始时间（秒）
+  active_until: 40.0          # 攻击结束时间（秒）
+  params:
+    jamming_ratio: 0.9        # 干扰邻居比例
+    inf_metric: 9999          # 不可达度量值
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"

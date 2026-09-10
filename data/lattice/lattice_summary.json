@@ -1,0 +1,30 @@
+{
+  "53\u00b0": {
+    "P": 180,
+    "phi": 1.7000000000000002,
+    "total_satellites": 4284,
+    "off_lattice": 394,
+    "off_lattice_ratio": 0.0919701213818861
+  },
+  "70\u00b0": {
+    "P": 36,
+    "phi": 6.4,
+    "total_satellites": 702,
+    "off_lattice": 11,
+    "off_lattice_ratio": 0.01566951566951567
+  },
+  "97.5\u00b0": {
+    "P": 93,
+    "phi": 3.6,
+    "total_satellites": 1076,
+    "off_lattice": 15,
+    "off_lattice_ratio": 0.013940520446096654
+  },
+  "43\u00b0": {
+    "P": 99,
+    "phi": 0.2,
+    "total_satellites": 3262,
+    "off_lattice": 24,
+    "off_lattice_ratio": 0.007357449417535254
+  }
+}

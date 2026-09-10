@@ -1,0 +1,16 @@
+experiment: e3_blackhole
+duration: 60
+topology_epoch: 30
+control_tick: 0.2
+num_flows: 100
+topology_cache: "data/topology/topology_results.pkl"
+positions_cache: "data/snapshots/positions_per_epoch.pkl"
+shell: "53°"
+
+attackers:
+  - type: blackhole
+    count: 3
+    drop_prob: 0.8
+    metric_fake: 0
+    active_since: 20.0
+    active_until: 40.0
