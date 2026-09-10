@@ -54,10 +54,6 @@ starlink_sim/
 | **E1** | 真实演化基线（无攻击） | 4284 节点 × 121 epochs | — | ✅ 完成 | `results/aggregated/simulation_summary.json` |
 | **E2** | 链路干扰风暴 | 96 节点子集 × 120s | `jamming_ratio=0.9`, `inf_metric=9999` | ✅ 完成 | `results/raw/e2_jamming_seed4{2,3,4}_{1,2}.json` |
 | **E3** | 黑洞/灰洞攻击 | 4284 节点 × 60s | 3 attackers, `drop_prob=0.8`, `metric_fake=0` | ✅ 完成 | `results/raw/attack_e3_blackhole_seed4{2,3,4}.json` |
-| **E4** | 新星加入 / Sybil | — | — | 📋 待启动 | 需创建 `configs/experiments/e4_sybil.yaml` |
-| **E5** | 敏感性分析 | — | 门限/容忍度/kNN 参数扫描 | 📋 规划中 | — |
-| **E6** | STMP 防御 | — | ODTA / TESLA / 信誉机制 | 📋 规划中 | — |
-| **E7** | 组合攻击场景 | — | E2+E3+E4 联合 | 📋 规划中 | — |
 
 ---
 
