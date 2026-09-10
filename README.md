@@ -17,7 +17,7 @@
 | 🛰️ **全规模仿真** | 4284 节点 × 121 epochs（30s 间隔），覆盖 53° 主壳层 + 97.5° 极轨壳层 |
 | 🔗 **面锚定 +Grid 建链** | 同面前后各 1 + 异面相邻面各 1 + 面外几何回退，边重合率 >99%（kNN 仅 41%） |
 | 📡 **DV + 路径矢量路由** | 暴露环路便于攻击观测，控制面 200ms tick / 数据面 30s epoch 双粒度 |
-| ⚔️ **多类对抗攻击** | 黑洞（E3）/ 干扰（E2）/ Sybil（E4 规划中），攻击窗口可配置 |
+| ⚔️ **多类对抗攻击** | 黑洞（E3）/ 干扰（E2），攻击窗口可配置 |
 | 📊 **可复现实验** | 固定 seed + YAML 配置 + JSON 结果，三阶段交接文档完整 |
 
 ---
@@ -180,7 +180,6 @@ starlink-leo-routing-security-sim/
 
 | 文档 | 内容 |
 |---|---|
-| [`REORGANIZE_LOG.md`](./REORGANIZE_LOG.md) | 目录整理与命名规范化变更日志（27 项文件操作） |
 | [`docs/DECISIONS_AND_ISSUES.md`](./docs/DECISIONS_AND_ISSUES.md) | 三阶段关键技术决策 / 已知问题 / 失败方案汇编 |
 | `部分操作解析和常见问题.pdf` | 操作解析与常见问题（中文） |
 
@@ -205,17 +204,6 @@ starlink-leo-routing-security-sim/
   - SHA256：`852E79A4D2EB28EE5864FC86BC204CB50DDE2FEE83F27A7F5B9D2356932FC97B`
   - 来源：CelesTrak（2026-08-22 抓取）
   - 壳层分布：53°（主壳层, P=72）、97.5°（极轨, P=90）、70°、43°
-
----
-
-## ⚠️ 已知限制
-
-1. **位置缓存缺失**：`data/snapshots/positions_per_epoch.pkl` 未生成 → E2/E3 的 `avg_latency_ms` 为 0（E1 基线有值 133.9ms）
-2. **E2 子集规模**：干扰实验限于 96 节点 BFS 连通子图（全规模 DV 收敛过慢）
-3. **E4 Sybil 未实现**：`SybilAttacker.modify_advertisement` 仍为占位
-4. **STMP 防御未实现**：ODTA / TESLA / 信誉机制待开发
-
-详见 [`docs/DECISIONS_AND_ISSUES.md`](./docs/DECISIONS_AND_ISSUES.md)。
 
 ---
 
