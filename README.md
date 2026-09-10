@@ -5,7 +5,7 @@
 
 [![Python 3.11](https://img.shields.io/badge/python-3.11.9-blue.svg)](https://www.python.org/downloads/release/python-3119/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#-license)
-[![Status](https://img.shields.io/badge/status-E1✅_E2✅_E3✅_E4📋-brightgreen.svg)](#-实验矩阵)
+[![Status](https://img.shields.io/badge/status-E1✅_E2✅_E3✅-brightgreen.svg)](#-实验矩阵)
 
 ---
 
