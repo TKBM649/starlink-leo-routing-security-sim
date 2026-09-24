@@ -1,0 +1,41 @@
+# configs/experiments/e2_noattack.yaml
+# E2 无攻击基线：与 e2_jamming.yaml 同拓扑/同流量，仅 attack.count=0（不部署攻击者）。
+# 供 analyze_e2.py 与攻击组做配对比较。
+experiment:
+  name: "e2_noattack"
+  duration: 120              # 仿真时长（秒）
+  seed: null                 # 由命令行传入
+
+topology:
+  tle_file: "data/tle/starlink.tle"
+  shell: "53°"                # 使用主壳层
+  epoch_interval: 30          # 拓扑快照间隔（秒）
+  use_lattice: true
+  isl_distance_limit: 800.0   # km
+  gimbal_limit: 60.0          # 度
+
+routing:
+  protocol: "dv"
+  t_adv: 2.0                  # DV 广告周期（秒）
+  tick: 0.2                   # 控制面步长（秒）
+  max_hops: 30                # 最大跳数（防计数到无穷）
+
+traffic:
+  num_flows: 100              # 数据流数量
+  flow_duration: 10.0         # 每条流持续时间（秒）
+  start_offset: 5.0           # 流开始偏移（秒）
+
+attack:
+  type: "JammingAttacker"
+  count: 0                    # 基线：不部署攻击者
+  placement: "degree"
+  active_since: 20.0
+  active_until: 40.0
+  params:
+    jamming_ratio: 0.9
+    inf_metric: 9999
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"
