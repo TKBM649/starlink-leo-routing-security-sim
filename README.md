@@ -36,11 +36,10 @@ starlink_sim/
 │   └── isl.py          build_topology_for_shell / compute_edge_overlap / propagate_satellite
 ├── net/            # 网络层：DV 路由 + 攻击注入 + 仿真引擎
 │   ├── routing_dv.py       DV 协议核心（路径矢量防环）
-│   ├── simulator.py        ControlPlane / DataPlane 基类
-│   ├── attack.py           BlackholeAttacker / JammingAttacker / SybilAttacker
-│   ├── attack_jamming.py   E2 干扰攻击特化
-│   ├── simulator_blackhole.py  E3 黑洞仿真引擎
-│   └── simulator_jamming.py    E2 干扰仿真引擎
+│   ├── simulator.py        统一仿真引擎：Simulator / ControlPlane / DataPlane（支持 attackers）
+│   └── attack.py           统一攻击者：BlackholeAttacker / JammingAttacker / SybilAttacker
+│                           （改写 DVMessage.entries，E2/E3 共用；旧分叉
+│                            attack_jamming.py / simulator_blackhole.py / simulator_jamming.py 已合并删除）
 ├── analytics/      # 分析层：指标计算、结果聚合
 └── io/             # I/O 层：配置加载、结果持久化
 ```
@@ -54,7 +53,7 @@ starlink_sim/
 | ID | 名称 | 规模 | 攻击参数 | 状态 | 结果文件 |
 |---|---|---|---|---|---|
 | **E1** | 真实演化基线（无攻击） | 4284 节点 × 121 epochs | — | ✅ 完成 | `results/aggregated/simulation_summary.json` |
-| **E2** | 链路干扰风暴 | 96 节点子集 × 120s | `jamming_ratio=0.9`, `inf_metric=9999` | ✅ 完成 | `results/raw/e2_jamming_seed4{2,3,4}_{1,2}.json` |
+| **E2** | 链路干扰风暴 | 96 节点子集 × 120s | 10 attackers, `jamming_ratio=0.9`, `inf_metric=9999` | ✅ 完成 | `results/raw/e2_jamming_seed4{2,3,4}.json` |
 | **E3** | 黑洞/灰洞攻击 | 4284 节点 × 60s | 3 attackers, `drop_prob=0.8`, `metric_fake=0` | ✅ 完成 | `results/raw/attack_e3_blackhole_seed4{2,3,4}.json` |
 
 ---
@@ -71,30 +70,34 @@ starlink_sim/
 | num_success / num_trials | 12100 / 12100 |
 | total_loops | 0 |
 
-### E3 黑洞攻击（seed=42）
+### E3 黑洞攻击（4284 节点，seeds 42/43/44）
 
-| 指标 | 基线 | 攻击下 | Δ |
+| 指标 | 基线 | 攻击下 (seed=42) | Δ |
 |---|---|---|---|
-| delivery_ratio | 1.000 | **0.830** | **−17.0%** |
+| delivery_ratio | 1.000 | **0.830** | −17.0% |
 | avg_hops | 7.96 | 6.70 | −1.26 |
 | num_success / trials | 12100/12100 | 83/100 | — |
 | attacked_count | — | 18 | — |
 | dropped_by_attacker | — | **17** | — |
 | total_loops | 0 | 0 | 无环路 ✅ |
 
-**攻击者分布**：node 124（吸引 7 / 丢弃 7）、node 403（5/4）、node 1572（6/6）
+**3 种子均值 ± 标准差**：delivery_ratio **0.843 ± 0.023**（seed 42/43/44 = 0.83 / 0.87 / 0.83），avg_hops 6.65 ± 0.23，attacked_count 17.3 ± 3.1，dropped_by_attacker 15.7 ± 2.3；聚合见 `results/raw/aggregated_attack_e3.json`。
 
-### E2 干扰攻击（seed=42, 96 节点子集）
+**攻击者分布（seed=42）**：node 124（吸引 7 / 丢弃 7）、node 403（5/4）、node 1572（6/6）
 
-| 指标 | 值 | 说明 |
+> 修复说明（Issue #2）：黑洞 `metric_fake=0` 的路由通告欺骗现已在控制面真实生效（由 `tests/test_attack_injection.py` 独立验证邻居采纳被篡改度量）；交付率下降同时包含“吸引流量 + 数据面丢弃”两种机制，不再仅由物理丢包解释。
+
+### E2 干扰攻击（96 节点子集，10 attackers，seeds 42/43/44）
+
+| 指标 | 值（均值 ± 标准差） | 说明 |
 |---|---|---|
-| delivery_ratio | 0.8775 | ≈基线（干扰效果有限） |
-| avg_hops | 3.13 | 子集规模小，跳数低 |
-| num_success / trials | 351/400 | — |
-| attacked_count | 0 | 干扰不直接攻击节点 |
-| total_loops | 0 | — |
+| delivery_ratio | **0.810 ± 0.033** | 无攻击基线≈0.84 → 攻击后下降（seed42 0.775） |
+| avg_hops | 2.735 ± 0.044 | 子集规模小，跳数低 |
+| attacked_count | 184.7 ± 6.0 | 修复后经路由撤回受影响的流-epoch 数 |
+| dropped_by_attacker | 0 | 干扰作用于控制面，数据面不主动丢包 |
+| total_loops | 50 ± 3.6 | 通告撤回引发的瞬时转发环路 |
 
-**关键发现**：干扰攻击（抬高邻居度量至 9999）未显著降低交付率 → 转向 Sybil 攻击路线（E4）。
+**修正的关键发现（Issue #1 / #2）**：旧结果 `attacked_count=0`、“干扰完全无效”源于入口配置 `count=0`（实际未部署攻击者）且干扰的通告注入未生效。修复后以 `count=10` 部署且 `inf_metric` 撤回真实生效——干扰把受影响路由抬升为 9999 触发绕路与约 50 次瞬时环路，交付率较基线小幅下降（受 96 子集收敛度与短窗影响）；“是否转向 Sybil（E4）”的旧结论应据此重新评估。
 
 ---
 
@@ -128,10 +131,13 @@ pip install numpy scipy sgp4 skyfield matplotlib seaborn plotly pandas pyyaml tq
 python scripts/run_simulation.py
 
 # E3: 黑洞攻击实验
-python scripts/run_e3_blackhole_experiment.py --seed 42
+python scripts/run_e3_blackhole_experiment.py --config configs/experiments/e3_blackhole.yaml --seeds 42
 
 # E2: 干扰攻击实验
-python scripts/run_e2_jamming_experiment.py --seed 42
+python scripts/run_e2_jamming_experiment.py --config configs/experiments/e2_jamming.yaml --seeds 42
+
+# 回归 / 冒烟测试（攻击注入 + 实验入口接口一致性）
+python -m pytest -q tests
 
 # 拓扑构建（从 TLE 生成 topology_results.pkl）
 python scripts/build_topology_from_tle.py

@@ -120,11 +120,11 @@ def create_attacker(node_id: int, attack_config: dict) -> Attacker:
     full_params = {**common, **params}
 
     if atype == "BlackholeAttacker":
-        return BlackholeAttacker(node_id, full_params)
+        return BlackholeAttacker(node_id, **full_params)
     elif atype == "JammingAttacker":
-        return JammingAttacker(node_id, full_params)
+        return JammingAttacker(node_id, **full_params)
     elif atype == "SybilAttacker":
-        return SybilAttacker(node_id, full_params)
+        return SybilAttacker(node_id, **full_params)
     else:
         raise ValueError(f"Unsupported attacker type: {atype}")
 

@@ -7,17 +7,19 @@
 
 import json
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 无头后端：避免 plt.show() 阻塞
 import matplotlib.pyplot as plt
 from pathlib import Path
 
 # 配置
-BASELINE_FILE = "results/simulation_summary.json"
+BASELINE_FILE = "results/aggregated/simulation_summary.json"
 SEED_FILES = {
-    42: "results/raw/attack_e3_Black hole_seed42.json",
-    43: "results/raw/attack_e3_Black hole_seed43.json",
-    44: "results/raw/attack_e3_Black hole_seed44.json",
+    42: "results/raw/attack_e3_blackhole_seed42.json",
+    43: "results/raw/attack_e3_blackhole_seed43.json",
+    44: "results/raw/attack_e3_blackhole_seed44.json",
 }
-OUTPUT_PLOT = "results/e3_attack_analysis.png"
+OUTPUT_PLOT = "results/figures/e3_attack_analysis.png"
 
 def load_baseline():
     with open(BASELINE_FILE, 'r') as f:
@@ -127,8 +129,8 @@ def plot_comparison(stats, baseline):
         ax.text(bar.get_x() + bar.get_width()/2, h + 0.5, f'{h:.0f}', ha='center')
     
     plt.tight_layout()
+    Path(OUTPUT_PLOT).parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(OUTPUT_PLOT, dpi=150)
-    plt.show()
     print(f"Plot saved to {OUTPUT_PLOT}")
 
 def main():

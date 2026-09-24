@@ -10,6 +10,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # 无头后端：避免阻塞
 import matplotlib.pyplot as plt
 
 # Use seaborn-like style if available, otherwise fallback
@@ -40,7 +42,9 @@ def main():
     fig_dir.mkdir(parents=True, exist_ok=True)
 
     # Find all relevant JSON files
-    files = glob.glob(str(raw_dir / "e2_jamming_seed4*.json"))  # seeds 42,43,44
+    # 加载两组：攻击组(e2_jamming_seed*) 与 无攻击基线(e2_noattack_seed*)，按 count 区分
+    files = (glob.glob(str(raw_dir / "e2_jamming_seed4*.json")) +
+             glob.glob(str(raw_dir / "e2_noattack_seed4*.json")))
     if not files:
         print("No files for seeds 42,43,44 found.")
         return
@@ -127,16 +131,16 @@ def main():
     ax.set_ylabel('Frequency')
     ax.grid(axis='y', linestyle='--', alpha=0.7)
 
-    # 4. Per-attacker attracted flows (aggregate from all attack files)
+    # 4. Per-attacker attracted flows (aggregate from attack runs only)
     attacker_counts = []
-    for f in files:
-        if 'seed42_2' in f or 'seed43_2' in f or 'seed44_2' in f:  # attack files
-            with open(f, 'r') as fp:
-                data = json.load(fp)
-                stats = data.get('attacker_stats', [])
-                for att in stats:
-                    if att['attracted_count'] > 0:
-                        attacker_counts.append(att['attracted_count'])
+    attack_files = glob.glob(str(raw_dir / "e2_jamming_seed4*.json"))
+    for f in attack_files:
+        with open(f, 'r', encoding='utf-8') as fp:
+            data = json.load(fp)
+            stats = data.get('attacker_stats', [])
+            for att in stats:
+                if att['attracted_count'] > 0:
+                    attacker_counts.append(att['attracted_count'])
     ax = axes[1, 1]
     if attacker_counts:
         ax.hist(attacker_counts, bins=8, edgecolor='black')
@@ -148,13 +152,13 @@ def main():
         ax.text(0.5, 0.5, 'No attacker stats', ha='center', va='center')
 
     plt.tight_layout()
-    plt.savefig(fig_dir / 'e2_analysis_42_44.png', dpi=300)
-    print(f"\nPlot saved to {fig_dir / 'e2_analysis_42_44.png'}")
+    plt.savefig(fig_dir / 'e2_analysis_seed42_44.png', dpi=300)
+    print(f"\nPlot saved to {fig_dir / 'e2_analysis_seed42_44.png'}")
 
     # Save CSVs
-    no_attack.to_csv(fig_dir / 'no_attack_42_44.csv')
-    attack.to_csv(fig_dir / 'attack_42_44.csv')
-    paired.to_csv(fig_dir / 'paired_42_44.csv')
+    no_attack.to_csv(fig_dir / 'no_attack_seed42_44.csv')
+    attack.to_csv(fig_dir / 'attack_seed42_44.csv')
+    paired.to_csv(fig_dir / 'paired_seed42_44.csv')
     print("CSV files saved.")
 
 

@@ -1,25 +1,25 @@
 {
-  "delivery_ratio": 0.935,
-  "avg_hops": 3.22,
+  "delivery_ratio": 0.8775,
+  "avg_hops": 3.1325,
   "avg_latency_ms": 0.0,
-  "avg_success_hops": 3.443850267379679,
+  "avg_success_hops": 3.5698005698005697,
   "avg_success_latency_ms": 0.0,
-  "num_success": 374,
+  "num_success": 351,
   "num_trials": 400,
   "attacked_count": 0,
   "dropped_by_attacker": 0,
   "total_loops": 0,
   "loop_paths": [],
   "attacker_stats": [],
-  "seed": 43,
+  "seed": 42,
   "config": {
     "experiment": {
-      "name": "e2_jamming",
+      "name": "e2_noattack",
       "duration": 120,
       "seed": null
     },
     "topology": {
-      "tle_file": "data/tle/starlink_20260822.tfl",
+      "tle_file": "data/tle/starlink.tle",
       "shell": "53°",
       "epoch_interval": 30,
       "use_lattice": true,
@@ -44,7 +44,7 @@
       "active_since": 20.0,
       "active_until": 40.0,
       "params": {
-        "jamming_ratio": 0.5,
+        "jamming_ratio": 0.9,
         "inf_metric": 9999
       }
     },
