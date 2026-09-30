@@ -40,6 +40,7 @@ import argparse
 import csv
 import json
 import re
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -55,6 +56,7 @@ for _p in (str(PROJECT_ROOT), str(PROJECT_ROOT / "scripts")):
 from starlink_sim.analytics.stats import (  # noqa: E402
     aggregate_experiment,
     compare_attack_vs_baseline,
+    signed_rank_biserial,
     TrialsCardinalityError,
 )
 from run_experiment_sweep import SWEEP_METRICS  # noqa: E402  与 sweep 完全同一指标宇宙
@@ -196,7 +198,7 @@ def _cmp_row(sweep: str, atk: str, base: str, group: dict,
     return row
 
 
-# ---- 带符号配对效应量（绕开 stats.py 在 scipy>=1.7 下的符号缺陷）----
+# ---- 带符号配对效应量（单一实现点 = stats.signed_rank_biserial）----
 
 def _seed_series(agg: dict, metric: str) -> Dict[int, float]:
     """从逐臂聚合结果抽出 {seed: 指标值}（与 stats.py 配对检验用的同一序列）。"""
@@ -208,45 +210,22 @@ def _seed_series(agg: dict, metric: str) -> Dict[int, float]:
     return out
 
 
-def _signed_rank_biserial(a: Dict[int, float], b: Dict[int, float]) -> Dict[str, Any]:
-    """配对 rank-biserial，**带符号**（T+ 口径），符号约定 >0 = 攻击臂更大。
+def _last_commit_touching(rel_path: str) -> Optional[str]:
+    """最后一次修改 ``rel_path`` 的 commit hash（仓库未初始化 / git 不可用时返回 None）。
 
-    为什么不直接用 stats.py 的 ``effect_size.rank_biserial``
-    --------------------------------------------------------
-    scipy>=1.7 下 ``wilcoxon(diff, alternative='two-sided').statistic`` 返回的是
-    **min(T+, T−)** 而不是 T+；stats.paired_by_seed 却按 T+ 口径代入
-    ``r = (2V − T)/T``，于是只要全部配对差值同号（攻击实验的常态），
-    就恒得 ``r = −1``：**符号失效 + 幅度饱和**，与 ``median_diff`` 方向矛盾。
-    实测证据（scipy 1.15.3）::
-
-        wilcoxon([1, 2]).statistic  == 0.0   # 全正差值，T+ 应为 3.0
-        wilcoxon([-1, -2]).statistic == 0.0  # 与上者不可区分
-
-    本函数直接从配对差值重算 T+（含并列平均秩）。**仅补正效应量**：
-    检验类型与 p 值仍取 stats.py 的结果（那部分经验证正确：n=5 全同号
-    得 p=0.0625 = 2/2⁵）。上游 bug 已在报告中列出，建议 Task #9+ 修 stats.py。
+    用于让 ``step3_summary.json`` 自带可审计的修复出处：本脚本聚合时，
+    ``starlink_sim/analytics/stats.py`` 的最后一次修改就是引入
+    ``signed_rank_biserial`` 的那次配对效应量符号缺陷修复。
     """
-    shared = sorted(set(a) & set(b))
-    nz = [a[s] - b[s] for s in shared if a[s] - b[s] != 0.0]
-    n_eff = len(nz)
-    if n_eff == 0:
-        return {"rank_biserial_signed": 0.0, "t_plus": 0.0, "n_eff": 0,
-                "rb_note": "所有配对差值为 0，效应量无定义"}
-    order = sorted(range(n_eff), key=lambda i: abs(nz[i]))
-    ranks = [0.0] * n_eff
-    i = 0
-    while i < n_eff:
-        j = i
-        while j + 1 < n_eff and abs(nz[order[j + 1]]) == abs(nz[order[i]]):
-            j += 1
-        avg = (i + j) / 2.0 + 1.0          # 并列取平均秩
-        for k in range(i, j + 1):
-            ranks[order[k]] = avg
-        i = j + 1
-    t_plus = float(sum(rk for rk, d in zip(ranks, nz) if d > 0))
-    t_tot = n_eff * (n_eff + 1) / 2.0
-    return {"rank_biserial_signed": (2.0 * t_plus - t_tot) / t_tot,
-            "t_plus": t_plus, "n_eff": n_eff, "rb_note": ""}
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%H", "--", rel_path],
+                             cwd=str(PROJECT_ROOT), capture_output=True,
+                             text=True, timeout=15)
+        if out.returncode == 0 and out.stdout.strip():
+            return out.stdout.strip()
+    except Exception:
+        pass
+    return None
 
 
 def run(raw_root: Path, out_dir: Path, only: Optional[Sequence[str]] = None,
@@ -332,7 +311,7 @@ def run(raw_root: Path, out_dir: Path, only: Optional[Sequence[str]] = None,
                         aa = aggs[sweep].get(atk)
                         bb = aggs[sweep].get(base)
                         if aa and bb:
-                            extra = _signed_rank_biserial(
+                            extra = signed_rank_biserial(
                                 _seed_series(aa, metric), _seed_series(bb, metric))
                     cmp_rows.append(_cmp_row(sweep, atk, base, g, metric, r, extra))
 
@@ -357,17 +336,43 @@ def run(raw_root: Path, out_dir: Path, only: Optional[Sequence[str]] = None,
         "policy": "bootstrap 95% CI；同 seed≥2 用 Wilcoxon，否则 Mann-Whitney U；"
                   "compare_attack_vs_baseline(strict=True) —— 匹配键不一致即判为不可比，不做任何放宽",
         "known_upstream_bug": {
-            "where": "starlink_sim/analytics/stats.py paired_by_seed() 的 rank-biserial",
+            "status": "RESOLVED（已正式修复，不再是待解决问题）",
+            "where": "starlink_sim/analytics/stats.py paired_by_seed() 的配对 rank-biserial",
             "what": "scipy>=1.7 下 wilcoxon(alternative='two-sided').statistic 返回 "
-                    "min(T+,T-) 而非 T+，但代码按 T+ 口径代入 r=(2V-T)/T",
-            "impact": "配对效应量 rank_biserial 符号失效：全部差值同号时恒得 -1，"
-                      "与 median_diff 方向矛盾（不影响 p 值与显著性判定）",
+                    "min(T+,T-) 而非 T+，但旧代码按 T+ 口径代入 r=(2V-T)/T",
+            "impact_when_unfixed": "配对效应量 rank_biserial 符号失效：全部差值同号时恒得 -1，"
+                                   "与 median_diff 方向矛盾。**从未影响 p 值与显著性判定**（"
+                                   "修复前后所有对比行的 p_value / significant 逐位不变，已逐条校验）",
             "evidence": "scipy 1.15.3: wilcoxon([1,2]).statistic == 0.0（T+ 应为 3.0）；"
-                        "wilcoxon([-1,-2]).statistic == 0.0（与全正不可区分）",
-            "workaround": "本脚本附加计算 rank_biserial_signed（直接从配对差值重算 T+，"
-                          "含并列平均秩）；**报告与图表一律用 rank_biserial_signed**",
-            "recommend": "Task #9+ 修 stats.py（改用 alternative='greater' 取 T+ 或自算），"
-                         "并补回归测试钉住符号约定；修后需重算历史 T7 聚合结果的效应量",
+                        "wilcoxon([-1,-2]).statistic == 0.0（与全正不可区分）。实例："
+                        "修复前 e6_wormhole/t3 的 delivery_ratio median_diff=+0.0500 但 "
+                        "rank_biserial=-1.000（方向矛盾），修复后为 +1.000",
+            "fix": "stats.py 新增公开函数 signed_rank_biserial()，直接从配对差值重算 T+"
+                   "（按 |差值| 升序赋秩、并列取平均秩、T+ = 正差值秩和），"
+                   "paired_by_seed() 改为调用它并以其作为 effect_size.rank_biserial 的唯一来源；"
+                   "本脚本删除自有的重复实现 _signed_rank_biserial，改为 import 并调用同一个 "
+                   "stats.signed_rank_biserial（单一实现点）。effect_size 新增 "
+                   "t_plus / n_eff / note 审计字段；paired_by_seed 新增 statistic_semantics "
+                   "说明 statistic 仍为 scipy 的 min(T+,T-)。mannwhitney_test 非配对路径"
+                   "符号本来就正确，本次未动。",
+            "fix_commit": _last_commit_touching("starlink_sim/analytics/stats.py"),
+            "fix_commit_semantics": "git log -1 --format=%H -- starlink_sim/analytics/stats.py"
+                                    "（本次聚合时刻 stats.py 的最后一次修改 = 该符号修复）",
+            "fix_regression_tests": [
+                "tests/test_analytics_stats.py::test_signed_rank_biserial_direction_and_magnitude",
+                "tests/test_analytics_stats.py::test_signed_rank_biserial_ties_use_average_rank",
+                "tests/test_analytics_stats.py::test_signed_rank_biserial_degenerate_zero_diff",
+                "tests/test_analytics_stats.py::test_paired_by_seed_sign_follows_median_diff_direction",
+                "tests/test_analytics_stats.py::test_paired_by_seed_sign_fix_does_not_change_p_value",
+                "tests/test_analytics_stats.py::test_mannwhitney_sign_convention_unchanged",
+                "tests/test_analytics_stats.py::test_paired_and_unpaired_sign_conventions_agree",
+            ],
+            "backward_compat": "CSV 列 rank_biserial / rank_biserial_signed / t_plus / n_eff / "
+                               "rb_note 全部保留；修复后两列在 Wilcoxon 行上数值相等（同一实现），"
+                               "并存便于与修复前的历史产物逐行对照",
+            "residual": "results/aggregated/step3_partial/ 与 results/step3_agg/ 是修复**前**"
+                        "产出的历史快照，其 rank_biserial 列符号不可信；本次全量重算的 "
+                        "results/aggregated/step3/ 才是修复后的权威产物",
         },
         "sweeps": {s: {"arms": sorted(aggs.get(s, {})),
                        "n_arms": len(aggs.get(s, {})),
@@ -434,9 +439,11 @@ def _cmp_lookup(cmp_rows: List[Dict[str, Any]], sweep: str, atk: str, base: str,
 def _rb(r: Optional[Dict[str, Any]]) -> Optional[float]:
     """图表/报告用效应量：**优先带符号的** rank_biserial_signed。
 
-    stats.py 在 scipy>=1.7 下返回的 ``rank_biserial`` 符号失效（详见
-    ``_signed_rank_biserial`` 文档），故不得用于方向判读。非 Wilcoxon 路径
-    （Mann-Whitney）本身符号正确，且无 signed 字段 → 回退到原值。
+    stats.py 的配对符号缺陷已正式修复（``signed_rank_biserial`` 为单一实现点），
+    修复后 Wilcoxon 路径的 ``rank_biserial`` 与 ``rank_biserial_signed`` 数值相等；
+    仍优先取 signed 列是为了与修复**前**的历史产物（``rank_biserial`` 符号不可信）
+    保持同一取值口径。非 Wilcoxon 路径（Mann-Whitney）本身符号正确、
+    且无 signed 字段 → 回退到原值。
     """
     if not r:
         return None

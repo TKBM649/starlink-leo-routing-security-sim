@@ -6,6 +6,8 @@
 - bootstrap_ci：已知分布覆盖率、n_boot 下限守卫
 - mannwhitney_test：显著/不显著判定、效应量方向
 - paired_by_seed：同 seed → Wilcoxon；不重叠 → Mann-Whitney U 退回；全零差值退化
+- signed_rank_biserial：配对效应量符号约定（>0 = 攻击臂更大）、并列平均秩、退化情形
+- 符号修复的防回归护栏：修复**不改变** p 值与显著性判定（逐案对标 scipy 原值）
 - describe_cardinality / check_comparable：trials 基数三元组与匹配键守卫
 - aggregate_experiment：新版/E2 旧版/E3 旧版 raw JSON 兼容聚合
 - compare_attack_vs_baseline：匹配键一致 → 配对比较；不一致 → 拒绝
@@ -130,6 +132,235 @@ def test_paired_by_seed_partial_overlap_and_zero_diff():
     assert res2['p_value'] == 1.0
     assert res2['significant'] is False
     assert any('差值为 0' in w for w in res2['warnings'])
+
+
+# ==================== 配对效应量符号约定（防回归）====================
+#
+# 为什么这一组测试存在：scipy >= 1.7 起
+# ``wilcoxon(diff, alternative='two-sided').statistic`` 返回的是 **min(T+, T-)**
+# 而不是 T+，全部配对差值同号时它恒为 0，与「攻击臂全面更小」和「攻击臂
+# 全面更大」两种相反情形不可区分（实测 scipy 1.15.3：wilcoxon([1,2]).statistic == 0.0
+# 且 wilcoxon([-1,-2]).statistic == 0.0）。旧实现把该值当作 T+ 代入 r=(2V-T)/T，
+# 导致配对效应量符号失效且幅度饱和（恒为 -1），与 median_diff 方向矛盾。
+# 实例：step3 的 e6_wormhole/t3 delivery_ratio median_diff=+0.0500 但旧 rank_biserial=-1.000。
+# 修复：stats.signed_rank_biserial 直接从配对差值重算 T+，作为**单一实现点**。
+# 下面钉住三件事：① 符号方向 ② 并列平均秩 ③ **p 值与显著性判定零变化**。
+
+_SEEDS_10 = list(range(42, 52))
+_BASE_DR = {s: 0.8950 for s in _SEEDS_10}      # step3 基线实测值
+_UP_DR = {s: 0.9450 for s in _SEEDS_10}        # e6_wormhole/t3 实测值（高于基线）
+_DN_DR = {s: 0.0450 for s in _SEEDS_10}        # e4_sybil/ids1 实测值（低于基线）
+
+
+def test_signed_rank_biserial_direction_and_magnitude():
+    """符号约定：攻击臂严格更大 → r>0；严格更小 → r<0；对称 → r≈0。"""
+    r_up = st.signed_rank_biserial(_UP_DR, _BASE_DR)
+    assert r_up['rank_biserial_signed'] > 0
+    assert r_up['rank_biserial_signed'] == pytest.approx(1.0)
+    assert r_up['t_plus'] == pytest.approx(55.0)          # T = 10·11/2
+    assert r_up['n_eff'] == 10
+    assert r_up['rb_note'] == ''
+
+    r_dn = st.signed_rank_biserial(_DN_DR, _BASE_DR)
+    assert r_dn['rank_biserial_signed'] < 0
+    assert r_dn['rank_biserial_signed'] == pytest.approx(-1.0)
+    assert r_dn['t_plus'] == pytest.approx(0.0)
+    assert r_dn['n_eff'] == 10
+
+    # 两种相反情形必须可区分（scipy 的 min(T+,T-) 统计量做不到这点）
+    assert r_up['rank_biserial_signed'] == pytest.approx(-r_dn['rank_biserial_signed'])
+
+    # 对称样本 A：一半 seed 抬高、一半压低，|差值| 全相等（全并列）
+    # → 每个差值都拿到平均秩 (1+10)/2 = 5.5，T+ = 5×5.5 = 27.5 = T/2 → r = 0
+    half = dict(_BASE_DR)
+    for i, s in enumerate(sorted(_BASE_DR)):
+        half[s] = _BASE_DR[s] + (0.30 if i % 2 == 0 else -0.30)
+    r_half = st.signed_rank_biserial(half, _BASE_DR)
+    assert r_half['rank_biserial_signed'] == pytest.approx(0.0)
+    assert r_half['t_plus'] == pytest.approx(27.5)
+
+    # 对称样本 B：|差值| = 0.1/0.2/0.3/0.4，正负号安排使 T+ = 1+4 = 5 = T/2 → r = 0
+    sym_base = {1: 0.90, 2: 0.80, 3: 0.70, 4: 0.60}
+    sym_atk = {1: 1.00, 2: 0.60, 3: 0.40, 4: 1.00}      # 差值 +0.1, -0.2, -0.3, +0.4
+    r_sym = st.signed_rank_biserial(sym_atk, sym_base)
+    assert r_sym['rank_biserial_signed'] == pytest.approx(0.0)
+    assert r_sym['t_plus'] == pytest.approx(5.0)
+    assert r_sym['n_eff'] == 4
+
+
+def test_signed_rank_biserial_ties_use_average_rank():
+    """并列（|差值| 相等）必须取平均秩，否则 T+ 会依赖输入顺序而不可复现。"""
+    base = {1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 1.0}
+    # 差值：+0.5, -0.5, -0.5, +2.0, 0.0（seed5 为零，不参与赋秩）
+    # n_eff=4 → |差值| 升序为 [0.5, 0.5, 0.5, 2.0]，前三位并列取平均秩 (1+2+3)/3 = 2，
+    # 第四位秩 4；T = 4·5/2 = 10；T+ = 2 + 4 = 6 → r = (2·6 - 10)/10 = 0.2
+    # （若错误地不取平均秩，T+ 会变成 1+4=5 → r=0.0，下面断言就能拦住）
+    atk = {1: 1.5, 2: 0.5, 3: 0.5, 4: 3.0, 5: 1.0}
+    r = st.signed_rank_biserial(atk, base)
+    assert r['n_eff'] == 4
+    assert r['t_plus'] == pytest.approx(6.0)
+    assert r['rank_biserial_signed'] == pytest.approx(0.2)
+
+    # 打乱 dict 插入顺序不得改变结果 → 证明确实按 |差值| 赋秩而非按位置
+    order = [5, 3, 1, 4, 2]
+    r2 = st.signed_rank_biserial({k: atk[k] for k in order},
+                                {k: base[k] for k in order})
+    assert r2['t_plus'] == pytest.approx(r['t_plus'])
+    assert r2['rank_biserial_signed'] == pytest.approx(r['rank_biserial_signed'])
+
+
+def test_signed_rank_biserial_degenerate_zero_diff():
+    """退化情形：全零差值 / 无共有 seed → r=0、T+=0、n_eff=0 并给出说明。"""
+    same = {s: 0.9 for s in _SEEDS_10}
+    r = st.signed_rank_biserial(same, dict(same))
+    assert r['rank_biserial_signed'] == 0.0
+    assert r['t_plus'] == 0.0
+    assert r['n_eff'] == 0
+    assert r['rb_note']                       # 必须如实标注而不是默默返回 0
+
+    r2 = st.signed_rank_biserial({1: 0.9, 2: 0.8}, {3: 0.5, 4: 0.4})
+    assert r2['n_eff'] == 0
+    assert r2['rank_biserial_signed'] == 0.0
+
+    # 部分差值为 0：只有非零差值参与赋秩（seed1 差值 0 被排除）
+    r3 = st.signed_rank_biserial({1: 0.9, 2: 0.8, 3: 0.5}, {1: 0.9, 2: 0.6, 3: 0.1})
+    assert r3['n_eff'] == 2
+    assert r3['t_plus'] == pytest.approx(3.0)          # 秩 1(|0.2|) + 秩 2(|0.4|)
+    assert r3['rank_biserial_signed'] == pytest.approx(1.0)
+
+
+def test_paired_by_seed_sign_follows_median_diff_direction():
+    """paired_by_seed 的效应量符号必须与 median_diff 同号（钉住 e6/t3 方向矛盾案例）。"""
+    res_up = st.paired_by_seed(_UP_DR, _BASE_DR)
+    assert res_up['test'] == 'wilcoxon'
+    assert res_up['median_diff'] > 0
+    assert res_up['effect_size']['rank_biserial'] > 0        # 修复前恒为 -1.0
+    assert res_up['effect_size']['rank_biserial'] == pytest.approx(1.0)
+    assert res_up['effect_size']['t_plus'] == pytest.approx(55.0)
+    assert res_up['effect_size']['n_eff'] == 10
+
+    res_dn = st.paired_by_seed(_DN_DR, _BASE_DR)
+    assert res_dn['median_diff'] < 0
+    assert res_dn['effect_size']['rank_biserial'] < 0
+    assert res_dn['effect_size']['rank_biserial'] == pytest.approx(-1.0)
+
+    # scipy 的 statistic 在两种相反情形下完全相同（都是 0.0）—— 这就是旧 bug 的根源，
+    # 也是为什么效应量必须另行重算而不能取自 statistic。
+    assert res_up['statistic'] == res_dn['statistic'] == pytest.approx(0.0)
+    assert 'min(T+, T-)' in res_up['statistic_semantics']
+    # 但修复后的效应量必须能区分两者
+    assert (res_up['effect_size']['rank_biserial']
+            == pytest.approx(-res_dn['effect_size']['rank_biserial']))
+
+    # 单一实现点：paired_by_seed 与 signed_rank_biserial 必须给出同一数值
+    direct = st.signed_rank_biserial(_UP_DR, _BASE_DR)
+    assert res_up['effect_size']['rank_biserial'] == pytest.approx(
+        direct['rank_biserial_signed'])
+
+    # 混合方向：符号跟随差值中位数（T+ = 5×8 = 40，T = 55 → r = +0.4545）
+    deltas = [+0.4, -0.1] * 5
+    mix = {s: _BASE_DR[s] + d for s, d in zip(_SEEDS_10, deltas)}
+    res_mix = st.paired_by_seed(mix, _BASE_DR)
+    assert res_mix['median_diff'] > 0
+    assert res_mix['effect_size']['rank_biserial'] > 0
+    assert res_mix['effect_size']['rank_biserial'] == pytest.approx(0.4545454545, rel=1e-6)
+    assert np.sign(res_mix['median_diff']) == np.sign(res_mix['effect_size']['rank_biserial'])
+
+    # 全零差值退化分支：也必须带上审计字段
+    res_zero = st.paired_by_seed(_BASE_DR, dict(_BASE_DR))
+    assert res_zero['effect_size']['rank_biserial'] == 0.0
+    assert res_zero['effect_size']['t_plus'] == 0.0
+    assert res_zero['effect_size']['n_eff'] == 0
+    assert res_zero['effect_size']['note']
+
+
+def test_paired_by_seed_sign_fix_does_not_change_p_value():
+    """**防回归护栏**：修复只补正效应量，p 值 / statistic / significant 必须逐位不变。
+
+    逐案直接对标 scipy 双侧 Wilcoxon 的原值（那就是修复前 paired_by_seed 用的
+    同一来源），并钉住几个可手算的精确 p：n 个全同号差值的最小双侧 p = 2/2ⁿ。
+    """
+    from scipy import stats as sps
+
+    mix = {s: _BASE_DR[s] + d for s, d in zip(_SEEDS_10, [+0.4, -0.1] * 5)}
+    with_zeros = {s: (_BASE_DR[s] - 0.30 if s % 3 else _BASE_DR[s]) for s in _SEEDS_10}
+    ranked = {s: _BASE_DR[s] - 0.05 * (i + 1) for i, s in enumerate(_SEEDS_10)}
+    cases = {
+        'all_lower_n10': (_DN_DR, _BASE_DR),
+        'all_higher_n10': (_UP_DR, _BASE_DR),
+        'mixed_n10': (mix, _BASE_DR),
+        'with_zeros_n10': (with_zeros, _BASE_DR),
+        'graded_n10': (ranked, _BASE_DR),
+        'all_higher_n5': ({s: 0.945 for s in range(42, 47)},
+                          {s: 0.895 for s in range(42, 47)}),
+        'all_higher_n4': ({s: 0.945 for s in range(42, 46)},
+                          {s: 0.895 for s in range(42, 46)}),
+        'all_zero_n10': (dict(_BASE_DR), _BASE_DR),
+        'partial_overlap': ({3: 0.7, 4: 0.65, 9: 0.1}, {3: 0.9, 4: 0.95, 5: 0.9}),
+    }
+    for name, (atk, base) in cases.items():
+        res = st.paired_by_seed(atk, base)
+        shared = sorted(set(atk) & set(base))
+        diff = np.array([atk[s] - base[s] for s in shared], dtype=float)
+        if diff.size == 0 or np.allclose(diff, 0.0):
+            # 退化分支：不进入 scipy，固定为 p=1.0 不显著
+            assert res['p_value'] == 1.0, name
+            assert res['significant'] is False, name
+            continue
+        ref = None
+        try:
+            ref = sps.wilcoxon(diff, alternative='two-sided')
+        except ValueError:
+            # 与 paired_by_seed 内部的退回分支保持完全一致（n 太小时精确法不可用）
+            ref = sps.wilcoxon(diff, alternative='two-sided', mode='approx')
+        assert res['p_value'] == pytest.approx(float(ref.pvalue), rel=1e-12, abs=0.0), name
+        assert res['statistic'] == pytest.approx(float(ref.statistic), rel=1e-12, abs=0.0), name
+        assert res['significant'] is bool(float(ref.pvalue) < 0.05), name
+
+    # 可手算的精确 p 值（证明显著性判定行为本来就是正确的，修复不得改变它）
+    assert st.paired_by_seed(_DN_DR, _BASE_DR)['p_value'] == pytest.approx(2 / 2 ** 10)
+    assert st.paired_by_seed(_UP_DR, _BASE_DR)['p_value'] == pytest.approx(2 / 2 ** 10)
+    assert st.paired_by_seed(_UP_DR, _BASE_DR)['significant'] is True
+    n5_a = {s: 0.945 for s in range(42, 47)}
+    n5_b = {s: 0.895 for s in range(42, 47)}
+    assert st.paired_by_seed(n5_a, n5_b)['p_value'] == pytest.approx(2 / 2 ** 5)
+    # n=5 全同号时 p=0.0625 > 0.05 → 不显著（方向正确但样本不足），修复后仍如此
+    assert st.paired_by_seed(n5_a, n5_b)['significant'] is False
+    assert st.paired_by_seed(n5_a, n5_b)['effect_size']['rank_biserial'] == pytest.approx(1.0)
+
+
+def test_mannwhitney_sign_convention_unchanged():
+    """非配对路径（Mann-Whitney U）符号本来就正确，本次修复未动它。"""
+    a_hi = [0.90, 0.91, 0.92, 0.93, 0.94, 0.95]
+    a_lo = [0.10, 0.11, 0.12, 0.13, 0.14, 0.15]
+    b = [0.50, 0.51, 0.52, 0.53, 0.54, 0.55]
+    r_hi = st.mannwhitney_test(a_hi, b)
+    r_lo = st.mannwhitney_test(a_lo, b)
+    # scipy U₁ = #{a_i > b_j} + ½ties；a 全大于 b 时 U₁ = 36 = n1·n2
+    assert r_hi['U'] == pytest.approx(36.0)
+    assert r_hi['effect_size']['rank_biserial'] == pytest.approx(1.0)
+    assert r_hi['median_diff'] > 0
+    assert r_lo['U'] == pytest.approx(0.0)
+    assert r_lo['effect_size']['rank_biserial'] == pytest.approx(-1.0)
+    assert r_lo['median_diff'] < 0
+
+
+def test_paired_and_unpaired_sign_conventions_agree():
+    """同一批数值下，配对（Wilcoxon）与非配对（MWU）两条路径的符号必须一致。"""
+    atk_vals = [0.9450] * 10
+    base_vals = [0.8950] * 10
+    seeds_a = list(range(42, 52))
+    seeds_b = list(range(100, 110))       # 与攻击臂完全不重叠 → 退回 MWU
+    paired = st.paired_by_seed(dict(zip(seeds_a, atk_vals)),
+                              dict(zip(seeds_a, base_vals)))
+    unpaired = st.paired_by_seed(dict(zip(seeds_a, atk_vals)),
+                                dict(zip(seeds_b, base_vals)))
+    assert paired['test'] == 'wilcoxon'
+    assert unpaired['test'] == 'mannwhitneyu'
+    assert paired['effect_size']['rank_biserial'] == pytest.approx(
+        unpaired['effect_size']['rank_biserial'])
+    assert paired['median_diff'] == pytest.approx(unpaired['median_diff'])
+    assert paired['effect_size']['rank_biserial'] > 0
 
 
 # ==================== trials 基数 / 匹配键 ====================

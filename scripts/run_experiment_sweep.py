@@ -489,11 +489,19 @@ def run_sweep(spec: SweepSpec, dry_run: bool = False) -> Tuple[Dict[str, Any], i
     arm_files: Dict[str, List[Path]] = {a.label: [] for a in spec.arms}
 
     def _emit_raw(label: str, seed: int, record: dict) -> Path:
-        """逐任务**即时**落盘 raw JSON（断点友好：进程中断也不丢已完成任务）。"""
+        """逐任务**即时**落盘 raw JSON（断点友好：进程中断也不丢已完成任务）。
+
+        落盘前把 ``spec.subset_method`` 透传进 ``metadata``（纯附加：setdefault
+        语义，永不覆盖 runner / _provenance 已写的字段）。该字段是可复现性的
+        必要环节：同一 ``node_limit`` 下，``cumulative_degree``（跨 epoch 持久核连通
+        子集）与 ``bfs``（历史行为，不保证跨 epoch 连通）会选出**不同**的节点
+        集合；缺了它就无法仅从 raw JSON 单独判定拓扑口径，只能回溯到 sweep YAML。
+        """
         exp_name = (record.get('experiment')
                     or (record.get('config', {}).get('experiment', {}) or {}).get('name')
                     or label)
         fpath = raw_dir / f"{label}__{exp_name}_seed{seed}.json"
+        record.setdefault('metadata', {}).setdefault('subset_method', spec.subset_method)
         with open(fpath, 'w', encoding='utf-8') as f:
             json.dump(_json_safe(record), f, indent=2, ensure_ascii=False)
         arm_files.setdefault(label, []).append(fpath)

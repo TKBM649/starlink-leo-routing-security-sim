@@ -20,6 +20,14 @@ starlink_sim/analytics/stats.py
    无法配对（seed 不重叠）时退回双侧 Mann-Whitney U。效应量报告
    rank-biserial 相关系数与中位数差。
 
+3.1 **效应量符号约定（两条路径必须一致）**：``rank_biserial > 0`` 恒表示
+   **攻击臂更大**，``< 0`` 恒表示攻击臂更小，方向必须与 ``median_diff`` 同号。
+   配对路径的 T+ 由 :func:`signed_rank_biserial` 从配对差值**直接重算**（含并列
+   平均秩），**不得**取自 ``scipy.stats.wilcoxon(...).statistic``——scipy >= 1.7
+   该统计量是 ``min(T+, T-)``，全部差值同号时恒为 0，用它算 rank-biserial 会
+   造成符号失效与幅度饱和（历史缺陷，详见该函数文档）。此约定只影响效应量，
+   **不影响 p 值与显著性判定**。
+
 4. **小样本告警**：n < :data:`SMALL_SAMPLE_N`（默认 10）时照常计算，
    但在输出 warnings 中标注"n 偏小，CI/检验仅供参考"。
 
@@ -43,6 +51,7 @@ __all__ = [
     'TrialsCardinalityError',
     'bootstrap_ci',
     'mannwhitney_test',
+    'signed_rank_biserial',
     'paired_by_seed',
     'describe_cardinality',
     'cardinality_match_key',
@@ -195,8 +204,10 @@ def mannwhitney_test(attack_vals: Union[Sequence[float], np.ndarray],
         p = 1.0
         warns.append("p 值为 NaN，按 1.0 不显著处理")
 
-    # scipy U₁ = #{(a_i,b_j): b_j > a_i} + ½·ties → a 全大于 b 时 U₁=0，
-    # 故 rank-biserial（>0 = 攻击组更大）= 2U₁/(n1·n2) - 1
+    # scipy U₁ = #{(a_i,b_j): a_i > b_j} + ½·ties → a 全大于 b 时 U₁ = n1·n2
+    # （实测 scipy 1.15.3：mannwhitneyu([0.90..0.95], [0.50..0.55]).statistic == 36.0），
+    # 故 rank-biserial（>0 = 攻击组更大）= 2U₁/(n1·n2) - 1。
+    # 本非配对路径的符号约定本来就是正确的，与配对路径（signed_rank_biserial）一致。
     r_rb = 2.0 * U / (a.size * b.size) - 1.0
     note = _small_sample_note(min(a.size, b.size))
     if note:
@@ -219,6 +230,66 @@ def mannwhitney_test(attack_vals: Union[Sequence[float], np.ndarray],
 
 # ==================== 按 seed 配对检验 ====================
 
+def signed_rank_biserial(attack_by_seed: Mapping[Union[int, str], float],
+                         baseline_by_seed: Mapping[Union[int, str], float]) -> Dict[str, Any]:
+    """
+    配对 rank-biserial 效应量（**带符号**，T+ 口径）。
+
+    符号约定与 :func:`mannwhitney_test` 完全一致：``> 0`` 表示攻击臂更大，
+    ``< 0`` 表示攻击臂更小，``0`` 表示无方向性差异；且方向恒与配对差值的
+    中位数同号。这是**单一实现点**：:func:`paired_by_seed` 与下游聚合脚本
+    （``scripts/aggregate_step3.py``）都必须调用本函数，不得各自重算。
+
+    为什么不直接用 ``scipy.stats.wilcoxon(...).statistic``
+    -----------------------------------------------------
+    scipy >= 1.7 起 ``wilcoxon(diff, alternative='two-sided').statistic`` 返回的是
+    **min(T+, T-)** 而不是 T+；当全部配对差值同号（攻击实验的常态）时它恒为 0，
+    与「攻击臂全面更小」和「攻击臂全面更大」两种相反情形**完全不可区分**。
+    若把该值当作 T+ 代入 ``r = (2V - T)/T``，就得到符号失效且幅度饱和（恒为 -1）
+    的错误效应量，与 ``median_diff`` 方向矛盾。实测证据（scipy 1.15.3）::
+
+        wilcoxon([1, 2]).statistic   == 0.0   # 全正差值，T+ 应为 3.0
+        wilcoxon([-1, -2]).statistic == 0.0   # 与上者不可区分
+
+    因此本函数**不依赖 scipy 的统计量**，直接从配对差值重算：取非零差值 →
+    按 ``|差值|`` 升序赋秩 → **并列取平均秩** → ``T+`` = 正差值的秩和 →
+    ``r = (2·T+ - T)/T``，其中 ``T = n_eff·(n_eff+1)/2``。
+
+    **只补正效应量，不改变检验**：p 值与显著性判定仍由 scipy 的双侧 Wilcoxon
+    给出（那部分行为本来就正确：n 个全同号差值的最小 p = 2/2ⁿ），本函数的
+    引入不改变任何 p 值或 ``significant`` 标记。
+
+    参数均为 ``{seed: 指标值}`` 映射，仅使用两侧共有的 seed（与
+    :func:`paired_by_seed` 的配对口径一致）。
+
+    返回 dict：``rank_biserial_signed``（∈ [-1, 1]）、``t_plus``、``n_eff``
+    （参与赋秩的非零差值个数）、``rb_note``（退化情形说明，正常为空串）。
+    """
+    a_keys = {int(k): float(v) for k, v in dict(attack_by_seed).items()}
+    b_keys = {int(k): float(v) for k, v in dict(baseline_by_seed).items()}
+    shared = sorted(set(a_keys) & set(b_keys))
+    nz = [a_keys[s] - b_keys[s] for s in shared if a_keys[s] - b_keys[s] != 0.0]
+    n_eff = len(nz)
+    if n_eff == 0:
+        return {'rank_biserial_signed': 0.0, 't_plus': 0.0, 'n_eff': 0,
+                'rb_note': '所有配对差值为 0（或两侧无共有 seed），效应量无定义'}
+    order = sorted(range(n_eff), key=lambda i: abs(nz[i]))
+    ranks = [0.0] * n_eff
+    i = 0
+    while i < n_eff:
+        j = i
+        while j + 1 < n_eff and abs(nz[order[j + 1]]) == abs(nz[order[i]]):
+            j += 1
+        avg = (i + j) / 2.0 + 1.0          # 并列取平均秩
+        for k in range(i, j + 1):
+            ranks[order[k]] = avg
+        i = j + 1
+    t_plus = float(sum(rk for rk, d in zip(ranks, nz) if d > 0))
+    t_tot = n_eff * (n_eff + 1) / 2.0
+    return {'rank_biserial_signed': float((2.0 * t_plus - t_tot) / t_tot),
+            't_plus': t_plus, 'n_eff': int(n_eff), 'rb_note': ''}
+
+
 def paired_by_seed(attack_by_seed: Mapping[Union[int, str], float],
                    baseline_by_seed: Mapping[Union[int, str], float],
                    alpha: float = 0.05) -> Dict[str, Any]:
@@ -232,9 +303,11 @@ def paired_by_seed(attack_by_seed: Mapping[Union[int, str], float],
       "未配对，检验功效较低，建议以相同 seed 集重跑两臂"。
     - 部分重叠：仅用重叠 seed 配对，warnings 标注被丢弃的 seed。
 
-    参数均为 {seed: 指标值} 映射。返回 dict：test, statistic, p_value,
-    significant, effect_size（rank-biserial，符号约定与 mannwhitney_test 一致：
-    >0 表示攻击臂更大）, median_diff（配对时为差值中位数，攻击 - 基线）,
+    参数均为 {seed: 指标值} 映射。返回 dict：test, statistic（Wilcoxon 路径下
+    为 scipy 的 min(T+, T-)，见 statistic_semantics）, p_value,
+    significant, effect_size（rank-biserial 由 :func:`signed_rank_biserial` 给出，
+    符号约定与 mannwhitney_test 一致：>0 表示攻击臂更大；另含 t_plus / n_eff /
+    note 供审计）, median_diff（配对时为差值中位数，攻击 - 基线）,
     n_pairs, paired_seeds, warnings。
     """
     a_keys = {int(k): float(v) for k, v in attack_by_seed.items()}
@@ -276,7 +349,8 @@ def paired_by_seed(attack_by_seed: Mapping[Union[int, str], float],
             'p_value': 1.0,
             'significant': False,
             'alpha': alpha,
-            'effect_size': {'rank_biserial': 0.0},
+            'effect_size': {'rank_biserial': 0.0, 't_plus': 0.0, 'n_eff': 0,
+                            'note': '所有配对差值为 0，效应量无定义'},
             'median_diff': 0.0,
             'median_attack': float(np.median(a)),
             'median_baseline': float(np.median(b)),
@@ -291,18 +365,22 @@ def paired_by_seed(attack_by_seed: Mapping[Union[int, str], float],
             res = _sps.wilcoxon(diff, alternative='two-sided', mode='approx')
             stat_v, p = float(res.statistic), float(res.pvalue)
             warns.append("精确 Wilcoxon 不可用，退回正态近似")
-        n_eff = int(np.count_nonzero(diff))
-        # rank-biserial（配对）：r = (2V - T) / T，V=正秩和（scipy 统计量），
-        # T=n_eff(n_eff+1)/2；符号约定：>0 表示攻击臂更大（与 Mann-Whitney 路径一致）
-        t_ranks = n_eff * (n_eff + 1) / 2.0
-        r_rb = (2.0 * stat_v - t_ranks) / t_ranks if n_eff > 0 else 0.0
+        # rank-biserial（配对，带符号）：T+ 必须由 signed_rank_biserial 从差值直接重算，
+        # **不得**用 stat_v —— scipy>=1.7 的 statistic 是 min(T+,T-)，代入 r=(2V-T)/T
+        # 会造成符号失效与幅度饱和（详见 signed_rank_biserial 文档）。
+        # p 值与显著性判定仍取 scipy 的双侧 Wilcoxon 结果，本处修复不改变它们。
+        rb = signed_rank_biserial(a_keys, b_keys)
         result = {
             'test': 'wilcoxon',
             'statistic': stat_v,
+            'statistic_semantics': 'scipy wilcoxon(alternative="two-sided"): min(T+, T-)',
             'p_value': p if not np.isnan(p) else 1.0,
             'significant': bool((p if not np.isnan(p) else 1.0) < alpha),
             'alpha': alpha,
-            'effect_size': {'rank_biserial': float(r_rb)},
+            'effect_size': {'rank_biserial': rb['rank_biserial_signed'],
+                            't_plus': rb['t_plus'],
+                            'n_eff': rb['n_eff'],
+                            'note': rb['rb_note']},
             'median_diff': float(np.median(diff)),
             'median_attack': float(np.median(a)),
             'median_baseline': float(np.median(b)),

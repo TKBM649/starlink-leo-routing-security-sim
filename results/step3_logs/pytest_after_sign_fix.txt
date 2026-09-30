@@ -1,0 +1,15 @@
+﻿........................................................................ [ 25%]
+........................................................................ [ 50%]
+........................................................................ [ 75%]
+......................................................................   [100%]
+============================== warnings summary ===============================
+tests/test_analytics_stats.py::test_check_comparable_rejects_mismatch
+  C:\Users\CWQ20\Documents\QoderCN\2026-09-29\chat-3\starlink-leo-routing-security-sim-main\starlink-leo-routing-security-sim-main\tests\test_analytics_stats.py:386: UserWarning: 匹配键不一致，拒绝比较: num_eval_epochs: 121 vs 1（注意：字段 ['node_limit'] 两侧均缺失，未参与拦截）
+    st.check_comparable(e1, e3, raise_on_mismatch=True)
+
+tests/test_analytics_stats.py::test_compare_rejects_cardinality_mismatch
+  C:\Users\CWQ20\Documents\QoderCN\2026-09-29\chat-3\starlink-leo-routing-security-sim-main\starlink-leo-routing-security-sim-main\tests\test_analytics_stats.py:527: UserWarning: trials 基数/匹配键不一致，拒绝比较：攻击臂与基线臂无任何共享匹配键。 攻击臂匹配键: ['{"node_limit": null, "num_eval_epochs": 1, "num_flows": 100, "shell": "53°"}']; 基线臂匹配键: ['{"node_limit": null, "num_eval_epochs": 121, "num_flows": 100, "shell": "53°"}']。 请用同 shell/node_limit/epoch 数/flow 数的配置重跑，或用 attack_overrides/baseline_overrides 补齐旧记录缺失字段
+    st.compare_attack_vs_baseline(str(tmp_path / "atk_seed*.json"),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+286 passed, 2 warnings in 5.51s
