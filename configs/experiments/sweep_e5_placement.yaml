@@ -1,0 +1,39 @@
+# configs/experiments/sweep_e5_placement.yaml
+# E5-c 放置敏感性 sweep 模板（对接说明见交付报告）。
+#
+# 一个无攻击基线 + 三个黑洞放置臂（degree / betweenness / random），全部同 runner=e3、
+# 同匹配键（53° / node_limit=96 / num_eval_epochs=2 / num_flows=20 → trials=40/seed）。
+# sweep 会**逐臂独立聚合**（mean±std + bootstrap 95% CI），report['arms'] 含全部四臂。
+#
+# comparison 仅指定一对（degree vs baseline）做配对检验；betweenness/random 的配对检验
+# 可用 CLI 覆盖单独跑：
+#   python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_e5_placement.yaml \
+#       --attack betweenness --baseline baseline
+# （或后续按需扩展 sweep 框架支持多对 comparison）
+#
+# 执行前把各臂 node_limit 放大到 >=1024（或全量）、seeds 增到 >=10，方有统计功效。
+
+sweep:
+  name: "sweep_e5_placement"
+  runner: "e3"
+  seeds: [42, 43, 44]
+  workers: 2
+  raw_dir: "results/sweep_e5_raw/"
+  agg_dir: "results/sweep_e5_agg/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 2000
+  arms:
+    - label: "baseline"
+      config: "configs/experiments/sweep_demo_e3_baseline.yaml"
+    - label: "degree"
+      config: "configs/experiments/sweep_demo_e3_blackhole_degree.yaml"
+    - label: "betweenness"
+      config: "configs/experiments/sweep_e5_blackhole_betweenness.yaml"
+    - label: "random"
+      config: "configs/experiments/sweep_e5_blackhole_random.yaml"
+  comparison:
+    attack: "degree"
+    baseline: "baseline"

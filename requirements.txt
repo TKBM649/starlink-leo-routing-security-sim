@@ -1,0 +1,20 @@
+# requirements.txt - Starlink LEO Routing Security Simulator
+# Python >=3.11 推荐；版本下界基于实际开发环境验证。
+
+# ===== 核心依赖 =====
+numpy>=1.26,<2.0
+scipy>=1.15,<2.0
+sgp4>=2.23,<3.0
+pandas>=2.2,<4.0
+matplotlib>=3.8,<4.0
+seaborn>=0.13,<1.0
+plotly>=5.18,<8.0
+networkx>=3.2,<4.0
+pyyaml>=6.0,<7.0
+tqdm>=4.60,<5.0
+
+# ===== 测试 =====
+pytest>=8.0,<10.0
+
+# ===== 可选（仅用于外部轨道校验，核心仿真不依赖） =====
+# skyfield>=1.49

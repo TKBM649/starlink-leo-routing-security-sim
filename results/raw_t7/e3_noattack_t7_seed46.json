@@ -1,0 +1,19 @@
+{
+  "seed": 46,
+  "control_stats": {
+    "total_loops": 27235,
+    "loop_paths_count": 27235
+  },
+  "data_stats": {
+    "delivery_ratio": 0.9,
+    "avg_hops": 8.3,
+    "avg_latency_ms": 121.5190248958531,
+    "avg_success_hops": 9.222222222222221,
+    "avg_success_latency_ms": 135.0211387731701,
+    "num_success": 90,
+    "num_trials": 100,
+    "attacked_count": 0,
+    "dropped_by_attacker": 0
+  },
+  "attacker_stats": []
+}

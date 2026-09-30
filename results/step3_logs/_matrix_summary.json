@@ -1,0 +1,56 @@
+{
+  "updated_utc": "2026-09-29T23:28:50+00:00",
+  "finished": false,
+  "wall_all_s": 3078.7,
+  "skipped_complete": [],
+  "runs": [
+    {
+      "key": "e6_wormhole",
+      "cmd": "C:\\Users\\CWQ20\\AppData\\Local\\Programs\\Python\\Python311\\python.exe C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\scripts\\run_experiment_sweep.py --sweep-config C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\configs\\experiments\\step3\\sweep_e6_wormhole.yaml",
+      "n_tasks": 40,
+      "workers": 10,
+      "start_utc": "2026-09-29T22:37:32+00:00",
+      "end_utc": "2026-09-29T22:45:08+00:00",
+      "wall_s": 456.8,
+      "exit_code": 0,
+      "log": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_logs\\e6_wormhole.log",
+      "n_raw_found": 40
+    },
+    {
+      "key": "e4_sybil",
+      "cmd": "C:\\Users\\CWQ20\\AppData\\Local\\Programs\\Python\\Python311\\python.exe C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\scripts\\run_experiment_sweep.py --sweep-config C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\configs\\experiments\\step3\\sweep_e4_sybil.yaml",
+      "n_tasks": 70,
+      "workers": 10,
+      "start_utc": "2026-09-29T22:45:08+00:00",
+      "end_utc": "2026-09-29T22:58:45+00:00",
+      "wall_s": 817.0,
+      "exit_code": 0,
+      "log": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_logs\\e4_sybil.log",
+      "n_raw_found": 70
+    },
+    {
+      "key": "e5_placement",
+      "cmd": "C:\\Users\\CWQ20\\AppData\\Local\\Programs\\Python\\Python311\\python.exe C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\scripts\\run_experiment_sweep.py --sweep-config C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\configs\\experiments\\step3\\sweep_e5_placement.yaml",
+      "n_tasks": 60,
+      "workers": 10,
+      "start_utc": "2026-09-29T22:58:45+00:00",
+      "end_utc": "2026-09-29T23:09:49+00:00",
+      "wall_s": 663.7,
+      "exit_code": 0,
+      "log": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_logs\\e5_placement.log",
+      "n_raw_found": 60
+    },
+    {
+      "key": "e5_intensity",
+      "cmd": "C:\\Users\\CWQ20\\AppData\\Local\\Programs\\Python\\Python311\\python.exe C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\scripts\\run_experiment_sweep.py --sweep-config C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\configs\\experiments\\step3\\sweep_e5_intensity.yaml",
+      "n_tasks": 100,
+      "workers": 10,
+      "start_utc": "2026-09-29T23:09:49+00:00",
+      "end_utc": "2026-09-29T23:28:50+00:00",
+      "wall_s": 1141.0,
+      "exit_code": 0,
+      "log": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_logs\\e5_intensity.log",
+      "n_raw_found": 100
+    }
+  ]
+}

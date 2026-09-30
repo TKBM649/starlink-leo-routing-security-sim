@@ -1,0 +1,19 @@
+﻿arm,arm_display,metric,mean,ci95_low,ci95_high,n_seeds
+base_det,baseline(det on),wormhole_attracted_ratio,0.0,0.0,0.0,10
+t1,1 tunnel/peer_only,wormhole_attracted_ratio,0.22749999999999998,0.17750000000000002,0.27749999999999997,10
+t3,3 tunnels/peer_only,wormhole_attracted_ratio,0.39499999999999996,0.3224375,0.47000000000000003,10
+extreme,3 tunnels/peer_side,wormhole_attracted_ratio,0.9574999999999999,0.9374999999999998,0.9774999999999998,10
+t1,1 tunnel/peer_only,wormhole_detection_rate,1.0,1.0,1.0,10
+t3,3 tunnels/peer_only,wormhole_detection_rate,1.0,1.0,1.0,10
+extreme,3 tunnels/peer_side,wormhole_detection_rate,1.0,1.0,1.0,10
+base_det,baseline(det on),wormhole_false_positive_rate,0.2009520571234274,0.2009520571234274,0.2009520571234274,10
+t1,1 tunnel/peer_only,wormhole_false_positive_rate,0.2008837525492862,0.2008837525492862,0.2008837525492862,10
+t3,3 tunnels/peer_only,wormhole_false_positive_rate,0.20040760869565216,0.20040760869565216,0.20040760869565216,10
+extreme,3 tunnels/peer_side,wormhole_false_positive_rate,0.20040760869565216,0.20040760869565216,0.20040760869565216,10
+t1,1 tunnel/peer_only,wormhole_path_stretch,0.9519385510326167,0.9355170955796936,0.9684975618588724,10
+t3,3 tunnels/peer_only,wormhole_path_stretch,0.9184582287559515,0.8976054213938275,0.9409450193518871,10
+extreme,3 tunnels/peer_side,wormhole_path_stretch,0.0,0.0,0.0,10
+base_det,baseline(det on),delivery_ratio,0.8950000000000001,0.8550000000000001,0.9299999999999999,10
+t1,1 tunnel/peer_only,delivery_ratio,0.9174999999999999,0.8825,0.9524999999999999,10
+t3,3 tunnels/peer_only,delivery_ratio,0.9450000000000001,0.9199999999999999,0.9724999999999999,10
+extreme,3 tunnels/peer_side,delivery_ratio,0.0,0.0,0.0,10

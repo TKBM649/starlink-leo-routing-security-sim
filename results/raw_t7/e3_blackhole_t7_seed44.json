@@ -1,0 +1,35 @@
+{
+  "seed": 44,
+  "control_stats": {
+    "total_loops": 27282,
+    "loop_paths_count": 27282
+  },
+  "data_stats": {
+    "delivery_ratio": 0.24,
+    "avg_hops": 1.43,
+    "avg_latency_ms": 21.881374444251996,
+    "avg_success_hops": 5.958333333333333,
+    "avg_success_latency_ms": 91.17239351771666,
+    "num_success": 24,
+    "num_trials": 100,
+    "attacked_count": 33,
+    "dropped_by_attacker": 27
+  },
+  "attacker_stats": [
+    {
+      "node_id": 124,
+      "attracted_count": 20,
+      "dropped_count": 16
+    },
+    {
+      "node_id": 604,
+      "attracted_count": 10,
+      "dropped_count": 8
+    },
+    {
+      "node_id": 183,
+      "attracted_count": 3,
+      "dropped_count": 3
+    }
+  ]
+}

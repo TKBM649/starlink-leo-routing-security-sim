@@ -1,0 +1,52 @@
+# configs/experiments/step3/sweep_shell1024.yaml
+# 壳层对比（nl=1024）：53° / 43° 正常，70° / 97.5° 为**降级档**（如实记录）
+#
+# 探测结果（生成器落盘前的一次性连通性探测，数据如下）：
+#   53°  总节点 4284，持久核 GCC=1064 → nl=1024 逐 epoch 连通比 min=mean=1.000 ✅
+#   43°  总节点 3262，持久核 GCC=3249 → nl=1024 连通比 min=mean=1.000        ✅
+#   70°  总节点仅 702 < 1024 → select_connected_subset 提前返回**全量 702**，
+#        metadata.node_limit 仍记配置值 1024 而 num_nodes=702（**降级：规模不等价**）⚠️
+#   97.5° 总节点 1075，持久核 GCC 仅 **287** → nl=1024 需用核外节点补齐，实测
+#        连通比 **min=0.280 / mean=0.615**（严重碎裂，**降级：非全连通档**）❌
+# 70°/97.5° 两档结果必须在报告中显式标注为降级，不得与 53°/43° 等量齐观。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— 请勿手工编辑。
+# 任务数 = 8 臂 × 10 seeds = 80。
+#
+# 运行（先 dry-run 核对臂数/匹配键/注入预览，再实跑）::
+#
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_shell1024.yaml --dry-run
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_shell1024.yaml
+
+sweep:
+  name: "shell1024"
+  runner: "e3"
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  workers: 8
+  raw_dir: "results/step3_raw/shell1024/"
+  agg_dir: "results/step3_agg/shell1024/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 4000
+  arms:
+    - label: "base_53"
+      config: "configs/experiments/step3/a_base_53_1024.yaml"
+    - label: "bh3_53"
+      config: "configs/experiments/step3/a_bh3_53_1024.yaml"
+    - label: "base_70"
+      config: "configs/experiments/step3/a_base_70_1024.yaml"
+    - label: "bh3_70"
+      config: "configs/experiments/step3/a_bh3_70_1024.yaml"
+    - label: "base_975"
+      config: "configs/experiments/step3/a_base_975_1024.yaml"
+    - label: "bh3_975"
+      config: "configs/experiments/step3/a_bh3_975_1024.yaml"
+    - label: "base_43"
+      config: "configs/experiments/step3/a_base_43_1024.yaml"
+    - label: "bh3_43"
+      config: "configs/experiments/step3/a_bh3_43_1024.yaml"
+  comparison:
+    attack: "bh3_43"
+    baseline: "base_43"

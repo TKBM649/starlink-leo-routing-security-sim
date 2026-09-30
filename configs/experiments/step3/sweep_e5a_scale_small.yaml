@@ -1,0 +1,52 @@
+# configs/experiments/step3/sweep_e5a_scale_small.yaml
+# E5-a 规模阶梯（48/96/256/512/1024 五档，53° 壳，每档自带同档基线）
+#
+# 规模律：同一攻击配置（blackhole×3, degree, drop_prob=0.8）在不同 node_limit 下
+# 的效应量随规模如何变化。**每档 node_limit 不同 → 匹配键不同 → 只能档内配对**，
+# 跨档比较用效应量（rank-biserial）与中位差，不用 p 值直接对比。
+# 4284 全量档**内存不可行**（见 sweep_e5a_scale_top.yaml 头注实测证据），顶档降为 2048。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— 请勿手工编辑。
+# 任务数 = 10 臂 × 10 seeds = 100。
+#
+# 运行（先 dry-run 核对臂数/匹配键/注入预览，再实跑）::
+#
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e5a_scale_small.yaml --dry-run
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e5a_scale_small.yaml
+
+sweep:
+  name: "e5a_scale_small"
+  runner: "e3"
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  workers: 10
+  raw_dir: "results/step3_raw/e5a_scale_small/"
+  agg_dir: "results/step3_agg/e5a_scale_small/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 4000
+  arms:
+    - label: "base_n48"
+      config: "configs/experiments/step3/a_base_53_48.yaml"
+    - label: "bh3_n48"
+      config: "configs/experiments/step3/a_bh3_53_48.yaml"
+    - label: "base_n96"
+      config: "configs/experiments/step3/a_base_53_96.yaml"
+    - label: "bh3_n96"
+      config: "configs/experiments/step3/a_bh3_53_96.yaml"
+    - label: "base_n256"
+      config: "configs/experiments/step3/a_base_53_256.yaml"
+    - label: "bh3_n256"
+      config: "configs/experiments/step3/a_bh3_53_256.yaml"
+    - label: "base_n512"
+      config: "configs/experiments/step3/a_base_53_512.yaml"
+    - label: "bh3_n512"
+      config: "configs/experiments/step3/a_bh3_53_512.yaml"
+    - label: "base_n1024"
+      config: "configs/experiments/step3/a_base_53_1024.yaml"
+    - label: "bh3_n1024"
+      config: "configs/experiments/step3/a_bh3_53_1024.yaml"
+  comparison:
+    attack: "bh3_n1024"
+    baseline: "base_n1024"

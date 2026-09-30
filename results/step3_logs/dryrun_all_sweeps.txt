@@ -1,0 +1,212 @@
+﻿########## e4_sybil ##########
+============================================================
+[DRY-RUN] sweep=e4_sybil runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/e4_sybil/ agg_dir=results/step3_agg/e4_sybil/
+[DRY-RUN] 任务矩阵: 70 任务 = 7 臂 × 10 seeds
+  臂 [base] configs/experiments/step3/a_base_53_1024.yaml
+    name=s3_base_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [ids1] configs/experiments/step3/a_ids1_53_1024.yaml
+    name=s3_ids1_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [sybil] 预计注入虚假身份 1 个（节点空间将扩展）: 1×betweenness
+  臂 [ids2] configs/experiments/step3/a_ids2_53_1024.yaml
+    name=s3_ids2_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [sybil] 预计注入虚假身份 2 个（节点空间将扩展）: 2×betweenness
+  臂 [ids4] configs/experiments/step3/a_ids4_53_1024.yaml
+    name=s3_ids4_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [sybil] 预计注入虚假身份 4 个（节点空间将扩展）: 4×betweenness
+  臂 [ids8] configs/experiments/step3/a_ids8_53_1024.yaml
+    name=s3_ids8_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [sybil] 预计注入虚假身份 8 个（节点空间将扩展）: 8×betweenness
+  臂 [ids16] configs/experiments/step3/a_ids16_53_1024.yaml
+    name=s3_ids16_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [sybil] 预计注入虚假身份 16 个（节点空间将扩展）: 16×betweenness
+  臂 [ids32] configs/experiments/step3/a_ids32_53_1024.yaml
+    name=s3_ids32_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [sybil] 预计注入虚假身份 32 个（节点空间将扩展）: 32×betweenness
+  对比: attack='ids8' vs baseline='base'（同 runner=e3）
+============================================================
+########## e5_placement ##########
+============================================================
+[DRY-RUN] sweep=e5_placement runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/e5_placement/ agg_dir=results/step3_agg/e5_placement/
+[DRY-RUN] 任务矩阵: 60 任务 = 6 臂 × 10 seeds
+  臂 [base] configs/experiments/step3/a_base_53_1024.yaml
+    name=s3_base_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [degree] configs/experiments/step3/a_bh3_53_1024.yaml
+    name=s3_bh3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [rnd] configs/experiments/step3/a_bh3pl_rnd_53_1024.yaml
+    name=s3_bh3pl_rnd_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [btw] configs/experiments/step3/a_bh3pl_btw_53_1024.yaml
+    name=s3_bh3pl_btw_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [kcore] configs/experiments/step3/a_bh3pl_kcore_53_1024.yaml
+    name=s3_bh3pl_kcore_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [led] configs/experiments/step3/a_bh3pl_led_53_1024.yaml
+    name=s3_bh3pl_led_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  对比: attack='degree' vs baseline='base'（同 runner=e3）
+============================================================
+########## e5_intensity ##########
+============================================================
+[DRY-RUN] sweep=e5_intensity runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/e5_intensity/ agg_dir=results/step3_agg/e5_intensity/
+[DRY-RUN] 任务矩阵: 100 任务 = 10 臂 × 10 seeds
+  臂 [base] configs/experiments/step3/a_base_53_1024.yaml
+    name=s3_base_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [c3] configs/experiments/step3/a_bh3_53_1024.yaml
+    name=s3_bh3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [c1] configs/experiments/step3/a_bhc1_53_1024.yaml
+    name=s3_bhc1_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+  臂 [c6] configs/experiments/step3/a_bhc6_53_1024.yaml
+    name=s3_bhc6_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=6
+  臂 [c12] configs/experiments/step3/a_bhc12_53_1024.yaml
+    name=s3_bhc12_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=12
+  臂 [c24] configs/experiments/step3/a_bhc24_53_1024.yaml
+    name=s3_bhc24_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=24
+  臂 [p00] configs/experiments/step3/a_bhp00_53_1024.yaml
+    name=s3_bhp00_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [p20] configs/experiments/step3/a_bhp20_53_1024.yaml
+    name=s3_bhp20_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [p50] configs/experiments/step3/a_bhp50_53_1024.yaml
+    name=s3_bhp50_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [p100] configs/experiments/step3/a_bhp100_53_1024.yaml
+    name=s3_bhp100_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  对比: attack='c12' vs baseline='base'（同 runner=e3）
+============================================================
+########## e6_wormhole ##########
+============================================================
+[DRY-RUN] sweep=e6_wormhole runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/e6_wormhole/ agg_dir=results/step3_agg/e6_wormhole/
+[DRY-RUN] 任务矩阵: 40 任务 = 4 臂 × 10 seeds
+  臂 [base_det] configs/experiments/step3/a_base_53_1024_whdet.yaml
+    name=s3_base_53_1024_whdet shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+    [wormhole] 预计注入隧道 0 条（节点空间不变）; 检测启用=True max_isl_km=2000.0 distance_factor=1.5 adaptive_factor=3.0 latency_factor=1.0: (无虫洞攻击者)
+  臂 [t1] configs/experiments/step3/a_wh_t1_53_1024.yaml
+    name=s3_wh_t1_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [wormhole] 预计注入隧道 1 条（节点空间不变）; 检测启用=True max_isl_km=2000.0 distance_factor=1.5 adaptive_factor=3.0 latency_factor=1.0: A=placement:degree/B=farthest/scope=peer_only
+  臂 [t3] configs/experiments/step3/a_wh_t3_53_1024.yaml
+    name=s3_wh_t3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+    [wormhole] 预计注入隧道 3 条（节点空间不变）; 检测启用=True max_isl_km=2000.0 distance_factor=1.5 adaptive_factor=3.0 latency_factor=1.0: A=placement:degree/B=farthest/scope=peer_only
+  臂 [extreme] configs/experiments/step3/a_wh_extreme_53_1024.yaml
+    name=s3_wh_extreme_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+    [wormhole] 预计注入隧道 3 条（节点空间不变）; 检测启用=True max_isl_km=2000.0 distance_factor=1.5 adaptive_factor=3.0 latency_factor=1.0: A=placement:degree/B=farthest/scope=peer_side
+  对比: attack='t3' vs baseline='base_det'（同 runner=e3）
+============================================================
+########## e7_combo ##########
+============================================================
+[DRY-RUN] sweep=e7_combo runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/e7_combo/ agg_dir=results/step3_agg/e7_combo/
+[DRY-RUN] 任务矩阵: 80 任务 = 8 臂 × 10 seeds
+  臂 [base] configs/experiments/step3/a_base_53_1024.yaml
+    name=s3_base_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3] configs/experiments/step3/a_bh3_53_1024.yaml
+    name=s3_bh3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [jm3] configs/experiments/step3/a_jm3_53_1024.yaml
+    name=s3_jm3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [sy8] configs/experiments/step3/a_sy8_53_1024.yaml
+    name=s3_sy8_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=1
+    [sybil] 预计注入虚假身份 8 个（节点空间将扩展）: 8×betweenness
+  臂 [bh3_jm3] configs/experiments/step3/a_bh3_jm3_53_1024.yaml
+    name=s3_bh3_jm3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=6
+  臂 [bh3_sy8] configs/experiments/step3/a_bh3_sy8_53_1024.yaml
+    name=s3_bh3_sy8_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=4
+    [sybil] 预计注入虚假身份 8 个（节点空间将扩展）: 8×betweenness
+  臂 [jm3_sy8] configs/experiments/step3/a_jm3_sy8_53_1024.yaml
+    name=s3_jm3_sy8_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=4
+    [sybil] 预计注入虚假身份 8 个（节点空间将扩展）: 8×betweenness
+  臂 [bh3_jm3_sy8] configs/experiments/step3/a_bh3_jm3_sy8_53_1024.yaml
+    name=s3_bh3_jm3_sy8_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=7
+    [sybil] 预计注入虚假身份 8 个（节点空间将扩展）: 8×betweenness
+  对比: attack='bh3_jm3_sy8' vs baseline='base'（同 runner=e3）
+============================================================
+########## shell256 ##########
+============================================================
+[DRY-RUN] sweep=shell256 runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/shell256/ agg_dir=results/step3_agg/shell256/
+[DRY-RUN] 任务矩阵: 80 任务 = 8 臂 × 10 seeds
+  臂 [base_53] configs/experiments/step3/a_base_53_256.yaml
+    name=s3_base_53_256 shell=53° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_53] configs/experiments/step3/a_bh3_53_256.yaml
+    name=s3_bh3_53_256 shell=53° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_70] configs/experiments/step3/a_base_70_256.yaml
+    name=s3_base_70_256 shell=70° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_70] configs/experiments/step3/a_bh3_70_256.yaml
+    name=s3_bh3_70_256 shell=70° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_975] configs/experiments/step3/a_base_975_256.yaml
+    name=s3_base_975_256 shell=97.5° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_975] configs/experiments/step3/a_bh3_975_256.yaml
+    name=s3_bh3_975_256 shell=97.5° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_43] configs/experiments/step3/a_base_43_256.yaml
+    name=s3_base_43_256 shell=43° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_43] configs/experiments/step3/a_bh3_43_256.yaml
+    name=s3_bh3_43_256 shell=43° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=3
+  对比: attack='bh3_53' vs baseline='base_53'（同 runner=e3）
+============================================================
+########## shell1024 ##########
+============================================================
+[DRY-RUN] sweep=shell1024 runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/shell1024/ agg_dir=results/step3_agg/shell1024/
+[DRY-RUN] 任务矩阵: 80 任务 = 8 臂 × 10 seeds
+  臂 [base_53] configs/experiments/step3/a_base_53_1024.yaml
+    name=s3_base_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_53] configs/experiments/step3/a_bh3_53_1024.yaml
+    name=s3_bh3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_70] configs/experiments/step3/a_base_70_1024.yaml
+    name=s3_base_70_1024 shell=70° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_70] configs/experiments/step3/a_bh3_70_1024.yaml
+    name=s3_bh3_70_1024 shell=70° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_975] configs/experiments/step3/a_base_975_1024.yaml
+    name=s3_base_975_1024 shell=97.5° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_975] configs/experiments/step3/a_bh3_975_1024.yaml
+    name=s3_bh3_975_1024 shell=97.5° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_43] configs/experiments/step3/a_base_43_1024.yaml
+    name=s3_base_43_1024 shell=43° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_43] configs/experiments/step3/a_bh3_43_1024.yaml
+    name=s3_bh3_43_1024 shell=43° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  对比: attack='bh3_43' vs baseline='base_43'（同 runner=e3）
+============================================================
+########## e5a_scale_small ##########
+============================================================
+[DRY-RUN] sweep=e5a_scale_small runner=e3 workers=10
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/e5a_scale_small/ agg_dir=results/step3_agg/e5a_scale_small/
+[DRY-RUN] 任务矩阵: 100 任务 = 10 臂 × 10 seeds
+  臂 [base_n48] configs/experiments/step3/a_base_53_48.yaml
+    name=s3_base_53_48 shell=53° node_limit=48 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_n48] configs/experiments/step3/a_bh3_53_48.yaml
+    name=s3_bh3_53_48 shell=53° node_limit=48 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_n96] configs/experiments/step3/a_base_53_96.yaml
+    name=s3_base_53_96 shell=53° node_limit=96 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_n96] configs/experiments/step3/a_bh3_53_96.yaml
+    name=s3_bh3_53_96 shell=53° node_limit=96 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_n256] configs/experiments/step3/a_base_53_256.yaml
+    name=s3_base_53_256 shell=53° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_n256] configs/experiments/step3/a_bh3_53_256.yaml
+    name=s3_bh3_53_256 shell=53° node_limit=256 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_n512] configs/experiments/step3/a_base_53_512.yaml
+    name=s3_base_53_512 shell=53° node_limit=512 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_n512] configs/experiments/step3/a_bh3_53_512.yaml
+    name=s3_bh3_53_512 shell=53° node_limit=512 duration=60.0 ~num_eval_epochs=2 attackers=3
+  臂 [base_n1024] configs/experiments/step3/a_base_53_1024.yaml
+    name=s3_base_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_n1024] configs/experiments/step3/a_bh3_53_1024.yaml
+    name=s3_bh3_53_1024 shell=53° node_limit=1024 duration=60.0 ~num_eval_epochs=2 attackers=3
+  对比: attack='bh3_n1024' vs baseline='base_n1024'（同 runner=e3）
+============================================================
+########## e5a_scale_full ##########
+============================================================
+[DRY-RUN] sweep=e5a_scale_full runner=e3 workers=2
+[DRY-RUN] seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51] subset_method=cumulative_degree
+[DRY-RUN] raw_dir=results/step3_raw/e5a_scale_full/ agg_dir=results/step3_agg/e5a_scale_full/
+[DRY-RUN] 任务矩阵: 20 任务 = 2 臂 × 10 seeds
+  臂 [base_nfull] configs/experiments/step3/a_base_53_full.yaml
+    name=s3_base_53_full shell=53° node_limit=None duration=60.0 ~num_eval_epochs=2 attackers=0
+  臂 [bh3_nfull] configs/experiments/step3/a_bh3_53_full.yaml
+    name=s3_bh3_53_full shell=53° node_limit=None duration=60.0 ~num_eval_epochs=2 attackers=3
+  对比: attack='bh3_nfull' vs baseline='base_nfull'（同 runner=e3）
+============================================================

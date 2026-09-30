@@ -1,0 +1,46 @@
+# configs/experiments/e3_blackhole_t7.yaml
+# T7 门槛验证用 E3 黑洞攻击臂 —— 与 e3_noattack_t7.yaml 除 attackers 外完全一致。
+# 同 runner（scripts/run_e3_blackhole_experiment.py）。
+# 注意 e3 runner 评估 epoch 约定：last_epoch_idx = duration/epoch_interval − 1 = 3，
+#   数据面用控制面最终路由表在 epoch-3 拓扑上评估（evaluate_flows 未传 num_epochs，
+#   实际仅 1 遍；变量 num_eval_epochs=4 只影响 positions 切片与攻击者时间窗），
+#   实测 trials = 100 flows × 1 epoch × 1 = 100 / seed（以 raw JSON 的 num_trials 为准）。
+# attackers 常驻（active_until=.inf）：黑洞的数据面丢弃发生在评估 epoch（t≥90s），
+#   若沿用旧 20–40s 窗口，评估期攻击者已失活，dropped_by_attacker 恒为 0（方法学隐患，见 T7 报告）。
+# 运行：python scripts/run_e3_blackhole_experiment.py --config configs/experiments/e3_blackhole_t7.yaml --seeds 42 43 44 45 46
+
+experiment:
+  name: "e3_blackhole_t7"
+  duration: 120
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 512
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 100
+
+attack:
+  attackers:
+    - type: "blackhole"
+      count: 3
+      placement: "degree"
+      active_since: 20.0
+      active_until: .inf
+      params:
+        drop_prob: 0.8
+        metric_fake: 0
+
+output:
+  raw_dir: "results/raw_t7/"
+  agg_dir: "results/aggregated_t7/"
+  figures_dir: "results/figures/"

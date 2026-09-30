@@ -1,0 +1,45 @@
+# configs/experiments/sweep_e4_sybil_ids12.yaml
+# E4 Sybil 攻击臂 —— **身份数 vs 效果**梯度的高档：1 个被劫持物理节点呈现 12 个虚假身份。
+# 与 sweep_e4_sybil_ids2/ids6.yaml 仅 params.num_identities 不同（同 runner/匹配键/附着策略）。
+# 12 个身份会附着到 12 个不同的高介数真实节点，节点空间由 96 扩到 108。
+
+experiment:
+  name: "sweep_e4_sybil_ids12"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers:
+    - type: "sybil"
+      count: 1
+      placement: "degree"
+      active_since: 0.0
+      active_until: .inf
+      params:
+        num_identities: 12
+        attachment: "betweenness"
+        metric_fake: 0
+        seq_lead: 8
+        drop_prob: 0.0
+        controller_poisons: false
+
+output:
+  raw_dir: "results/sweep_e4_raw/"
+  agg_dir: "results/sweep_e4_agg/"
+  figures_dir: "results/figures/"

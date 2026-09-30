@@ -1,0 +1,46 @@
+# configs/experiments/e2_jamming.yaml
+# E2 干扰攻击实验 —— 统一 schema v2
+# 死键处置：
+#   routing.protocol     → RESERVED（仅 dv，解析层忽略）
+#   topology.use_lattice → REMOVED（拓扑从 pkl 缓存加载）
+#   topology.isl_distance_limit → RESERVED（T4 决定维持现状）
+#   topology.gimbal_limit → REMOVED（无代码路径）
+#   topology.tle_file    → REMOVED（拓扑从 pkl 缓存加载）
+#   traffic.flow_duration → REMOVED（流模型无持续时间）
+#   traffic.start_offset  → REMOVED（流模型无偏移）
+
+experiment:
+  name: "e2_jamming"
+  duration: 120              # 仿真时长（秒）
+  seed: null                 # 由命令行 --seeds 传入
+
+topology:
+  shell: "53°"               # 主壳层
+  epoch_interval: 30          # 拓扑快照间隔（秒）
+  node_limit: 96              # BFS 子集规模（null=全量）
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null       # 可选外部位置缓存覆盖
+
+routing:
+  t_adv: 2.0                  # DV 广告周期（秒）→ wired to DVRouter.adv_interval
+  tick: 0.2                   # 控制面步长（秒）
+  max_hops: 100               # 最大跳数 → wired to DataPlane.compute_path
+
+traffic:
+  num_flows: 100              # 数据流数量
+
+attack:
+  attackers:
+    - type: "JammingAttacker"
+      count: 10               # 攻击者数量
+      placement: "degree"     # 按历史度数最高选择
+      active_since: 20.0      # 攻击开始时间（秒）
+      active_until: 40.0      # 攻击结束时间（秒）
+      params:
+        jamming_ratio: 0.9    # 干扰邻居比例
+        inf_metric: 9999      # 不可达度量值
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"

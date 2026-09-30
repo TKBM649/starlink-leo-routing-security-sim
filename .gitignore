@@ -1,0 +1,73 @@
+# ===== Python 虚拟环境 =====
+starlink-venv/
+venv/
+.venv/
+env/
+
+# ===== Python 缓存 =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ===== 大型仿真产物（GitHub 100MB 单文件硬限）=====
+# 一律排除所有 .pkl 二进制产物：既可重新生成，又存在单文件超限风险。
+# 实测体积：data/topology/topology_results.pkl = 98.00MB（超 GitHub 100MB 硬限的下限余量极小）、
+#           data/lattice/lattice_result.pkl = 2.87MB、data/tle/filtered_records.pkl = 2.83MB、
+#           results/raw/routing_tables.pkl 可达 ~800MB。
+# 注意：data/tle/starlink.tle（1.69MB）是**数据源**而非产物，是可复现性证据
+#       （SHA256 已记录在 raw metadata 中），必须提交，故此处只排除 .pkl 不排除 .tle。
+*.pkl
+# 路由表快照 ~800MB，远超限制，必须排除（上面的 *.pkl 已覆盖，此处保留显式声明）
+results/raw/routing_tables.pkl
+# 3D 可视化 HTML ~36MB，可重新生成
+results/viz/
+# 拓扑结果 ~98MB（上一版本此处为注释状态，会被误提交，已改为强制排除）
+data/topology/topology_results.pkl
+
+# ===== 数据快照（可重新生成）=====
+data/snapshots/
+
+# ===== 测试/工具缓存 =====
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ===== 文档/临时文件 =====
+*.pdf
+部分操作解析和常见问题.pdf
+
+# ===== IDE / 编辑器 =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== 日志/临时 =====
+*.log
+*.tmp
+*.bak

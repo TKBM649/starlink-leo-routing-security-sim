@@ -1,0 +1,35 @@
+# configs/experiments/step3/a_base_70_256.yaml
+# 无攻击基线臂（shell=70°, node_limit=256）。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— **请勿手工编辑**；
+# 需改口径时改生成器后重跑该脚本（幂等覆盖）。
+# 匹配键四元组 (shell, node_limit, num_eval_epochs, num_flows) = (70°, 256, 2, 20)；total_trials = 40/seed。
+
+experiment:
+  name: "s3_base_70_256"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "70°"
+  epoch_interval: 30
+  node_limit: 256
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers: []
+
+output:
+  raw_dir: "results/step3_raw/"
+  agg_dir: "results/step3_agg/"
+  figures_dir: "results/figures/"

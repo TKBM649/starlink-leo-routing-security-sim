@@ -1,0 +1,34 @@
+# configs/experiments/sweep_demo_e3.yaml
+# 并行 sweep 规格（demo，小规模验证/dry-run 用）。
+#
+# 一对同 runner（e3）、同匹配键的臂：baseline（无攻击）vs attack（黑洞 degree 放置）。
+# 匹配键：53° / node_limit=96 / num_eval_epochs=2（duration=60÷30）/ num_flows=20
+#   → 每 seed trials = 20 × 2 × 1 = 40（以 raw JSON 的 num_trials 为基数真值）。
+#
+# 用法：
+#   校验（不加载 pkl、不跑仿真）：
+#     python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_demo_e3.yaml --dry-run
+#   实际小规模并行（2 workers × 3 seeds × 2 臂 = 6 任务）：
+#     python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_demo_e3.yaml
+# CLI 覆盖：--seeds/--workers/--raw-dir/--agg-dir/--subset-method 等可覆盖本文件对应字段。
+
+sweep:
+  name: "sweep_demo_e3"
+  runner: "e3"              # 配对臂必须同 runner（e2/e3 epoch 约定不同，跨 runner 比较无意义）
+  seeds: [42, 43, 44]       # 支持 >=10；demo 用 3 个
+  workers: 2                # spawn Pool 进程数；pkl 在 initializer 里每进程加载一次
+  raw_dir: "results/sweep_demo_raw/"
+  agg_dir: "results/sweep_demo_agg/"
+  subset_method: "cumulative_degree"   # cumulative_degree | stable_core
+  strict_window: false      # true 时攻击窗口与评估时刻无重叠直接报错
+  non_strict: false         # true 时匹配键不一致不抛错，仅标记不可比
+  alpha: 0.05
+  n_boot: 2000              # stats.bootstrap_ci 要求 >= 2000
+  arms:
+    - label: "baseline"
+      config: "configs/experiments/sweep_demo_e3_baseline.yaml"
+    - label: "attack"
+      config: "configs/experiments/sweep_demo_e3_blackhole_degree.yaml"
+  comparison:
+    attack: "attack"
+    baseline: "baseline"

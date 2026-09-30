@@ -1,0 +1,62 @@
+# configs/experiments/sweep_e6_wormhole_extreme.yaml
+# E6 Wormhole 攻击臂 —— **极端强度对照**：1 条隧道 + poison_scope=peer_side。
+# 与 sweep_e6_wormhole_t1.yaml 仅 params.poison_scope 不同（同 runner/匹配键/端点策略/count）。
+#
+# peer_side 在 peer_only（仅伪造对端本身）之外，**额外**把本节点路由表中 next_hop==peer 的
+# 整个"对端一侧"目的地也改写为 metric_fake(=0)。该谎言过强（等于宣称自己与对端一侧每个
+# 节点同址），会让 B 把到自己**直接邻居**的路由也改指向 A → 自伤环路、送达率崩塌。
+# 保留它作为"极端强度"对照臂：其破坏性由 total_loops 上升 / delivery_ratio 下降体现，
+# 与 t1（健全捷径：牵引但不自伤）形成"牵引 vs 破坏"的强度对照。
+#
+# 预期：wormhole_attracted_ratio 高、检测器仍识破隧道（detection_rate≈1），但
+#   delivery_ratio 显著低于 t1 与基线、total_loops 显著升高（极端强度的代价）。
+
+experiment:
+  name: "sweep_e6_wormhole_extreme"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+# 与基线臂逐字一致的检测参数（确保误报率/检测率同口径可比）。
+detection:
+  wormhole:
+    enabled: true
+    max_isl_km: 2000.0
+    distance_factor: 1.5
+    adaptive_factor: 3.0
+    latency_factor: 1.0
+
+attack:
+  attackers:
+    - type: "wormhole"
+      count: 1
+      placement: "degree"
+      active_since: 0.0
+      active_until: .inf
+      params:
+        endpoint_strategy: "farthest"
+        poison_scope: "peer_side"
+        metric_fake: 0
+        seq_lead: 8
+        drop_prob: 0.0
+        pool_size: 48
+
+output:
+  raw_dir: "results/sweep_e6_raw/"
+  agg_dir: "results/sweep_e6_agg/"
+  figures_dir: "results/figures/"

@@ -1,0 +1,70 @@
+# configs/experiments/sweep_e6_wormhole.yaml
+# E6 Wormhole（虫洞）攻击 sweep 模板 —— **隧道数 vs 效果**梯度 + 极端强度对照实验。
+#
+# 虫洞语义（详见 starlink_sim/net/wormhole.py 与 net/attack.py:WormholeAttacker）：
+#   两个**物理上相距很远**的真实节点 A、B 通过私有隧道串通，对彼此邻域伪造可达性，
+#   使全网误以为它们**相邻**（一条"短 metric 跳"实为数千公里物理距离）。后果是流量被
+#   牵引经隧道、跳数骤降而物理距离/时延暴涨，破坏地理路由。与 Sybil 的关键差异：虫洞
+#   **不新增节点身份**（A、B 都是既有真实节点），故 num_nodes 不变、节点 ID 空间不扩展。
+#
+# 一个**启用检测**的无攻击基线 + 三个虫洞攻击臂，全部同 runner=e3、同匹配键
+#   （53° / node_limit=96 / num_eval_epochs=2 / num_flows=20 → trials=40/seed）。
+# 各臂：
+#   baseline_det  无攻击 + detection.wormhole.enabled=true → 度量**误报率**。
+#                 注：检测器的“零误报”以“合法 ISL 受 max_isl_km 约束”为前提；实测本仓库
+#                 shipped 的 topology_results.pkl 合法边距离未受 2000 km 约束（最大≈对踵
+#                 1.37e4 km），故在小 subset（如 node_limit=96）上自适应阈值抬到最长合法边
+#                 之上→fp=0（但漏报）；在大 subset 上阈值落到隧道之下→fp>0。详见
+#                 starlink_sim/net/wormhole.py 模块 docstring 的实测表。
+#   t1            1 条隧道，poison_scope=peer_only（健全捷径：牵引>0、path_stretch<1、
+#                 geo_stretch>=1、送达率基本不受损）—— E6 主对比臂。
+#   t3            3 条隧道，peer_only（强度梯度：隧道越多 → 牵引占比越高、检出越多）。
+#   extreme       1 条隧道，poison_scope=peer_side（极端强度：把整个对端一侧伪造成
+#                 metric 0 → 自伤环路、送达率崩塌；破坏性由 total_loops/delivery_ratio 体现）。
+#
+# 聚合指标除既有 DEFAULT_METRICS 外，自动附加虫洞特有指标（SWEEP_METRICS 含 WORMHOLE_METRIC_KEYS）：
+#   wormhole_attracted_ratio      —— 转发链经过任一隧道的 flow-epoch 占比（E6 主指标）
+#   wormhole_detection_rate       —— 注入隧道中被物理接地检测器识破的比例（仅攻击臂；在 shipped
+#                                    全量拓扑上因 ISL 无距离上限而**不可分离**，可能为 0，非 bug）
+#   wormhole_false_positive_rate  —— 未注入的可疑跳占比（在合法 ISL 受距离约束的拓扑上恒为 0；
+#                                    shipped 数据大 subset 上可 >0，详见 wormhole.py docstring）
+#   wormhole_path_stretch / wormhole_geo_stretch  —— 跳数压缩 / 地理绕远（仅攻击臂）
+#   wormhole_num_tunnels          —— 该臂注入的隧道数（梯度自变量）
+# 基线臂无隧道 → 只发射 WORMHOLE_BASELINE_KEYS（缺 TUNNEL 键），聚合自动跳过（纯附加，
+# 不会用 0.0 污染检测率/stretch 统计）。
+#
+# 用法：
+#   1) dry-run（仅校验任务矩阵/攻击窗口/预计隧道数/检测参数，不加载 pkl、不跑仿真）
+#      python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_e6_wormhole.yaml --dry-run
+#   2) 实跑（默认 comparison = t1 vs baseline_det）
+#      python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_e6_wormhole.yaml
+#   3) 换一对比较（如极端强度 vs 基线）
+#      python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_e6_wormhole.yaml \
+#          --attack extreme --baseline baseline_det
+#
+# 执行前把各臂 node_limit 放大到 >=1024（或全量 4284）、seeds 增到 >=10，方有统计功效。
+
+sweep:
+  name: "sweep_e6_wormhole"
+  runner: "e3"
+  seeds: [42, 43, 44]
+  workers: 2
+  raw_dir: "results/sweep_e6_raw/"
+  agg_dir: "results/sweep_e6_agg/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 2000
+  arms:
+    - label: "baseline_det"
+      config: "configs/experiments/sweep_e6_wormhole_baseline.yaml"
+    - label: "t1"
+      config: "configs/experiments/sweep_e6_wormhole_t1.yaml"
+    - label: "t3"
+      config: "configs/experiments/sweep_e6_wormhole_t3.yaml"
+    - label: "extreme"
+      config: "configs/experiments/sweep_e6_wormhole_extreme.yaml"
+  comparison:
+    attack: "t1"
+    baseline: "baseline_det"

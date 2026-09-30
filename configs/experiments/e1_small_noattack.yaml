@@ -1,0 +1,35 @@
+# configs/experiments/e1_small_noattack.yaml
+# 小样验证用"匹配基线"臂（no-attack）—— 与 e1_small_attack.yaml 除 attackers 外完全一致。
+# 由 scripts/run_e3_blackhole_experiment.py 运行（同一 runner，保证控制面时长/评估 epoch 严格匹配）：
+#   python scripts/run_e3_blackhole_experiment.py --config configs/experiments/e1_small_noattack.yaml --seeds 42 43
+# duration=90 → e3 runner 评估最后 1 个 epoch（last_epoch_idx=duration/30-1=2）；
+# trials = 20 flows × 1 epoch × 1 = 20 / seed（以 raw JSON 的 num_trials 为准，
+# 统计框架会校验三元组乘积一致性）。仅用于全链路验证（秒级），非科学结论。
+
+experiment:
+  name: "e1_small_noattack"
+  duration: 90
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers: []              # 匹配基线臂：不部署攻击者
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"

@@ -1,0 +1,61 @@
+# configs/experiments/e1_canonical_1024.yaml
+# canonical E1 无攻击基线（3-seed 初步重标定）—— 统一 schema v2
+#
+# 【为什么是 node_limit=1024 而不是原计划的 -1（全量 4284）】
+# 实测证据（本机 31.7GB 总内存 / 23.6GB 空闲）：
+#   1) nl=4284 + blackhole×3 + 仅 2 epochs + 20 flows → 峰值 RSS >= 20.7GB，
+#      CPU 462s 仍未结束，被强制终止（FreeRAM 一度跌至 4.5GB）。
+#   2) nl=4284 + **无攻击**基线 + 2 epochs + 20 flows → WS 20743MB，CPU 393s
+#      同样未完成，被强制终止。→ 内存爆炸与攻击无关，是协议实现的固有标度。
+# 根因（starlink_sim/net/routing_dv.py + simulator.py）：
+#   - RouteEntry 是 dataclass，携带 path: List[int]（**路径向量**）与 flags: Set[str]，
+#     且 _add_entry 每次都新建对象（path=list(msg.visited)）；
+#   - Simulator.run 每 epoch 执行 routing_table_history[epoch] = get_routing_tables()，
+#     而 get_routing_table() 返回 routing_table.copy() = **dict 浅拷贝**
+#     （条目对象共享，但 dict 槽位逐 epoch 新建一份）。
+#   → 常驻内存 ≈ 1100B·N²（活路由表条目）+ 48B·N²·epochs（历史快照槽位）。
+#     模型校验：N=4284, epochs=2 → 20.2GB + 1.8GB ≈ 22GB，与实测 20.7GB 吻合。
+#     N=4284, epochs=121 → 仅历史项就 ≈ 222GB，**物理不可行**；
+#     N=2048, epochs=121 → ≈ 29GB，不可行；
+#     N=1024, epochs=121 → ≈ 1.15GB + 5.9GB ≈ 7.6GB，**可行**（故取此档）。
+# 因此 canonical 基线如实降级到 nl=1024（53° 壳持久核连通子集），与 step3 攻击矩阵
+# **同口径**（subset_method=cumulative_degree），使基线与攻击臂可直接配对比较。
+#
+# 墙钟外推基准（实测）：results/raw_t7/e1_dynamic_t7_seed*.json 的 timestamp_utc 差
+#   → nl=512 / 20 epochs / 100 flows ≈ 300s per seed；
+#   nl=1024 计算量 ∝ N² → 4× ≈ 1200s per 20 epochs；×6.05（121/20）≈ 7260s ≈ 2h per seed。
+#   3 seeds（42/43/44）串行 ≈ 6h；2 并行 ≈ 4h（内存 2×7.6GB=15.2GB，安全）。
+#
+# 用法（务必带 --subset-method，否则走历史 BFS 子集，与攻击矩阵不可比）：
+#   python scripts/run_simulation.py \
+#     --config configs/experiments/e1_canonical_1024.yaml \
+#     --seeds 42 --subset-method cumulative_degree --skip-existing \
+#     --raw-dir results/raw_canonical_e1 --agg-dir results/aggregated/canonical_e1
+
+experiment:
+  name: "e1_canonical_1024"
+  duration: 3630             # 121 epochs × 30s，覆盖缓存全部 epoch（超出部分自动截断）
+  seed: null                 # 由命令行 --seeds 传入
+
+topology:
+  shell: "53°"               # 主壳层（4284 节点；持久核连通子集取 1024）
+  epoch_interval: 30         # 拓扑快照间隔（秒）
+  node_limit: 1024           # 见文件头：4284 全量在本机内存不可行，已如实降级
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0                 # DV 广告周期（秒）→ wired to DVRouter.adv_interval
+  tick: 0.2                  # 控制面步长（秒）
+  max_hops: 100              # 最大跳数 → wired to DataPlane.compute_path
+
+traffic:
+  num_flows: 100             # trials = 100 flows × 121 epochs × 1 = 12100 per seed
+
+attack:
+  attackers: []              # 基线：不部署攻击者
+
+output:
+  raw_dir: "results/raw_canonical_e1/"
+  agg_dir: "results/aggregated/canonical_e1/"
+  figures_dir: "results/figures/"

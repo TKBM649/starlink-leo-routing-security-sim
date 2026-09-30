@@ -1,0 +1,42 @@
+# configs/experiments/e1_small_attack.yaml
+# 小样验证用"攻击"臂 —— 与 e1_small_noattack.yaml 匹配键完全一致
+# （53° / node_limit=96 / duration=90 → 评估 1 epoch / 20 flows），仅多 1 个黑洞攻击者。
+# 运行：
+#   python scripts/run_e3_blackhole_experiment.py --config configs/experiments/e1_small_attack.yaml --seeds 42 43
+# 随后 scripts/aggregate_stats.py 做匹配基线配对比较。仅用于全链路验证，非科学结论。
+
+experiment:
+  name: "e1_small_attack"
+  duration: 90
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers:
+    - type: blackhole
+      count: 1
+      placement: degree      # 度数最高节点
+      active_since: 0.0
+      active_until: .inf     # YAML 无穷（旧 schema 兼容：脚本内转为 None）
+      params:
+        drop_prob: 1.0
+        metric_fake: 0       # 谎报自身距离为 0，吸引流量
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"

@@ -1,0 +1,696 @@
+{
+  "experiment": "s3_bhp20_53_1024",
+  "n_seeds": 10,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "cardinality": {
+    "match_key": {
+      "shell": "53°",
+      "node_limit": 1024,
+      "num_eval_epochs": 2,
+      "num_flows": 20
+    },
+    "detail": {
+      "num_flows": 20,
+      "num_eval_epochs": 2,
+      "trials_per_flow_epoch": 1,
+      "total_trials": 40,
+      "match_key": {
+        "shell": "53°",
+        "node_limit": 1024,
+        "num_eval_epochs": 2,
+        "num_flows": 20
+      },
+      "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+      "source": {
+        "has_config_snapshot": true,
+        "has_metadata": true,
+        "overrides_applied": [],
+        "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed42.json",
+        "seed": 42
+      },
+      "aux": {
+        "t_adv": 2.0,
+        "tick": 0.2,
+        "max_hops": 100,
+        "duration": 60
+      }
+    },
+    "consistent_across_seeds": true
+  },
+  "metrics": {
+    "delivery_ratio": {
+      "mean": 0.4625,
+      "std": 0.10817295821455974,
+      "min": 0.3,
+      "max": 0.6,
+      "ci95_low": 0.39999999999999997,
+      "ci95_high": 0.525,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.6,
+        "43": 0.375,
+        "44": 0.55,
+        "45": 0.3,
+        "46": 0.35,
+        "47": 0.525,
+        "48": 0.5,
+        "49": 0.375,
+        "50": 0.45,
+        "51": 0.6
+      }
+    },
+    "avg_hops": {
+      "mean": 3.8725,
+      "std": 0.9204052549466094,
+      "min": 2.625,
+      "max": 5.6,
+      "ci95_low": 3.352375,
+      "ci95_high": 4.4300625,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 4.075,
+        "43": 3.35,
+        "44": 4.65,
+        "45": 3.1,
+        "46": 3.45,
+        "47": 4.25,
+        "48": 2.625,
+        "49": 3.025,
+        "50": 4.6,
+        "51": 5.6
+      }
+    },
+    "avg_latency_ms": {
+      "mean": 79.38962573207512,
+      "std": 18.263188173306972,
+      "min": 59.223551801763826,
+      "max": 118.34683520357976,
+      "ci95_low": 69.62853199842118,
+      "ci95_high": 90.71682009911552,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 84.38787748940408,
+        "43": 66.73900929571406,
+        "44": 81.67453303264548,
+        "45": 65.05845564902195,
+        "46": 79.5158940808715,
+        "47": 84.30014004052063,
+        "48": 59.223551801763826,
+        "49": 59.30716691306587,
+        "50": 95.34279381416398,
+        "51": 118.34683520357976
+      }
+    },
+    "avg_success_hops": {
+      "mean": 8.533748196248196,
+      "std": 1.5942399413042398,
+      "min": 5.25,
+      "max": 10.333333333333334,
+      "ci95_low": 7.551094426406927,
+      "ci95_high": 9.38939024170274,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 6.791666666666667,
+        "43": 8.933333333333334,
+        "44": 8.454545454545455,
+        "45": 10.333333333333334,
+        "46": 9.857142857142858,
+        "47": 8.095238095238095,
+        "48": 5.25,
+        "49": 8.066666666666666,
+        "50": 10.222222222222221,
+        "51": 9.333333333333334
+      }
+    },
+    "avg_success_latency_ms": {
+      "mean": 175.74549370407868,
+      "std": 36.372170371026264,
+      "min": 118.44710360352765,
+      "max": 227.18826880249,
+      "ci95_low": 154.9618980528999,
+      "ci95_high": 196.7380402802711,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 140.64646248234013,
+        "43": 177.97069145523747,
+        "44": 148.49915096844634,
+        "45": 216.86151883007315,
+        "46": 227.18826880249,
+        "47": 160.57169531527737,
+        "48": 118.44710360352765,
+        "49": 158.152445101509,
+        "50": 211.87287514258662,
+        "51": 197.2447253392996
+      }
+    },
+    "total_loops": {
+      "mean": 25022.0,
+      "std": 0.0,
+      "min": 25022.0,
+      "max": 25022.0,
+      "ci95_low": 25022.0,
+      "ci95_high": 25022.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 25022.0,
+        "43": 25022.0,
+        "44": 25022.0,
+        "45": 25022.0,
+        "46": 25022.0,
+        "47": 25022.0,
+        "48": 25022.0,
+        "49": 25022.0,
+        "50": 25022.0,
+        "51": 25022.0
+      }
+    },
+    "attacked_count": {
+      "mean": 11.7,
+      "std": 4.877385456255112,
+      "min": 5.0,
+      "max": 19.0,
+      "ci95_low": 8.9,
+      "ci95_high": 14.8,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 19.0,
+        "43": 8.0,
+        "44": 10.0,
+        "45": 11.0,
+        "46": 15.0,
+        "47": 14.0,
+        "48": 5.0,
+        "49": 7.0,
+        "50": 19.0,
+        "51": 9.0
+      }
+    },
+    "dropped_by_attacker": {
+      "mean": 3.3,
+      "std": 1.5670212364724212,
+      "min": 1.0,
+      "max": 5.0,
+      "ci95_low": 2.4,
+      "ci95_high": 4.2,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 5.0,
+        "43": 2.0,
+        "44": 5.0,
+        "45": 5.0,
+        "46": 3.0,
+        "47": 3.0,
+        "48": 1.0,
+        "49": 4.0,
+        "50": 4.0,
+        "51": 1.0
+      }
+    },
+    "num_success": {
+      "mean": 18.5,
+      "std": 4.32691832858239,
+      "min": 12.0,
+      "max": 24.0,
+      "ci95_low": 16.0,
+      "ci95_high": 21.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 24.0,
+        "43": 15.0,
+        "44": 22.0,
+        "45": 12.0,
+        "46": 14.0,
+        "47": 21.0,
+        "48": 20.0,
+        "49": 15.0,
+        "50": 18.0,
+        "51": 24.0
+      }
+    },
+    "num_trials": {
+      "mean": 40.0,
+      "std": 0.0,
+      "min": 40.0,
+      "max": 40.0,
+      "ci95_low": 40.0,
+      "ci95_high": 40.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 40.0,
+        "43": 40.0,
+        "44": 40.0,
+        "45": 40.0,
+        "46": 40.0,
+        "47": 40.0,
+        "48": 40.0,
+        "49": 40.0,
+        "50": 40.0,
+        "51": 40.0
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed42.json",
+      "metrics": {
+        "delivery_ratio": 0.6,
+        "avg_hops": 4.075,
+        "avg_latency_ms": 84.38787748940408,
+        "avg_success_hops": 6.791666666666667,
+        "avg_success_latency_ms": 140.64646248234013,
+        "num_success": 24.0,
+        "num_trials": 40.0,
+        "attacked_count": 19.0,
+        "dropped_by_attacker": 5.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed42.json",
+          "seed": 42
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed43.json",
+      "metrics": {
+        "delivery_ratio": 0.375,
+        "avg_hops": 3.35,
+        "avg_latency_ms": 66.73900929571406,
+        "avg_success_hops": 8.933333333333334,
+        "avg_success_latency_ms": 177.97069145523747,
+        "num_success": 15.0,
+        "num_trials": 40.0,
+        "attacked_count": 8.0,
+        "dropped_by_attacker": 2.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed43.json",
+          "seed": 43
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed44.json",
+      "metrics": {
+        "delivery_ratio": 0.55,
+        "avg_hops": 4.65,
+        "avg_latency_ms": 81.67453303264548,
+        "avg_success_hops": 8.454545454545455,
+        "avg_success_latency_ms": 148.49915096844634,
+        "num_success": 22.0,
+        "num_trials": 40.0,
+        "attacked_count": 10.0,
+        "dropped_by_attacker": 5.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed44.json",
+          "seed": 44
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 45,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed45.json",
+      "metrics": {
+        "delivery_ratio": 0.3,
+        "avg_hops": 3.1,
+        "avg_latency_ms": 65.05845564902195,
+        "avg_success_hops": 10.333333333333334,
+        "avg_success_latency_ms": 216.86151883007315,
+        "num_success": 12.0,
+        "num_trials": 40.0,
+        "attacked_count": 11.0,
+        "dropped_by_attacker": 5.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed45.json",
+          "seed": 45
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 46,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed46.json",
+      "metrics": {
+        "delivery_ratio": 0.35,
+        "avg_hops": 3.45,
+        "avg_latency_ms": 79.5158940808715,
+        "avg_success_hops": 9.857142857142858,
+        "avg_success_latency_ms": 227.18826880249,
+        "num_success": 14.0,
+        "num_trials": 40.0,
+        "attacked_count": 15.0,
+        "dropped_by_attacker": 3.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed46.json",
+          "seed": 46
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed47.json",
+      "metrics": {
+        "delivery_ratio": 0.525,
+        "avg_hops": 4.25,
+        "avg_latency_ms": 84.30014004052063,
+        "avg_success_hops": 8.095238095238095,
+        "avg_success_latency_ms": 160.57169531527737,
+        "num_success": 21.0,
+        "num_trials": 40.0,
+        "attacked_count": 14.0,
+        "dropped_by_attacker": 3.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed47.json",
+          "seed": 47
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 48,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed48.json",
+      "metrics": {
+        "delivery_ratio": 0.5,
+        "avg_hops": 2.625,
+        "avg_latency_ms": 59.223551801763826,
+        "avg_success_hops": 5.25,
+        "avg_success_latency_ms": 118.44710360352765,
+        "num_success": 20.0,
+        "num_trials": 40.0,
+        "attacked_count": 5.0,
+        "dropped_by_attacker": 1.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed48.json",
+          "seed": 48
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 49,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed49.json",
+      "metrics": {
+        "delivery_ratio": 0.375,
+        "avg_hops": 3.025,
+        "avg_latency_ms": 59.30716691306587,
+        "avg_success_hops": 8.066666666666666,
+        "avg_success_latency_ms": 158.152445101509,
+        "num_success": 15.0,
+        "num_trials": 40.0,
+        "attacked_count": 7.0,
+        "dropped_by_attacker": 4.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed49.json",
+          "seed": 49
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 50,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed50.json",
+      "metrics": {
+        "delivery_ratio": 0.45,
+        "avg_hops": 4.6,
+        "avg_latency_ms": 95.34279381416398,
+        "avg_success_hops": 10.222222222222221,
+        "avg_success_latency_ms": 211.87287514258662,
+        "num_success": 18.0,
+        "num_trials": 40.0,
+        "attacked_count": 19.0,
+        "dropped_by_attacker": 4.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed50.json",
+          "seed": 50
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 51,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed51.json",
+      "metrics": {
+        "delivery_ratio": 0.6,
+        "avg_hops": 5.6,
+        "avg_latency_ms": 118.34683520357976,
+        "avg_success_hops": 9.333333333333334,
+        "avg_success_latency_ms": 197.2447253392996,
+        "num_success": 24.0,
+        "num_trials": 40.0,
+        "attacked_count": 9.0,
+        "dropped_by_attacker": 1.0,
+        "total_loops": 25022.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e5_intensity\\p20__s3_bhp20_53_1024_seed51.json",
+          "seed": 51
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    }
+  ],
+  "warnings": []
+}

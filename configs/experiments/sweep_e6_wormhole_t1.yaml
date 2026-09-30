@@ -1,0 +1,73 @@
+# configs/experiments/sweep_e6_wormhole_t1.yaml
+# E6 Wormhole 攻击臂 —— **隧道数 vs 效果**梯度的低档 / 主对比臂：1 条隧道。
+#
+# 与 sweep_e6_wormhole_baseline.yaml 除 attack 段外完全一致（同 runner=e3、同匹配键
+# 53° / node_limit=96 / num_eval_epochs=2 / num_flows=20 → trials=40/seed）。
+# 虫洞注入把 1 对物理相距很远的真实节点用隧道边连起来（**不扩展节点 ID 空间**，
+# num_nodes 仍为 96），故本臂与基线臂严格可比、trials 基数不变。
+#
+# Wormhole 语义与参数（详见 starlink_sim/net/attack.py:WormholeAttacker）：
+#   placement            A 端（攻击者主节点）的选点策略（degree=累计度 top-K，高价值枢纽）
+#   params.endpoint_strategy  B 端（对端）选取策略：farthest=在累计度 top-pool_size 候选中
+#                        选**离 A 物理最远**者，最大化"短 metric 跳 = 超长物理距离"的欺骗幅度
+#   params.poison_scope  'peer_only'=仅伪造对端本身（健全捷径：牵引流量、跳数降而距离/时延涨，
+#                        不自伤成环）；'peer_side'=伪造整个对端一侧（极端强度，见 extreme 臂）
+#   params.metric_fake   伪造的 metric（0=宣称"对端 1 跳可达"，邻居计算得 metric 1）
+#   params.seq_lead      对端一侧条目的 seq 领先量（peer_only 下对端条目保留自然 seq，不用它）
+#   params.drop_prob     端点对过境数据的丢弃概率（0.0=只牵引不丢包，破坏性体现为绕远/时延暴涨）
+#   params.pool_size     endpoint_strategy 候选池大小（累计度 top-K）
+#
+# 预期：wormhole_attracted_ratio>0、wormhole_detection_rate≈1（物理接地检测器识破隧道）、
+#   wormhole_path_stretch<1（跳数被压缩）、wormhole_geo_stretch>=1（地理绕远）、送达率基本不受损。
+#
+# 执行前把 node_limit 放大到 >=1024（或全量）、seeds 增到 >=10，方有统计功效。
+
+experiment:
+  name: "sweep_e6_wormhole_t1"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+# 与基线臂逐字一致的检测参数（确保误报率/检测率同口径可比）。
+detection:
+  wormhole:
+    enabled: true
+    max_isl_km: 2000.0
+    distance_factor: 1.5
+    adaptive_factor: 3.0
+    latency_factor: 1.0
+
+attack:
+  attackers:
+    - type: "wormhole"
+      count: 1
+      placement: "degree"
+      active_since: 0.0
+      active_until: .inf
+      params:
+        endpoint_strategy: "farthest"
+        poison_scope: "peer_only"
+        metric_fake: 0
+        seq_lead: 8
+        drop_prob: 0.0
+        pool_size: 48
+
+output:
+  raw_dir: "results/sweep_e6_raw/"
+  agg_dir: "results/sweep_e6_agg/"
+  figures_dir: "results/figures/"

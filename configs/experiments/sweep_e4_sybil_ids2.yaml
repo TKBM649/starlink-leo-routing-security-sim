@@ -1,0 +1,61 @@
+# configs/experiments/sweep_e4_sybil_ids2.yaml
+# E4 Sybil（虚假身份）攻击臂 —— **身份数 vs 效果**梯度的低档：1 个被劫持物理节点
+# 对外呈现 2 个虚假身份。
+#
+# 与 sweep_demo_e3_baseline.yaml 除 attack 段外完全一致（同 runner=e3、同匹配键
+# 53° / node_limit=96 / num_eval_epochs=2 / num_flows=20 → trials=40/seed）。
+# Sybil 注入会把节点空间从 96 扩到 98（虚假身份是新节点），但 num_nodes **不参与**
+# 匹配键（MATCH_KEY_FIELDS = shell/node_limit/num_eval_epochs/num_flows），故本臂仍与
+# 基线臂严格可比；数据流端点只用真实节点，trials 基数不变。
+#
+# Sybil 语义与参数（详见 starlink_sim/net/attack.py:SybilAttacker 与 net/sybil.py）：
+#   placement          被劫持**物理节点**的选点策略（degree=累计度 top-K）
+#   params.num_identities  该物理节点对外呈现的虚假身份数（注入为附着新节点）
+#   params.attachment     身份**附着策略**：betweenness|degree|random（附着到高价值真实节点）
+#   params.metric_fake    身份伪造的 metric（0=宣称自己是到所有目的地的最优下一跳）
+#   params.seq_lead       伪造 seq 的领先量（必须 >0，否则与更新鲜的合法通告仅打平而被翻回）
+#   params.drop_prob      身份对过境数据的丢弃概率（0.0=只牵引不丢包，破坏性体现为环路/不可达）
+#   params.controller_poisons  是否让被劫持物理节点自身也毒化通告（false=效果干净归因于身份）
+#
+# 执行前建议把 node_limit 放大到 >=1024（或全量）、seeds 增到 >=10，方有统计功效。
+
+experiment:
+  name: "sweep_e4_sybil_ids2"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers:
+    - type: "sybil"
+      count: 1
+      placement: "degree"
+      active_since: 0.0
+      active_until: .inf
+      params:
+        num_identities: 2
+        attachment: "betweenness"
+        metric_fake: 0
+        seq_lead: 8
+        drop_prob: 0.0
+        controller_poisons: false
+
+output:
+  raw_dir: "results/sweep_e4_raw/"
+  agg_dir: "results/sweep_e4_agg/"
+  figures_dir: "results/figures/"

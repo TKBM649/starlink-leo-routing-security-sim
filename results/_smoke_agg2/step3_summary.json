@@ -1,0 +1,1355 @@
+{
+  "generated_utc": "2026-09-29T22:40:53+00:00",
+  "raw_root": "results\\_smoke_raw",
+  "out_dir": "results\\_smoke_agg2",
+  "n_boot": 2000,
+  "alpha": 0.05,
+  "metrics_universe": [
+    "delivery_ratio",
+    "avg_hops",
+    "avg_latency_ms",
+    "avg_success_hops",
+    "avg_success_latency_ms",
+    "total_loops",
+    "attacked_count",
+    "dropped_by_attacker",
+    "num_success",
+    "num_trials",
+    "sybil_attraction_ratio",
+    "sybil_attracted_trials",
+    "sybil_num_identities",
+    "wormhole_num_tunnels",
+    "wormhole_attracted_ratio",
+    "wormhole_attracted_trials",
+    "wormhole_false_positive_rate",
+    "wormhole_suspicious_hops",
+    "wormhole_edges_examined",
+    "wormhole_latency_flagged_ratio",
+    "wormhole_detection_rate",
+    "wormhole_detected_tunnels",
+    "wormhole_path_stretch",
+    "wormhole_geo_stretch",
+    "wormhole_mean_tunnel_km"
+  ],
+  "policy": "bootstrap 95% CI；同 seed≥2 用 Wilcoxon，否则 Mann-Whitney U；compare_attack_vs_baseline(strict=True) —— 匹配键不一致即判为不可比，不做任何放宽",
+  "known_upstream_bug": {
+    "where": "starlink_sim/analytics/stats.py paired_by_seed() 的 rank-biserial",
+    "what": "scipy>=1.7 下 wilcoxon(alternative='two-sided').statistic 返回 min(T+,T-) 而非 T+，但代码按 T+ 口径代入 r=(2V-T)/T",
+    "impact": "配对效应量 rank_biserial 符号失效：全部差值同号时恒得 -1，与 median_diff 方向矛盾（不影响 p 值与显著性判定）",
+    "evidence": "scipy 1.15.3: wilcoxon([1,2]).statistic == 0.0（T+ 应为 3.0）；wilcoxon([-1,-2]).statistic == 0.0（与全正不可区分）",
+    "workaround": "本脚本附加计算 rank_biserial_signed（直接从配对差值重算 T+，含并列平均秩）；**报告与图表一律用 rank_biserial_signed**",
+    "recommend": "Task #9+ 修 stats.py（改用 alternative='greater' 取 T+ 或自算），并补回归测试钉住符号约定；修后需重算历史 T7 聚合结果的效应量"
+  },
+  "sweeps": {
+    "e6_wormhole": {
+      "arms": [
+        "base_det",
+        "extreme",
+        "t1",
+        "t3"
+      ],
+      "n_arms": 4,
+      "n_seeds": {
+        "base_det": 2,
+        "extreme": 2,
+        "t1": 2,
+        "t3": 2
+      },
+      "match_keys": {
+        "base_det": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "extreme": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "t1": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "t3": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    }
+  },
+  "n_comparisons": 3,
+  "n_comparison_rows": 51,
+  "completeness": [
+    {
+      "sweep": "e4_sybil",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids1",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids2",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids4",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids8",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids16",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids32",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c3",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c1",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c6",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c12",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c24",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p00",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p20",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p50",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p100",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "degree",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "rnd",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "btw",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "kcore",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "led",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n48",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n48",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n96",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n96",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n256",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n256",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n512",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n512",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n1024",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n1024",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_top",
+      "arm": "base_n2048",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_top",
+      "arm": "bh3_n2048",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "base_det",
+      "n_expected": 10,
+      "n_found": 2,
+      "seeds_found": [
+        42,
+        43
+      ],
+      "seeds_missing": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "t1",
+      "n_expected": 10,
+      "n_found": 2,
+      "seeds_found": [
+        42,
+        43
+      ],
+      "seeds_missing": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "t3",
+      "n_expected": 10,
+      "n_found": 2,
+      "seeds_found": [
+        42,
+        43
+      ],
+      "seeds_missing": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "extreme",
+      "n_expected": 10,
+      "n_found": 2,
+      "seeds_found": [
+        42,
+        43
+      ],
+      "seeds_missing": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "jm3",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "sy8",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3_jm3",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3_sy8",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "jm3_sy8",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3_jm3_sy8",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_53",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_53",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_70",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_70",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_975",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_975",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_43",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_43",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_53",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_53",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_70",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_70",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_975",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_975",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_43",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_43",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,42 @@
+# configs/experiments/step3/sweep_e5_placement.yaml
+# E5 攻击者放置策略对比（degree/random/betweenness/k_core/last_epoch_degree）
+#
+# 五策略同一攻击强度（blackhole×3, drop_prob=0.8）→ 差异纯归因于**布点**。
+# betweenness / k_core 用 networkx 聚合图计算，tie-break 确定性（小 id 优先）。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— 请勿手工编辑。
+# 任务数 = 6 臂 × 10 seeds = 60。
+#
+# 运行（先 dry-run 核对臂数/匹配键/注入预览，再实跑）::
+#
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e5_placement.yaml --dry-run
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e5_placement.yaml
+
+sweep:
+  name: "e5_placement"
+  runner: "e3"
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  workers: 10
+  raw_dir: "results/step3_raw/e5_placement/"
+  agg_dir: "results/step3_agg/e5_placement/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 4000
+  arms:
+    - label: "base"
+      config: "configs/experiments/step3/a_base_53_1024.yaml"
+    - label: "degree"
+      config: "configs/experiments/step3/a_bh3_53_1024.yaml"
+    - label: "rnd"
+      config: "configs/experiments/step3/a_bh3pl_rnd_53_1024.yaml"
+    - label: "btw"
+      config: "configs/experiments/step3/a_bh3pl_btw_53_1024.yaml"
+    - label: "kcore"
+      config: "configs/experiments/step3/a_bh3pl_kcore_53_1024.yaml"
+    - label: "led"
+      config: "configs/experiments/step3/a_bh3pl_led_53_1024.yaml"
+  comparison:
+    attack: "degree"
+    baseline: "base"

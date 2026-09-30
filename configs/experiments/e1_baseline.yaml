@@ -1,0 +1,33 @@
+# configs/experiments/e1_baseline.yaml
+# E1 无攻击全量基线 —— 统一 schema v2（canonical 基线，T7 用 ≥10 seeds 重标定）
+# 运行：python scripts/run_simulation.py --config configs/experiments/e1_baseline.yaml --seeds 42 43 ...
+# 注意：node_limit=null → 4284 节点全量路由域，控制面耗时较长（数小时级），
+#       小样验证请用 e1_small_baseline.yaml 或 --node-limit/--duration/--num-flows 覆盖。
+
+experiment:
+  name: "e1_baseline"
+  duration: 3630             # 121 epochs × 30s，覆盖缓存全部 epoch（超出部分自动截断）
+  seed: null                 # 由命令行 --seeds 传入
+
+topology:
+  shell: "53°"               # 主壳层
+  epoch_interval: 30         # 拓扑快照间隔（秒）
+  node_limit: null           # E1 = 全量节点（区别于 E2 的 96 节点子集）
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0                 # DV 广告周期（秒）→ wired to DVRouter.adv_interval
+  tick: 0.2                  # 控制面步长（秒）
+  max_hops: 100              # 最大跳数 → wired to DataPlane.compute_path
+
+traffic:
+  num_flows: 100             # 数据流数量（trials = 100 flows × 121 epochs × 1 = 12100）
+
+attack:
+  attackers: []              # 基线：不部署攻击者
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"

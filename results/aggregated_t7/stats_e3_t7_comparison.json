@@ -1,0 +1,1269 @@
+{
+  "generated_utc": "2026-09-29T16:07:10+00:00",
+  "alpha": 0.05,
+  "n_boot": 2000,
+  "arms": {
+    "e3_blackhole_t7": {
+      "experiment": null,
+      "n_seeds": 5,
+      "seeds": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "cardinality": {
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 512,
+          "num_eval_epochs": 1,
+          "num_flows": 100
+        },
+        "detail": {
+          "num_flows": 100,
+          "num_eval_epochs": 1,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 100,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 512,
+            "num_eval_epochs": 1,
+            "num_flows": 100
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": false,
+            "has_metadata": false,
+            "overrides_applied": [
+              "node_limit",
+              "num_flows",
+              "shell"
+            ],
+            "file": "results/raw_t7\\e3_blackhole_t7_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": null,
+            "tick": null,
+            "max_hops": null,
+            "duration": null
+          }
+        },
+        "consistent_across_seeds": true
+      },
+      "metrics": {
+        "delivery_ratio": {
+          "mean": 0.27,
+          "std": 0.02645751311064591,
+          "min": 0.24,
+          "max": 0.31,
+          "ci95_low": 0.252,
+          "ci95_high": 0.29000000000000004,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 0.28,
+            "43": 0.31,
+            "44": 0.24,
+            "45": 0.26,
+            "46": 0.26
+          }
+        },
+        "avg_hops": {
+          "mean": 1.554,
+          "std": 0.11970797801316335,
+          "min": 1.43,
+          "max": 1.69,
+          "ci95_low": 1.4600000000000002,
+          "ci95_high": 1.6479999999999997,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 1.67,
+            "43": 1.69,
+            "44": 1.43,
+            "45": 1.52,
+            "46": 1.46
+          }
+        },
+        "avg_latency_ms": {
+          "mean": 25.901547263794857,
+          "std": 3.1139016483105135,
+          "min": 21.881374444251996,
+          "max": 29.157435177378893,
+          "ci95_low": 23.38382482328337,
+          "ci95_high": 28.260673309891462,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 29.157435177378893,
+            "43": 27.897285140508476,
+            "44": 21.881374444251996,
+            "45": 23.37771564315235,
+            "46": 27.19392591368256
+          }
+        },
+        "avg_success_hops": {
+          "mean": 5.7671540824766625,
+          "std": 0.22597099140337318,
+          "min": 5.451612903225806,
+          "max": 5.964285714285714,
+          "ci95_low": 5.58690180786955,
+          "ci95_high": 5.9382783882783885,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 5.964285714285714,
+            "43": 5.451612903225806,
+            "44": 5.958333333333333,
+            "45": 5.846153846153846,
+            "46": 5.615384615384615
+          }
+        },
+        "avg_success_latency_ms": {
+          "mean": 95.9607293297311,
+          "std": 7.687961027139789,
+          "min": 89.91429093520136,
+          "max": 104.59202274493295,
+          "ci95_low": 90.21208232382581,
+          "ci95_high": 101.72476662634351,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 104.1336970620675,
+            "43": 89.991242388737,
+            "44": 91.17239351771666,
+            "45": 89.91429093520136,
+            "46": 104.59202274493295
+          }
+        },
+        "total_loops": {
+          "mean": 27282.0,
+          "std": 0.0,
+          "min": 27282.0,
+          "max": 27282.0,
+          "ci95_low": 27282.0,
+          "ci95_high": 27282.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 27282.0,
+            "43": 27282.0,
+            "44": 27282.0,
+            "45": 27282.0,
+            "46": 27282.0
+          }
+        },
+        "attacked_count": {
+          "mean": 25.8,
+          "std": 4.604345773288535,
+          "min": 21.0,
+          "max": 33.0,
+          "ci95_low": 22.6,
+          "ci95_high": 29.8,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 25.0,
+            "43": 21.0,
+            "44": 33.0,
+            "45": 23.0,
+            "46": 27.0
+          }
+        },
+        "dropped_by_attacker": {
+          "mean": 21.0,
+          "std": 3.6742346141747673,
+          "min": 18.0,
+          "max": 27.0,
+          "ci95_low": 18.6,
+          "ci95_high": 24.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 21.0,
+            "43": 18.0,
+            "44": 27.0,
+            "45": 21.0,
+            "46": 18.0
+          }
+        },
+        "num_success": {
+          "mean": 27.0,
+          "std": 2.6457513110645907,
+          "min": 24.0,
+          "max": 31.0,
+          "ci95_low": 25.2,
+          "ci95_high": 29.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 28.0,
+            "43": 31.0,
+            "44": 24.0,
+            "45": 26.0,
+            "46": 26.0
+          }
+        },
+        "num_trials": {
+          "mean": 100.0,
+          "std": 0.0,
+          "min": 100.0,
+          "max": 100.0,
+          "ci95_low": 100.0,
+          "ci95_high": 100.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 100.0,
+            "43": 100.0,
+            "44": 100.0,
+            "45": 100.0,
+            "46": 100.0
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "seed": 42,
+          "file": "results/raw_t7\\e3_blackhole_t7_seed42.json",
+          "metrics": {
+            "delivery_ratio": 0.28,
+            "avg_hops": 1.67,
+            "avg_latency_ms": 29.157435177378893,
+            "avg_success_hops": 5.964285714285714,
+            "avg_success_latency_ms": 104.1336970620675,
+            "num_success": 28.0,
+            "num_trials": 100.0,
+            "attacked_count": 25.0,
+            "dropped_by_attacker": 21.0,
+            "total_loops": 27282.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_blackhole_t7_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 43,
+          "file": "results/raw_t7\\e3_blackhole_t7_seed43.json",
+          "metrics": {
+            "delivery_ratio": 0.31,
+            "avg_hops": 1.69,
+            "avg_latency_ms": 27.897285140508476,
+            "avg_success_hops": 5.451612903225806,
+            "avg_success_latency_ms": 89.991242388737,
+            "num_success": 31.0,
+            "num_trials": 100.0,
+            "attacked_count": 21.0,
+            "dropped_by_attacker": 18.0,
+            "total_loops": 27282.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_blackhole_t7_seed43.json",
+              "seed": 43
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 44,
+          "file": "results/raw_t7\\e3_blackhole_t7_seed44.json",
+          "metrics": {
+            "delivery_ratio": 0.24,
+            "avg_hops": 1.43,
+            "avg_latency_ms": 21.881374444251996,
+            "avg_success_hops": 5.958333333333333,
+            "avg_success_latency_ms": 91.17239351771666,
+            "num_success": 24.0,
+            "num_trials": 100.0,
+            "attacked_count": 33.0,
+            "dropped_by_attacker": 27.0,
+            "total_loops": 27282.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_blackhole_t7_seed44.json",
+              "seed": 44
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 45,
+          "file": "results/raw_t7\\e3_blackhole_t7_seed45.json",
+          "metrics": {
+            "delivery_ratio": 0.26,
+            "avg_hops": 1.52,
+            "avg_latency_ms": 23.37771564315235,
+            "avg_success_hops": 5.846153846153846,
+            "avg_success_latency_ms": 89.91429093520136,
+            "num_success": 26.0,
+            "num_trials": 100.0,
+            "attacked_count": 23.0,
+            "dropped_by_attacker": 21.0,
+            "total_loops": 27282.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_blackhole_t7_seed45.json",
+              "seed": 45
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 46,
+          "file": "results/raw_t7\\e3_blackhole_t7_seed46.json",
+          "metrics": {
+            "delivery_ratio": 0.26,
+            "avg_hops": 1.46,
+            "avg_latency_ms": 27.19392591368256,
+            "avg_success_hops": 5.615384615384615,
+            "avg_success_latency_ms": 104.59202274493295,
+            "num_success": 26.0,
+            "num_trials": 100.0,
+            "attacked_count": 27.0,
+            "dropped_by_attacker": 18.0,
+            "total_loops": 27282.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_blackhole_t7_seed46.json",
+              "seed": 46
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        }
+      ],
+      "warnings": [
+        "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+      ]
+    },
+    "e3_noattack_t7": {
+      "experiment": null,
+      "n_seeds": 5,
+      "seeds": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "cardinality": {
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 512,
+          "num_eval_epochs": 1,
+          "num_flows": 100
+        },
+        "detail": {
+          "num_flows": 100,
+          "num_eval_epochs": 1,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 100,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 512,
+            "num_eval_epochs": 1,
+            "num_flows": 100
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": false,
+            "has_metadata": false,
+            "overrides_applied": [
+              "node_limit",
+              "num_flows",
+              "shell"
+            ],
+            "file": "results/raw_t7\\e3_noattack_t7_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": null,
+            "tick": null,
+            "max_hops": null,
+            "duration": null
+          }
+        },
+        "consistent_across_seeds": true
+      },
+      "metrics": {
+        "delivery_ratio": {
+          "mean": 0.9120000000000001,
+          "std": 0.023874672772626622,
+          "min": 0.89,
+          "max": 0.95,
+          "ci95_low": 0.8960000000000001,
+          "ci95_high": 0.93,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 0.95,
+            "43": 0.92,
+            "44": 0.9,
+            "45": 0.89,
+            "46": 0.9
+          }
+        },
+        "avg_hops": {
+          "mean": 8.040000000000001,
+          "std": 0.18055470085267813,
+          "min": 7.9,
+          "max": 8.3,
+          "ci95_low": 7.912000000000001,
+          "ci95_high": 8.192000000000002,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 7.9,
+            "43": 8.16,
+            "44": 7.92,
+            "45": 7.92,
+            "46": 8.3
+          }
+        },
+        "avg_latency_ms": {
+          "mean": 118.05164020019633,
+          "std": 3.874289579408762,
+          "min": 114.21620105839013,
+          "max": 122.50634775238196,
+          "ci95_low": 114.97170798987693,
+          "ci95_high": 121.13157241051572,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 122.50634775238196,
+            "43": 117.60711675610848,
+            "44": 114.40951053824797,
+            "45": 114.21620105839013,
+            "46": 121.5190248958531
+          }
+        },
+        "avg_success_hops": {
+          "mean": 8.821290663558425,
+          "std": 0.3259911194326967,
+          "min": 8.31578947368421,
+          "max": 9.222222222222221,
+          "ci95_low": 8.543162008587665,
+          "ci95_high": 9.073108614232208,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 8.31578947368421,
+            "43": 8.869565217391305,
+            "44": 8.8,
+            "45": 8.898876404494382,
+            "46": 9.222222222222221
+          }
+        },
+        "avg_success_latency_ms": {
+          "mean": 129.45270003072406,
+          "std": 3.184522771015993,
+          "min": 127.12167837583108,
+          "max": 135.0211387731701,
+          "ci95_low": 127.63058159082918,
+          "ci95_high": 132.34580733508864,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 128.95405026566522,
+            "43": 127.83382256098746,
+            "44": 127.12167837583108,
+            "45": 128.33281017796642,
+            "46": 135.0211387731701
+          }
+        },
+        "total_loops": {
+          "mean": 27235.0,
+          "std": 0.0,
+          "min": 27235.0,
+          "max": 27235.0,
+          "ci95_low": 27235.0,
+          "ci95_high": 27235.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 27235.0,
+            "43": 27235.0,
+            "44": 27235.0,
+            "45": 27235.0,
+            "46": 27235.0
+          }
+        },
+        "attacked_count": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 0.0,
+            "43": 0.0,
+            "44": 0.0,
+            "45": 0.0,
+            "46": 0.0
+          }
+        },
+        "dropped_by_attacker": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 0.0,
+            "43": 0.0,
+            "44": 0.0,
+            "45": 0.0,
+            "46": 0.0
+          }
+        },
+        "num_success": {
+          "mean": 91.2,
+          "std": 2.3874672772626644,
+          "min": 89.0,
+          "max": 95.0,
+          "ci95_low": 89.6,
+          "ci95_high": 93.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 95.0,
+            "43": 92.0,
+            "44": 90.0,
+            "45": 89.0,
+            "46": 90.0
+          }
+        },
+        "num_trials": {
+          "mean": 100.0,
+          "std": 0.0,
+          "min": 100.0,
+          "max": 100.0,
+          "ci95_low": 100.0,
+          "ci95_high": 100.0,
+          "n_boot": 2000,
+          "n": 5,
+          "per_seed": {
+            "42": 100.0,
+            "43": 100.0,
+            "44": 100.0,
+            "45": 100.0,
+            "46": 100.0
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "seed": 42,
+          "file": "results/raw_t7\\e3_noattack_t7_seed42.json",
+          "metrics": {
+            "delivery_ratio": 0.95,
+            "avg_hops": 7.9,
+            "avg_latency_ms": 122.50634775238196,
+            "avg_success_hops": 8.31578947368421,
+            "avg_success_latency_ms": 128.95405026566522,
+            "num_success": 95.0,
+            "num_trials": 100.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "total_loops": 27235.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_noattack_t7_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 43,
+          "file": "results/raw_t7\\e3_noattack_t7_seed43.json",
+          "metrics": {
+            "delivery_ratio": 0.92,
+            "avg_hops": 8.16,
+            "avg_latency_ms": 117.60711675610848,
+            "avg_success_hops": 8.869565217391305,
+            "avg_success_latency_ms": 127.83382256098746,
+            "num_success": 92.0,
+            "num_trials": 100.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "total_loops": 27235.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_noattack_t7_seed43.json",
+              "seed": 43
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 44,
+          "file": "results/raw_t7\\e3_noattack_t7_seed44.json",
+          "metrics": {
+            "delivery_ratio": 0.9,
+            "avg_hops": 7.92,
+            "avg_latency_ms": 114.40951053824797,
+            "avg_success_hops": 8.8,
+            "avg_success_latency_ms": 127.12167837583108,
+            "num_success": 90.0,
+            "num_trials": 100.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "total_loops": 27235.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_noattack_t7_seed44.json",
+              "seed": 44
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 45,
+          "file": "results/raw_t7\\e3_noattack_t7_seed45.json",
+          "metrics": {
+            "delivery_ratio": 0.89,
+            "avg_hops": 7.92,
+            "avg_latency_ms": 114.21620105839013,
+            "avg_success_hops": 8.898876404494382,
+            "avg_success_latency_ms": 128.33281017796642,
+            "num_success": 89.0,
+            "num_trials": 100.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "total_loops": 27235.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_noattack_t7_seed45.json",
+              "seed": 45
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        {
+          "seed": 46,
+          "file": "results/raw_t7\\e3_noattack_t7_seed46.json",
+          "metrics": {
+            "delivery_ratio": 0.9,
+            "avg_hops": 8.3,
+            "avg_latency_ms": 121.5190248958531,
+            "avg_success_hops": 9.222222222222221,
+            "avg_success_latency_ms": 135.0211387731701,
+            "num_success": 90.0,
+            "num_trials": 100.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "total_loops": 27235.0
+          },
+          "cardinality": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_noattack_t7_seed46.json",
+              "seed": 46
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        }
+      ],
+      "warnings": [
+        "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+      ]
+    }
+  },
+  "comparison": {
+    "attack": "e3_blackhole_t7",
+    "baseline": "e3_noattack_t7",
+    "n_groups": 1,
+    "n_comparable_groups": 1,
+    "groups": [
+      {
+        "match_key": {
+          "node_limit": 512,
+          "num_eval_epochs": 1,
+          "num_flows": 100,
+          "shell": "53°"
+        },
+        "attack_seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "baseline_seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "cardinality": {
+          "attack": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_blackhole_t7_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          },
+          "baseline": {
+            "num_flows": 100,
+            "num_eval_epochs": 1,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 100,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 512,
+              "num_eval_epochs": 1,
+              "num_flows": 100
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": false,
+              "has_metadata": false,
+              "overrides_applied": [
+                "node_limit",
+                "num_flows",
+                "shell"
+              ],
+              "file": "results/raw_t7\\e3_noattack_t7_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": null,
+              "tick": null,
+              "max_hops": null,
+              "duration": null
+            }
+          }
+        },
+        "comparable": true,
+        "mismatches": [],
+        "paired_seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "comparisons": {
+          "delivery_ratio": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -0.64,
+            "median_attack": 0.26,
+            "median_baseline": 0.9,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "avg_hops": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -6.470000000000001,
+            "median_attack": 1.52,
+            "median_baseline": 7.92,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "avg_latency_ms": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -92.52813609399598,
+            "median_attack": 27.19392591368256,
+            "median_baseline": 117.60711675610848,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "avg_success_hops": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -3.0527225583405366,
+            "median_attack": 5.846153846153846,
+            "median_baseline": 8.869565217391305,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "avg_success_latency_ms": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -35.949284858114424,
+            "median_attack": 91.17239351771666,
+            "median_baseline": 128.33281017796642,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "total_loops": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": 47.0,
+            "median_attack": 27282.0,
+            "median_baseline": 27235.0,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "attacked_count": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": 25.0,
+            "median_attack": 25.0,
+            "median_baseline": 0.0,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "dropped_by_attacker": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": 21.0,
+            "median_attack": 21.0,
+            "median_baseline": 0.0,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "num_success": {
+            "test": "wilcoxon",
+            "statistic": 0.0,
+            "p_value": 0.0625,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -64.0,
+            "median_attack": 26.0,
+            "median_baseline": 90.0,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          },
+          "num_trials": {
+            "test": "wilcoxon",
+            "statistic": NaN,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": 0.0
+            },
+            "median_diff": 0.0,
+            "median_attack": 100.0,
+            "median_baseline": 100.0,
+            "n_pairs": 5,
+            "paired_seeds": [
+              42,
+              43,
+              44,
+              45,
+              46
+            ],
+            "warnings": [
+              "所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理",
+              "n=5 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ]
+          }
+        },
+        "warnings": [
+          "匹配键一致，可比较"
+        ]
+      }
+    ],
+    "policy": "攻击臂仅与同匹配键 (shell/node_limit/num_eval_epochs/num_flows) 的基线臂做按 seed 配对比较；不匹配即拒绝"
+  }
+}

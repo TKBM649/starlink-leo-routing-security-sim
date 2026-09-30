@@ -1,0 +1,6 @@
+﻿placement,arm,delivery_mean,delivery_ci95_low,delivery_ci95_high,median_diff,p_value,rank_biserial,rank_biserial_upstream,test,significant,n_pairs
+degree,degree,0.29999999999999993,0.2374375,0.36750000000000005,-0.625,0.001953125,-1.0,-1.0,wilcoxon,1,10
+random,rnd,0.605,0.5199999999999999,0.6825,-0.26249999999999996,0.001953125,-1.0,-1.0,wilcoxon,1,10
+betweenness,btw,0.34249999999999997,0.275,0.41,-0.5375,0.001953125,-1.0,-1.0,wilcoxon,1,10
+k_core,kcore,0.29999999999999993,0.2374375,0.36750000000000005,-0.625,0.001953125,-1.0,-1.0,wilcoxon,1,10
+last_epoch_degree,led,0.33,0.2575,0.41,-0.6000000000000001,0.001953125,-1.0,-1.0,wilcoxon,1,10

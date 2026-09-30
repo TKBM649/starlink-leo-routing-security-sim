@@ -1,0 +1,34 @@
+# configs/experiments/sweep_demo_e3_baseline.yaml
+# Sweep demo —— E3 无攻击基线臂（小规模，供并行 sweep 验证/dry-run）。
+# 与 sweep_demo_e3_blackhole_degree.yaml 除 attackers 外完全一致（同 runner=e3、同匹配键）。
+# 匹配键：53° / node_limit=96 / num_eval_epochs=2（duration=60÷30）/ num_flows=20
+#   → trials = 20 × 2 × 1 = 40 / seed（以 raw JSON 的 num_trials 为真值）。
+
+experiment:
+  name: "sweep_demo_e3_baseline"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers: []
+
+output:
+  raw_dir: "results/sweep_demo_raw/"
+  agg_dir: "results/sweep_demo_agg/"
+  figures_dir: "results/figures/"

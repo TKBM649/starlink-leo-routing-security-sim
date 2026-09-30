@@ -1,0 +1,10 @@
+{
+  "source_sha256": "852E79A4D2EB28EE5864FC86BC204CB50DDE2FEE83F27A7F5B9D2356932FC97B",
+  "total_parsed": 10744,
+  "error_count": 0,
+  "altitude_filter_threshold_km": 380.0,
+  "after_filter_count": 9905,
+  "bstar_negative_count": 1026,
+  "bstar_large_count": 8879,
+  "errors": []
+}

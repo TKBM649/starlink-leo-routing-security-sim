@@ -1,0 +1,1371 @@
+{
+  "generated_utc": "2026-09-29T17:45:03+00:00",
+  "sweep": {
+    "name": "sweep_e4_sybil",
+    "runner": "e3",
+    "seeds": [
+      42
+    ],
+    "workers": 2,
+    "raw_dir": "results/sweep_e4_raw/",
+    "agg_dir": "results/sweep_e4_agg/",
+    "subset_method": "cumulative_degree",
+    "strict_window": false,
+    "non_strict": false,
+    "alpha": 0.05,
+    "n_boot": 2000,
+    "arms": [
+      {
+        "label": "baseline",
+        "config": "configs/experiments/sweep_demo_e3_baseline.yaml"
+      },
+      {
+        "label": "ids2",
+        "config": "configs/experiments/sweep_e4_sybil_ids2.yaml"
+      },
+      {
+        "label": "ids6",
+        "config": "configs/experiments/sweep_e4_sybil_ids6.yaml"
+      },
+      {
+        "label": "ids12",
+        "config": "configs/experiments/sweep_e4_sybil_ids12.yaml"
+      }
+    ],
+    "comparison": [
+      "ids6",
+      "baseline"
+    ]
+  },
+  "n_tasks": 4,
+  "n_completed": 4,
+  "arms": {
+    "baseline": {
+      "experiment": "sweep_demo_e3_baseline",
+      "n_seeds": 1,
+      "seeds": [
+        42
+      ],
+      "cardinality": {
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "detail": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 96,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "results\\sweep_e4_raw\\baseline__sweep_demo_e3_baseline_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        },
+        "consistent_across_seeds": true
+      },
+      "metrics": {
+        "delivery_ratio": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 1.0
+          }
+        },
+        "avg_hops": {
+          "mean": 10.65,
+          "std": 0.0,
+          "min": 10.65,
+          "max": 10.65,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 10.65
+          }
+        },
+        "avg_latency_ms": {
+          "mean": 246.52904397766125,
+          "std": 0.0,
+          "min": 246.52904397766125,
+          "max": 246.52904397766125,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 246.52904397766125
+          }
+        },
+        "avg_success_hops": {
+          "mean": 10.65,
+          "std": 0.0,
+          "min": 10.65,
+          "max": 10.65,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 10.65
+          }
+        },
+        "avg_success_latency_ms": {
+          "mean": 246.52904397766125,
+          "std": 0.0,
+          "min": 246.52904397766125,
+          "max": 246.52904397766125,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 246.52904397766125
+          }
+        },
+        "total_loops": {
+          "mean": 2115.0,
+          "std": 0.0,
+          "min": 2115.0,
+          "max": 2115.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 2115.0
+          }
+        },
+        "attacked_count": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "dropped_by_attacker": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "num_success": {
+          "mean": 40.0,
+          "std": 0.0,
+          "min": 40.0,
+          "max": 40.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 40.0
+          }
+        },
+        "num_trials": {
+          "mean": 40.0,
+          "std": 0.0,
+          "min": 40.0,
+          "max": 40.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 40.0
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "seed": 42,
+          "file": "results\\sweep_e4_raw\\baseline__sweep_demo_e3_baseline_seed42.json",
+          "metrics": {
+            "delivery_ratio": 1.0,
+            "avg_hops": 10.65,
+            "avg_latency_ms": 246.52904397766125,
+            "avg_success_hops": 10.65,
+            "avg_success_latency_ms": 246.52904397766125,
+            "num_success": 40.0,
+            "num_trials": 40.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "total_loops": 2115.0
+          },
+          "cardinality": {
+            "num_flows": 20,
+            "num_eval_epochs": 2,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 40,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 96,
+              "num_eval_epochs": 2,
+              "num_flows": 20
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": true,
+              "has_metadata": true,
+              "overrides_applied": [],
+              "file": "results\\sweep_e4_raw\\baseline__sweep_demo_e3_baseline_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": 2.0,
+              "tick": 0.2,
+              "max_hops": 100,
+              "duration": 60
+            }
+          }
+        }
+      ],
+      "warnings": [
+        "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds",
+        "指标 delivery_ratio: 单 seed 无法计算 CI",
+        "指标 avg_hops: 单 seed 无法计算 CI",
+        "指标 avg_latency_ms: 单 seed 无法计算 CI",
+        "指标 avg_success_hops: 单 seed 无法计算 CI",
+        "指标 avg_success_latency_ms: 单 seed 无法计算 CI",
+        "指标 total_loops: 单 seed 无法计算 CI",
+        "指标 attacked_count: 单 seed 无法计算 CI",
+        "指标 dropped_by_attacker: 单 seed 无法计算 CI",
+        "指标 num_success: 单 seed 无法计算 CI",
+        "指标 num_trials: 单 seed 无法计算 CI"
+      ]
+    },
+    "ids2": {
+      "experiment": "sweep_e4_sybil_ids2",
+      "n_seeds": 1,
+      "seeds": [
+        42
+      ],
+      "cardinality": {
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "detail": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 96,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "results\\sweep_e4_raw\\ids2__sweep_e4_sybil_ids2_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        },
+        "consistent_across_seeds": true
+      },
+      "metrics": {
+        "delivery_ratio": {
+          "mean": 0.1,
+          "std": 0.0,
+          "min": 0.1,
+          "max": 0.1,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.1
+          }
+        },
+        "avg_hops": {
+          "mean": 0.7,
+          "std": 0.0,
+          "min": 0.7,
+          "max": 0.7,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.7
+          }
+        },
+        "avg_latency_ms": {
+          "mean": 16.482123705583508,
+          "std": 0.0,
+          "min": 16.482123705583508,
+          "max": 16.482123705583508,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 16.482123705583508
+          }
+        },
+        "avg_success_hops": {
+          "mean": 7.0,
+          "std": 0.0,
+          "min": 7.0,
+          "max": 7.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 7.0
+          }
+        },
+        "avg_success_latency_ms": {
+          "mean": 164.82123705583507,
+          "std": 0.0,
+          "min": 164.82123705583507,
+          "max": 164.82123705583507,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 164.82123705583507
+          }
+        },
+        "total_loops": {
+          "mean": 1620.0,
+          "std": 0.0,
+          "min": 1620.0,
+          "max": 1620.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 1620.0
+          }
+        },
+        "attacked_count": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "dropped_by_attacker": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "num_success": {
+          "mean": 4.0,
+          "std": 0.0,
+          "min": 4.0,
+          "max": 4.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 4.0
+          }
+        },
+        "num_trials": {
+          "mean": 40.0,
+          "std": 0.0,
+          "min": 40.0,
+          "max": 40.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 40.0
+          }
+        },
+        "sybil_attraction_ratio": {
+          "mean": 0.9,
+          "std": 0.0,
+          "min": 0.9,
+          "max": 0.9,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.9
+          }
+        },
+        "sybil_attracted_trials": {
+          "mean": 36.0,
+          "std": 0.0,
+          "min": 36.0,
+          "max": 36.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 36.0
+          }
+        },
+        "sybil_num_identities": {
+          "mean": 2.0,
+          "std": 0.0,
+          "min": 2.0,
+          "max": 2.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 2.0
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "seed": 42,
+          "file": "results\\sweep_e4_raw\\ids2__sweep_e4_sybil_ids2_seed42.json",
+          "metrics": {
+            "delivery_ratio": 0.1,
+            "avg_hops": 0.7,
+            "avg_latency_ms": 16.482123705583508,
+            "avg_success_hops": 7.0,
+            "avg_success_latency_ms": 164.82123705583507,
+            "num_success": 4.0,
+            "num_trials": 40.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "sybil_attraction_ratio": 0.9,
+            "sybil_attracted_trials": 36.0,
+            "sybil_num_identities": 2.0,
+            "total_loops": 1620.0
+          },
+          "cardinality": {
+            "num_flows": 20,
+            "num_eval_epochs": 2,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 40,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 96,
+              "num_eval_epochs": 2,
+              "num_flows": 20
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": true,
+              "has_metadata": true,
+              "overrides_applied": [],
+              "file": "results\\sweep_e4_raw\\ids2__sweep_e4_sybil_ids2_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": 2.0,
+              "tick": 0.2,
+              "max_hops": 100,
+              "duration": 60
+            }
+          }
+        }
+      ],
+      "warnings": [
+        "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds",
+        "指标 delivery_ratio: 单 seed 无法计算 CI",
+        "指标 avg_hops: 单 seed 无法计算 CI",
+        "指标 avg_latency_ms: 单 seed 无法计算 CI",
+        "指标 avg_success_hops: 单 seed 无法计算 CI",
+        "指标 avg_success_latency_ms: 单 seed 无法计算 CI",
+        "指标 total_loops: 单 seed 无法计算 CI",
+        "指标 attacked_count: 单 seed 无法计算 CI",
+        "指标 dropped_by_attacker: 单 seed 无法计算 CI",
+        "指标 num_success: 单 seed 无法计算 CI",
+        "指标 num_trials: 单 seed 无法计算 CI",
+        "指标 sybil_attraction_ratio: 单 seed 无法计算 CI",
+        "指标 sybil_attracted_trials: 单 seed 无法计算 CI",
+        "指标 sybil_num_identities: 单 seed 无法计算 CI"
+      ]
+    },
+    "ids6": {
+      "experiment": "sweep_e4_sybil_ids6",
+      "n_seeds": 1,
+      "seeds": [
+        42
+      ],
+      "cardinality": {
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "detail": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 96,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "results\\sweep_e4_raw\\ids6__sweep_e4_sybil_ids6_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        },
+        "consistent_across_seeds": true
+      },
+      "metrics": {
+        "delivery_ratio": {
+          "mean": 0.1,
+          "std": 0.0,
+          "min": 0.1,
+          "max": 0.1,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.1
+          }
+        },
+        "avg_hops": {
+          "mean": 0.7,
+          "std": 0.0,
+          "min": 0.7,
+          "max": 0.7,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.7
+          }
+        },
+        "avg_latency_ms": {
+          "mean": 16.482123705583508,
+          "std": 0.0,
+          "min": 16.482123705583508,
+          "max": 16.482123705583508,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 16.482123705583508
+          }
+        },
+        "avg_success_hops": {
+          "mean": 7.0,
+          "std": 0.0,
+          "min": 7.0,
+          "max": 7.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 7.0
+          }
+        },
+        "avg_success_latency_ms": {
+          "mean": 164.82123705583507,
+          "std": 0.0,
+          "min": 164.82123705583507,
+          "max": 164.82123705583507,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 164.82123705583507
+          }
+        },
+        "total_loops": {
+          "mean": 1755.0,
+          "std": 0.0,
+          "min": 1755.0,
+          "max": 1755.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 1755.0
+          }
+        },
+        "attacked_count": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "dropped_by_attacker": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "num_success": {
+          "mean": 4.0,
+          "std": 0.0,
+          "min": 4.0,
+          "max": 4.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 4.0
+          }
+        },
+        "num_trials": {
+          "mean": 40.0,
+          "std": 0.0,
+          "min": 40.0,
+          "max": 40.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 40.0
+          }
+        },
+        "sybil_attraction_ratio": {
+          "mean": 0.9,
+          "std": 0.0,
+          "min": 0.9,
+          "max": 0.9,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.9
+          }
+        },
+        "sybil_attracted_trials": {
+          "mean": 36.0,
+          "std": 0.0,
+          "min": 36.0,
+          "max": 36.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 36.0
+          }
+        },
+        "sybil_num_identities": {
+          "mean": 6.0,
+          "std": 0.0,
+          "min": 6.0,
+          "max": 6.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 6.0
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "seed": 42,
+          "file": "results\\sweep_e4_raw\\ids6__sweep_e4_sybil_ids6_seed42.json",
+          "metrics": {
+            "delivery_ratio": 0.1,
+            "avg_hops": 0.7,
+            "avg_latency_ms": 16.482123705583508,
+            "avg_success_hops": 7.0,
+            "avg_success_latency_ms": 164.82123705583507,
+            "num_success": 4.0,
+            "num_trials": 40.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "sybil_attraction_ratio": 0.9,
+            "sybil_attracted_trials": 36.0,
+            "sybil_num_identities": 6.0,
+            "total_loops": 1755.0
+          },
+          "cardinality": {
+            "num_flows": 20,
+            "num_eval_epochs": 2,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 40,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 96,
+              "num_eval_epochs": 2,
+              "num_flows": 20
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": true,
+              "has_metadata": true,
+              "overrides_applied": [],
+              "file": "results\\sweep_e4_raw\\ids6__sweep_e4_sybil_ids6_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": 2.0,
+              "tick": 0.2,
+              "max_hops": 100,
+              "duration": 60
+            }
+          }
+        }
+      ],
+      "warnings": [
+        "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds",
+        "指标 delivery_ratio: 单 seed 无法计算 CI",
+        "指标 avg_hops: 单 seed 无法计算 CI",
+        "指标 avg_latency_ms: 单 seed 无法计算 CI",
+        "指标 avg_success_hops: 单 seed 无法计算 CI",
+        "指标 avg_success_latency_ms: 单 seed 无法计算 CI",
+        "指标 total_loops: 单 seed 无法计算 CI",
+        "指标 attacked_count: 单 seed 无法计算 CI",
+        "指标 dropped_by_attacker: 单 seed 无法计算 CI",
+        "指标 num_success: 单 seed 无法计算 CI",
+        "指标 num_trials: 单 seed 无法计算 CI",
+        "指标 sybil_attraction_ratio: 单 seed 无法计算 CI",
+        "指标 sybil_attracted_trials: 单 seed 无法计算 CI",
+        "指标 sybil_num_identities: 单 seed 无法计算 CI"
+      ]
+    },
+    "ids12": {
+      "experiment": "sweep_e4_sybil_ids12",
+      "n_seeds": 1,
+      "seeds": [
+        42
+      ],
+      "cardinality": {
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "detail": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 96,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "results\\sweep_e4_raw\\ids12__sweep_e4_sybil_ids12_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        },
+        "consistent_across_seeds": true
+      },
+      "metrics": {
+        "delivery_ratio": {
+          "mean": 0.05,
+          "std": 0.0,
+          "min": 0.05,
+          "max": 0.05,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.05
+          }
+        },
+        "avg_hops": {
+          "mean": 0.4,
+          "std": 0.0,
+          "min": 0.4,
+          "max": 0.4,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.4
+          }
+        },
+        "avg_latency_ms": {
+          "mean": 8.963147102810819,
+          "std": 0.0,
+          "min": 8.963147102810819,
+          "max": 8.963147102810819,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 8.963147102810819
+          }
+        },
+        "avg_success_hops": {
+          "mean": 8.0,
+          "std": 0.0,
+          "min": 8.0,
+          "max": 8.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 8.0
+          }
+        },
+        "avg_success_latency_ms": {
+          "mean": 179.2629420562164,
+          "std": 0.0,
+          "min": 179.2629420562164,
+          "max": 179.2629420562164,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 179.2629420562164
+          }
+        },
+        "total_loops": {
+          "mean": 2347.0,
+          "std": 0.0,
+          "min": 2347.0,
+          "max": 2347.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 2347.0
+          }
+        },
+        "attacked_count": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "dropped_by_attacker": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.0
+          }
+        },
+        "num_success": {
+          "mean": 2.0,
+          "std": 0.0,
+          "min": 2.0,
+          "max": 2.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 2.0
+          }
+        },
+        "num_trials": {
+          "mean": 40.0,
+          "std": 0.0,
+          "min": 40.0,
+          "max": 40.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 40.0
+          }
+        },
+        "sybil_attraction_ratio": {
+          "mean": 0.95,
+          "std": 0.0,
+          "min": 0.95,
+          "max": 0.95,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 0.95
+          }
+        },
+        "sybil_attracted_trials": {
+          "mean": 38.0,
+          "std": 0.0,
+          "min": 38.0,
+          "max": 38.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 38.0
+          }
+        },
+        "sybil_num_identities": {
+          "mean": 12.0,
+          "std": 0.0,
+          "min": 12.0,
+          "max": 12.0,
+          "ci95_low": null,
+          "ci95_high": null,
+          "n": 1,
+          "per_seed": {
+            "42": 12.0
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "seed": 42,
+          "file": "results\\sweep_e4_raw\\ids12__sweep_e4_sybil_ids12_seed42.json",
+          "metrics": {
+            "delivery_ratio": 0.05,
+            "avg_hops": 0.4,
+            "avg_latency_ms": 8.963147102810819,
+            "avg_success_hops": 8.0,
+            "avg_success_latency_ms": 179.2629420562164,
+            "num_success": 2.0,
+            "num_trials": 40.0,
+            "attacked_count": 0.0,
+            "dropped_by_attacker": 0.0,
+            "sybil_attraction_ratio": 0.95,
+            "sybil_attracted_trials": 38.0,
+            "sybil_num_identities": 12.0,
+            "total_loops": 2347.0
+          },
+          "cardinality": {
+            "num_flows": 20,
+            "num_eval_epochs": 2,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 40,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 96,
+              "num_eval_epochs": 2,
+              "num_flows": 20
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": true,
+              "has_metadata": true,
+              "overrides_applied": [],
+              "file": "results\\sweep_e4_raw\\ids12__sweep_e4_sybil_ids12_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": 2.0,
+              "tick": 0.2,
+              "max_hops": 100,
+              "duration": 60
+            }
+          }
+        }
+      ],
+      "warnings": [
+        "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds",
+        "指标 delivery_ratio: 单 seed 无法计算 CI",
+        "指标 avg_hops: 单 seed 无法计算 CI",
+        "指标 avg_latency_ms: 单 seed 无法计算 CI",
+        "指标 avg_success_hops: 单 seed 无法计算 CI",
+        "指标 avg_success_latency_ms: 单 seed 无法计算 CI",
+        "指标 total_loops: 单 seed 无法计算 CI",
+        "指标 attacked_count: 单 seed 无法计算 CI",
+        "指标 dropped_by_attacker: 单 seed 无法计算 CI",
+        "指标 num_success: 单 seed 无法计算 CI",
+        "指标 num_trials: 单 seed 无法计算 CI",
+        "指标 sybil_attraction_ratio: 单 seed 无法计算 CI",
+        "指标 sybil_attracted_trials: 单 seed 无法计算 CI",
+        "指标 sybil_num_identities: 单 seed 无法计算 CI"
+      ]
+    }
+  },
+  "comparison": {
+    "attack": "ids6",
+    "baseline": "baseline",
+    "n_groups": 1,
+    "n_comparable_groups": 1,
+    "groups": [
+      {
+        "match_key": {
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20,
+          "shell": "53°"
+        },
+        "attack_seeds": [
+          42
+        ],
+        "baseline_seeds": [
+          42
+        ],
+        "cardinality": {
+          "attack": {
+            "num_flows": 20,
+            "num_eval_epochs": 2,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 40,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 96,
+              "num_eval_epochs": 2,
+              "num_flows": 20
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": true,
+              "has_metadata": true,
+              "overrides_applied": [],
+              "file": "results\\sweep_e4_raw\\ids6__sweep_e4_sybil_ids6_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": 2.0,
+              "tick": 0.2,
+              "max_hops": 100,
+              "duration": 60
+            }
+          },
+          "baseline": {
+            "num_flows": 20,
+            "num_eval_epochs": 2,
+            "trials_per_flow_epoch": 1,
+            "total_trials": 40,
+            "match_key": {
+              "shell": "53°",
+              "node_limit": 96,
+              "num_eval_epochs": 2,
+              "num_flows": 20
+            },
+            "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+            "source": {
+              "has_config_snapshot": true,
+              "has_metadata": true,
+              "overrides_applied": [],
+              "file": "results\\sweep_e4_raw\\baseline__sweep_demo_e3_baseline_seed42.json",
+              "seed": 42
+            },
+            "aux": {
+              "t_adv": 2.0,
+              "tick": 0.2,
+              "max_hops": 100,
+              "duration": 60
+            }
+          }
+        },
+        "comparable": true,
+        "mismatches": [],
+        "paired_seeds": [
+          42
+        ],
+        "comparisons": {
+          "delivery_ratio": {
+            "test": "mannwhitneyu",
+            "U": 0.0,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -0.9,
+            "median_attack": 0.1,
+            "median_baseline": 1.0,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "avg_hops": {
+            "test": "mannwhitneyu",
+            "U": 0.0,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -9.950000000000001,
+            "median_attack": 0.7,
+            "median_baseline": 10.65,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "avg_latency_ms": {
+            "test": "mannwhitneyu",
+            "U": 0.0,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -230.04692027207773,
+            "median_attack": 16.482123705583508,
+            "median_baseline": 246.52904397766125,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "avg_success_hops": {
+            "test": "mannwhitneyu",
+            "U": 0.0,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -3.6500000000000004,
+            "median_attack": 7.0,
+            "median_baseline": 10.65,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "avg_success_latency_ms": {
+            "test": "mannwhitneyu",
+            "U": 0.0,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -81.70780692182618,
+            "median_attack": 164.82123705583507,
+            "median_baseline": 246.52904397766125,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "total_loops": {
+            "test": "mannwhitneyu",
+            "U": 0.0,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -360.0,
+            "median_attack": 1755.0,
+            "median_baseline": 2115.0,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "attacked_count": {
+            "test": "mannwhitneyu",
+            "U": 0.5,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": 0.0
+            },
+            "median_diff": 0.0,
+            "median_attack": 0.0,
+            "median_baseline": 0.0,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "dropped_by_attacker": {
+            "test": "mannwhitneyu",
+            "U": 0.5,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": 0.0
+            },
+            "median_diff": 0.0,
+            "median_attack": 0.0,
+            "median_baseline": 0.0,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "num_success": {
+            "test": "mannwhitneyu",
+            "U": 0.0,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": -1.0
+            },
+            "median_diff": -36.0,
+            "median_attack": 4.0,
+            "median_baseline": 40.0,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          },
+          "num_trials": {
+            "test": "mannwhitneyu",
+            "U": 0.5,
+            "p_value": 1.0,
+            "significant": false,
+            "alpha": 0.05,
+            "effect_size": {
+              "rank_biserial": 0.0
+            },
+            "median_diff": 0.0,
+            "median_attack": 40.0,
+            "median_baseline": 40.0,
+            "n_attack": 1,
+            "n_baseline": 1,
+            "warnings": [
+              "seed 不重叠（成对数 < 2），退回非配对 Mann-Whitney U；两臂应使用相同 seed 集以获得配对检验功效",
+              "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+            ],
+            "n_pairs": 1,
+            "paired_seeds": [
+              42
+            ]
+          }
+        },
+        "warnings": [
+          "匹配键一致，可比较"
+        ]
+      }
+    ],
+    "policy": "攻击臂仅与同匹配键 (shell/node_limit/num_eval_epochs/num_flows) 的基线臂做按 seed 配对比较；不匹配即拒绝"
+  }
+}

@@ -1,0 +1,39 @@
+# configs/experiments/e3_blackhole.yaml
+# E3 黑洞攻击实验 —— 统一 schema v2
+# 从旧版扁平 schema 迁移；node_limit=null 表示使用全量节点（与旧行为一致）。
+
+experiment:
+  name: "e3_blackhole"
+  duration: 60               # 仿真时长（秒）
+  seed: null                 # 由命令行 --seeds 传入
+
+topology:
+  shell: "53°"
+  epoch_interval: 30          # 拓扑快照间隔（秒）
+  node_limit: null            # 全量节点（e3 不做 BFS 裁剪）
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null       # 位置从 topology_results.pkl 内嵌读取
+
+routing:
+  t_adv: 2.0                  # DV 广告周期（秒）→ wired to DVRouter.adv_interval
+  tick: 0.2                   # 控制面步长（秒）
+  max_hops: 100               # 最大跳数 → wired to DataPlane.compute_path
+
+traffic:
+  num_flows: 100
+
+attack:
+  attackers:
+    - type: "blackhole"
+      count: 3
+      placement: "degree"
+      active_since: 20.0
+      active_until: 40.0
+      params:
+        drop_prob: 0.8
+        metric_fake: 0
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"

@@ -1,0 +1,263 @@
+{
+  "experiment": "sweep_e4_sybil_ids12",
+  "n_seeds": 1,
+  "seeds": [
+    42
+  ],
+  "cardinality": {
+    "match_key": {
+      "shell": "53°",
+      "node_limit": 96,
+      "num_eval_epochs": 2,
+      "num_flows": 20
+    },
+    "detail": {
+      "num_flows": 20,
+      "num_eval_epochs": 2,
+      "trials_per_flow_epoch": 1,
+      "total_trials": 40,
+      "match_key": {
+        "shell": "53°",
+        "node_limit": 96,
+        "num_eval_epochs": 2,
+        "num_flows": 20
+      },
+      "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+      "source": {
+        "has_config_snapshot": true,
+        "has_metadata": true,
+        "overrides_applied": [],
+        "file": "results\\sweep_e4_raw\\ids12__sweep_e4_sybil_ids12_seed42.json",
+        "seed": 42
+      },
+      "aux": {
+        "t_adv": 2.0,
+        "tick": 0.2,
+        "max_hops": 100,
+        "duration": 60
+      }
+    },
+    "consistent_across_seeds": true
+  },
+  "metrics": {
+    "delivery_ratio": {
+      "mean": 0.05,
+      "std": 0.0,
+      "min": 0.05,
+      "max": 0.05,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 0.05
+      }
+    },
+    "avg_hops": {
+      "mean": 0.4,
+      "std": 0.0,
+      "min": 0.4,
+      "max": 0.4,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 0.4
+      }
+    },
+    "avg_latency_ms": {
+      "mean": 8.963147102810819,
+      "std": 0.0,
+      "min": 8.963147102810819,
+      "max": 8.963147102810819,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 8.963147102810819
+      }
+    },
+    "avg_success_hops": {
+      "mean": 8.0,
+      "std": 0.0,
+      "min": 8.0,
+      "max": 8.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 8.0
+      }
+    },
+    "avg_success_latency_ms": {
+      "mean": 179.2629420562164,
+      "std": 0.0,
+      "min": 179.2629420562164,
+      "max": 179.2629420562164,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 179.2629420562164
+      }
+    },
+    "total_loops": {
+      "mean": 2347.0,
+      "std": 0.0,
+      "min": 2347.0,
+      "max": 2347.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 2347.0
+      }
+    },
+    "attacked_count": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 0.0
+      }
+    },
+    "dropped_by_attacker": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 0.0
+      }
+    },
+    "num_success": {
+      "mean": 2.0,
+      "std": 0.0,
+      "min": 2.0,
+      "max": 2.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 2.0
+      }
+    },
+    "num_trials": {
+      "mean": 40.0,
+      "std": 0.0,
+      "min": 40.0,
+      "max": 40.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 40.0
+      }
+    },
+    "sybil_attraction_ratio": {
+      "mean": 0.95,
+      "std": 0.0,
+      "min": 0.95,
+      "max": 0.95,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 0.95
+      }
+    },
+    "sybil_attracted_trials": {
+      "mean": 38.0,
+      "std": 0.0,
+      "min": 38.0,
+      "max": 38.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 38.0
+      }
+    },
+    "sybil_num_identities": {
+      "mean": 12.0,
+      "std": 0.0,
+      "min": 12.0,
+      "max": 12.0,
+      "ci95_low": null,
+      "ci95_high": null,
+      "n": 1,
+      "per_seed": {
+        "42": 12.0
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "file": "results\\sweep_e4_raw\\ids12__sweep_e4_sybil_ids12_seed42.json",
+      "metrics": {
+        "delivery_ratio": 0.05,
+        "avg_hops": 0.4,
+        "avg_latency_ms": 8.963147102810819,
+        "avg_success_hops": 8.0,
+        "avg_success_latency_ms": 179.2629420562164,
+        "num_success": 2.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "sybil_attraction_ratio": 0.95,
+        "sybil_attracted_trials": 38.0,
+        "sybil_num_identities": 12.0,
+        "total_loops": 2347.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\sweep_e4_raw\\ids12__sweep_e4_sybil_ids12_seed42.json",
+          "seed": 42
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    }
+  ],
+  "warnings": [
+    "n=1 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds",
+    "指标 delivery_ratio: 单 seed 无法计算 CI",
+    "指标 avg_hops: 单 seed 无法计算 CI",
+    "指标 avg_latency_ms: 单 seed 无法计算 CI",
+    "指标 avg_success_hops: 单 seed 无法计算 CI",
+    "指标 avg_success_latency_ms: 单 seed 无法计算 CI",
+    "指标 total_loops: 单 seed 无法计算 CI",
+    "指标 attacked_count: 单 seed 无法计算 CI",
+    "指标 dropped_by_attacker: 单 seed 无法计算 CI",
+    "指标 num_success: 单 seed 无法计算 CI",
+    "指标 num_trials: 单 seed 无法计算 CI",
+    "指标 sybil_attraction_ratio: 单 seed 无法计算 CI",
+    "指标 sybil_attracted_trials: 单 seed 无法计算 CI",
+    "指标 sybil_num_identities: 单 seed 无法计算 CI"
+  ]
+}

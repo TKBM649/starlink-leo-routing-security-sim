@@ -1,0 +1,10 @@
+{
+  "mean_delivery_ratio": 0.27,
+  "std_delivery_ratio": 0.023664319132398467,
+  "mean_avg_hops": 1.554,
+  "mean_avg_latency_ms": 25.901547263794857,
+  "mean_attacked_count": 25.8,
+  "mean_dropped_by_attacker": 21.0,
+  "mean_total_loops": 27282.0,
+  "num_seeds": 5
+}

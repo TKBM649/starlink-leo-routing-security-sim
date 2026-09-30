@@ -1,0 +1,466 @@
+{
+  "experiment": "s3_wh_t1_53_1024",
+  "n_seeds": 2,
+  "seeds": [
+    42,
+    43
+  ],
+  "cardinality": {
+    "match_key": {
+      "shell": "53°",
+      "node_limit": 1024,
+      "num_eval_epochs": 2,
+      "num_flows": 20
+    },
+    "detail": {
+      "num_flows": 20,
+      "num_eval_epochs": 2,
+      "trials_per_flow_epoch": 1,
+      "total_trials": 40,
+      "match_key": {
+        "shell": "53°",
+        "node_limit": 1024,
+        "num_eval_epochs": 2,
+        "num_flows": 20
+      },
+      "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+      "source": {
+        "has_config_snapshot": true,
+        "has_metadata": true,
+        "overrides_applied": [],
+        "file": "results\\_smoke_raw\\e6_wormhole\\t1__s3_wh_t1_53_1024_seed42.json",
+        "seed": 42
+      },
+      "aux": {
+        "t_adv": 2.0,
+        "tick": 0.2,
+        "max_hops": 100,
+        "duration": 60
+      }
+    },
+    "consistent_across_seeds": true
+  },
+  "metrics": {
+    "delivery_ratio": {
+      "mean": 0.95,
+      "std": 0.0,
+      "min": 0.95,
+      "max": 0.95,
+      "ci95_low": 0.95,
+      "ci95_high": 0.95,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 0.95,
+        "43": 0.95
+      }
+    },
+    "avg_hops": {
+      "mean": 9.087499999999999,
+      "std": 2.633972759919889,
+      "min": 7.225,
+      "max": 10.95,
+      "ci95_low": 7.225,
+      "ci95_high": 10.95,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 7.225,
+        "43": 10.95
+      }
+    },
+    "avg_latency_ms": {
+      "mean": 187.28298569488553,
+      "std": 64.66044965778573,
+      "min": 141.56114326729386,
+      "max": 233.0048281224772,
+      "ci95_low": 141.56114326729386,
+      "ci95_high": 233.0048281224772,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 141.56114326729386,
+        "43": 233.0048281224772
+      }
+    },
+    "avg_success_hops": {
+      "mean": 9.56578947368421,
+      "std": 2.7726029051788315,
+      "min": 7.605263157894737,
+      "max": 11.526315789473685,
+      "ci95_low": 7.605263157894737,
+      "ci95_high": 11.526315789473685,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 7.605263157894737,
+        "43": 11.526315789473685
+      }
+    },
+    "avg_success_latency_ms": {
+      "mean": 197.13998494198478,
+      "std": 68.06363121872182,
+      "min": 149.01172975504616,
+      "max": 245.26824012892337,
+      "ci95_low": 149.01172975504616,
+      "ci95_high": 245.26824012892337,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 149.01172975504616,
+        "43": 245.26824012892337
+      }
+    },
+    "total_loops": {
+      "mean": 24731.0,
+      "std": 0.0,
+      "min": 24731.0,
+      "max": 24731.0,
+      "ci95_low": 24731.0,
+      "ci95_high": 24731.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 24731.0,
+        "43": 24731.0
+      }
+    },
+    "attacked_count": {
+      "mean": 22.0,
+      "std": 8.48528137423857,
+      "min": 16.0,
+      "max": 28.0,
+      "ci95_low": 16.0,
+      "ci95_high": 28.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 16.0,
+        "43": 28.0
+      }
+    },
+    "dropped_by_attacker": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 0.0,
+        "43": 0.0
+      }
+    },
+    "num_success": {
+      "mean": 38.0,
+      "std": 0.0,
+      "min": 38.0,
+      "max": 38.0,
+      "ci95_low": 38.0,
+      "ci95_high": 38.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 38.0,
+        "43": 38.0
+      }
+    },
+    "num_trials": {
+      "mean": 40.0,
+      "std": 0.0,
+      "min": 40.0,
+      "max": 40.0,
+      "ci95_low": 40.0,
+      "ci95_high": 40.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 40.0,
+        "43": 40.0
+      }
+    },
+    "wormhole_num_tunnels": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci95_low": 1.0,
+      "ci95_high": 1.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 1.0,
+        "43": 1.0
+      }
+    },
+    "wormhole_attracted_ratio": {
+      "mean": 0.21250000000000002,
+      "std": 0.15909902576697318,
+      "min": 0.1,
+      "max": 0.325,
+      "ci95_low": 0.1,
+      "ci95_high": 0.325,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 0.1,
+        "43": 0.325
+      }
+    },
+    "wormhole_attracted_trials": {
+      "mean": 8.5,
+      "std": 6.363961030678928,
+      "min": 4.0,
+      "max": 13.0,
+      "ci95_low": 4.0,
+      "ci95_high": 13.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 4.0,
+        "43": 13.0
+      }
+    },
+    "wormhole_false_positive_rate": {
+      "mean": 0.2008837525492862,
+      "std": 0.0,
+      "min": 0.2008837525492862,
+      "max": 0.2008837525492862,
+      "ci95_low": 0.2008837525492862,
+      "ci95_high": 0.2008837525492862,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 0.2008837525492862,
+        "43": 0.2008837525492862
+      }
+    },
+    "wormhole_suspicious_hops": {
+      "mean": 592.0,
+      "std": 0.0,
+      "min": 592.0,
+      "max": 592.0,
+      "ci95_low": 592.0,
+      "ci95_high": 592.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 592.0,
+        "43": 592.0
+      }
+    },
+    "wormhole_edges_examined": {
+      "mean": 2942.0,
+      "std": 0.0,
+      "min": 2942.0,
+      "max": 2942.0,
+      "ci95_low": 2942.0,
+      "ci95_high": 2942.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 2942.0,
+        "43": 2942.0
+      }
+    },
+    "wormhole_latency_flagged_ratio": {
+      "mean": 0.9736842105263157,
+      "std": 0.03721614637823938,
+      "min": 0.9473684210526315,
+      "max": 1.0,
+      "ci95_low": 0.9473684210526315,
+      "ci95_high": 1.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 0.9473684210526315,
+        "43": 1.0
+      }
+    },
+    "wormhole_detection_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci95_low": 1.0,
+      "ci95_high": 1.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 1.0,
+        "43": 1.0
+      }
+    },
+    "wormhole_detected_tunnels": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci95_low": 1.0,
+      "ci95_high": 1.0,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 1.0,
+        "43": 1.0
+      }
+    },
+    "wormhole_path_stretch": {
+      "mean": 0.9510736414167973,
+      "std": 0.005991814231558831,
+      "min": 0.946836788942052,
+      "max": 0.9553104938915427,
+      "ci95_low": 0.946836788942052,
+      "ci95_high": 0.9553104938915427,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 0.946836788942052,
+        "43": 0.9553104938915427
+      }
+    },
+    "wormhole_geo_stretch": {
+      "mean": 1.0491050026807276,
+      "std": 0.06875742617539048,
+      "min": 1.0004861603751756,
+      "max": 1.0977238449862796,
+      "ci95_low": 1.0004861603751756,
+      "ci95_high": 1.0977238449862796,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 1.0004861603751756,
+        "43": 1.0977238449862796
+      }
+    },
+    "wormhole_mean_tunnel_km": {
+      "mean": 13243.662999877706,
+      "std": 0.0,
+      "min": 13243.662999877706,
+      "max": 13243.662999877706,
+      "ci95_low": 13243.662999877706,
+      "ci95_high": 13243.662999877706,
+      "n_boot": 2000,
+      "n": 2,
+      "per_seed": {
+        "42": 13243.662999877706,
+        "43": 13243.662999877706
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "file": "results\\_smoke_raw\\e6_wormhole\\t1__s3_wh_t1_53_1024_seed42.json",
+      "metrics": {
+        "delivery_ratio": 0.95,
+        "avg_hops": 7.225,
+        "avg_latency_ms": 141.56114326729386,
+        "avg_success_hops": 7.605263157894737,
+        "avg_success_latency_ms": 149.01172975504616,
+        "num_success": 38.0,
+        "num_trials": 40.0,
+        "attacked_count": 16.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 1.0,
+        "wormhole_attracted_ratio": 0.1,
+        "wormhole_attracted_trials": 4.0,
+        "wormhole_false_positive_rate": 0.2008837525492862,
+        "wormhole_suspicious_hops": 592.0,
+        "wormhole_edges_examined": 2942.0,
+        "wormhole_latency_flagged_ratio": 0.9473684210526315,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 1.0,
+        "wormhole_path_stretch": 0.946836788942052,
+        "wormhole_geo_stretch": 1.0004861603751756,
+        "wormhole_mean_tunnel_km": 13243.662999877706,
+        "total_loops": 24731.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\_smoke_raw\\e6_wormhole\\t1__s3_wh_t1_53_1024_seed42.json",
+          "seed": 42
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "file": "results\\_smoke_raw\\e6_wormhole\\t1__s3_wh_t1_53_1024_seed43.json",
+      "metrics": {
+        "delivery_ratio": 0.95,
+        "avg_hops": 10.95,
+        "avg_latency_ms": 233.0048281224772,
+        "avg_success_hops": 11.526315789473685,
+        "avg_success_latency_ms": 245.26824012892337,
+        "num_success": 38.0,
+        "num_trials": 40.0,
+        "attacked_count": 28.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 1.0,
+        "wormhole_attracted_ratio": 0.325,
+        "wormhole_attracted_trials": 13.0,
+        "wormhole_false_positive_rate": 0.2008837525492862,
+        "wormhole_suspicious_hops": 592.0,
+        "wormhole_edges_examined": 2942.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 1.0,
+        "wormhole_path_stretch": 0.9553104938915427,
+        "wormhole_geo_stretch": 1.0977238449862796,
+        "wormhole_mean_tunnel_km": 13243.662999877706,
+        "total_loops": 24731.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\_smoke_raw\\e6_wormhole\\t1__s3_wh_t1_53_1024_seed43.json",
+          "seed": 43
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    }
+  ],
+  "warnings": [
+    "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+  ]
+}

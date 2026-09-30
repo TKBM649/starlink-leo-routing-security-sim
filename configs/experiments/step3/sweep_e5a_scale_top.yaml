@@ -1,0 +1,46 @@
+# configs/experiments/step3/sweep_e5a_scale_top.yaml
+# E5-a 规模阶梯顶档 —— node_limit=2048（53° 壳）
+#
+# **原计划的 4284 全量档在本机内存不可行，已如实降级为 2048。**
+# 实测证据（31.7GB 总 / 23.6GB 可用）：
+#   nl=4284 + blackhole×3 + 仅 2 epochs + 20 flows → 峰值 RSS **≥20.7GB @462s CPU
+#   仍未结束**，被强制终止（FreeRAM 一度跌至 4.5GB，逼近系统级 OOM）。
+#   nl=4284 + **无攻击**基线 + 2 epochs + 20 flows → WS **20.7GB @393s CPU** 同样未完成。
+# 根因（非攻击特有，是协议实现的固有标度）：
+#   routing_dv.RouteEntry 携带 path: List[int]（路径向量），且
+#   Simulator.run_ticks 每 epoch 存 routing_table_history[epoch]=get_routing_tables()
+#   （dict 浅拷贝，条目对象共享但 dict 槽位逐份新建）。
+#   → 常驻内存 ≈ 500B·N²（活路由表）+ ~100B·N²·epochs（历史快照）。
+#   N=4284, epochs=2 时 ≈ 9.1GB + 1.8GB，与实测 20.7GB 同量级（含报文缓冲）；
+#   N=4284, epochs=121 时仅历史项就 ≈ **222GB** → 物理不可行，与攻击无关。
+# 顶档改取 nl=2048：常驻 ≈ 2.1GB + 0.4GB（2 epochs）→ 单任务 ~4GB，workers=2 安全。
+# 六档规模阶梯因此为 48/96/256/512/1024/2048（档数不变，顶档下移）。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— 请勿手工编辑。
+# 任务数 = 2 臂 × 10 seeds = 20。
+#
+# 运行（先 dry-run 核对臂数/匹配键/注入预览，再实跑）::
+#
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e5a_scale_top.yaml --dry-run
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e5a_scale_top.yaml
+
+sweep:
+  name: "e5a_scale_top"
+  runner: "e3"
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  workers: 2
+  raw_dir: "results/step3_raw/e5a_scale_top/"
+  agg_dir: "results/step3_agg/e5a_scale_top/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 4000
+  arms:
+    - label: "base_n2048"
+      config: "configs/experiments/step3/a_base_53_2048.yaml"
+    - label: "bh3_n2048"
+      config: "configs/experiments/step3/a_bh3_53_2048.yaml"
+  comparison:
+    attack: "bh3_n2048"
+    baseline: "base_n2048"

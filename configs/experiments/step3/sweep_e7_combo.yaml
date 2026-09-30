@@ -1,0 +1,48 @@
+# configs/experiments/step3/sweep_e7_combo.yaml
+# E7 组合攻击：3 个单攻击臂 + 4 个组合臂 + 基线 → 协同是否**超加性**
+#
+# 超加性判据：Δ(combo) 与 Δ(A)+Δ(B) 的差（Δ = 攻击臂指标 − 基线指标，同 seed
+# 配对）。|Δ(combo)| 显著大于 |Δ(A)+Δ(B)| → 超加性；反之则为亚加性（互相遮蔽）。
+# 注意 instantiate_attackers **不跨配置去重**：degree 放置的黑洞与干扰会落在
+# **同一批** top-3 枢纽上（同节点链式叠加，T3 已验证生效），这是刻意设计。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— 请勿手工编辑。
+# 任务数 = 8 臂 × 10 seeds = 80。
+#
+# 运行（先 dry-run 核对臂数/匹配键/注入预览，再实跑）::
+#
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e7_combo.yaml --dry-run
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e7_combo.yaml
+
+sweep:
+  name: "e7_combo"
+  runner: "e3"
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  workers: 10
+  raw_dir: "results/step3_raw/e7_combo/"
+  agg_dir: "results/step3_agg/e7_combo/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 4000
+  arms:
+    - label: "base"
+      config: "configs/experiments/step3/a_base_53_1024.yaml"
+    - label: "bh3"
+      config: "configs/experiments/step3/a_bh3_53_1024.yaml"
+    - label: "jm3"
+      config: "configs/experiments/step3/a_jm3_53_1024.yaml"
+    - label: "sy8"
+      config: "configs/experiments/step3/a_sy8_53_1024.yaml"
+    - label: "bh3_jm3"
+      config: "configs/experiments/step3/a_bh3_jm3_53_1024.yaml"
+    - label: "bh3_sy8"
+      config: "configs/experiments/step3/a_bh3_sy8_53_1024.yaml"
+    - label: "jm3_sy8"
+      config: "configs/experiments/step3/a_jm3_sy8_53_1024.yaml"
+    - label: "bh3_jm3_sy8"
+      config: "configs/experiments/step3/a_bh3_jm3_sy8_53_1024.yaml"
+  comparison:
+    attack: "bh3_jm3_sy8"
+    baseline: "base"

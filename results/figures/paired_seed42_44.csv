@@ -1,0 +1,4 @@
+seed,is_attack_no,delivery_ratio_no,total_loops_no,attracted_count_no,avg_success_hops_no,num_success_no,num_trials_no,is_attack_att,delivery_ratio_att,total_loops_att,attracted_count_att,avg_success_hops_att,num_success_att,num_trials_att,delivery_ratio_drop,loop_increase,attracted_mean
+42,False,0.8775,0,0,3.5698005698005697,351,400,True,0.775,47,179,3.4870967741935486,310,400,11.680911680911674,47,179
+43,False,0.935,0,0,3.443850267379679,374,400,True,0.815,54,191,3.334355828220859,326,400,12.834224598930492,54,191
+44,False,0.94,0,0,3.36968085106383,376,400,True,0.84,49,184,3.3154761904761907,336,400,10.638297872340424,49,184

@@ -1,0 +1,52 @@
+﻿sweep,attack,baseline,shell,node_limit,num_eval_epochs,num_flows,metric,test,statistic,p_value,significant,rank_biserial,rank_biserial_signed,t_plus,n_eff,rb_note,median_diff,median_attack,median_baseline,n_pairs,warnings
+e6_wormhole,t1,base_det,53°,1024,2,20,delivery_ratio,wilcoxon,0.0,1.0,0,-1.0,1.0,1.0,1,,0.024999999999999967,0.95,0.925,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,avg_hops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-0.3250000000000002,9.087499999999999,9.4125,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,avg_latency_ms,wilcoxon,1.0,1.0,0,-0.3333333333333333,0.3333333333333333,2.0,2,,6.101822346958997,187.28298569488553,181.18116334792654,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,avg_success_hops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-0.6666666666666665,9.56578947368421,10.232456140350877,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,avg_success_latency_ms,wilcoxon,1.0,1.0,0,-0.3333333333333333,0.3333333333333333,2.0,2,,0.02946963766927979,197.13998494198478,197.11051530431547,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,total_loops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-300.0,24731.0,25031.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,attacked_count,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,22.0,22.0,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,dropped_by_attacker,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,0.0,0.0,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,num_success,wilcoxon,0.0,1.0,0,-1.0,1.0,1.0,1,,1.0,38.0,37.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,num_trials,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,40.0,40.0,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,wormhole_num_tunnels,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,1.0,1.0,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,wormhole_attracted_ratio,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,0.21250000000000002,0.21250000000000002,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,wormhole_attracted_trials,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,8.5,8.5,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,wormhole_false_positive_rate,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-6.830457414119806e-05,0.2008837525492862,0.2009520571234274,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,wormhole_suspicious_hops,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,1.0,592.0,591.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,wormhole_edges_examined,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,1.0,2942.0,2941.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t1,base_det,53°,1024,2,20,wormhole_latency_flagged_ratio,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,0.9736842105263157,0.9736842105263157,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,delivery_ratio,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,0.03750000000000003,0.9625,0.925,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,avg_hops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-0.7249999999999992,8.6875,9.4125,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,avg_latency_ms,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,14.638501163263825,195.81966451119035,181.18116334792654,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,avg_success_hops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-1.1527264106211477,9.07972972972973,10.232456140350877,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,avg_success_latency_ms,wilcoxon,1.0,1.0,0,-0.3333333333333333,0.3333333333333333,2.0,2,,7.7404515944586905,204.85096689877417,197.11051530431547,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,total_loops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-1023.0,24008.0,25031.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,attacked_count,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,61.5,61.5,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,dropped_by_attacker,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,0.0,0.0,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,num_success,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,1.5,38.5,37.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,num_trials,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,40.0,40.0,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,wormhole_num_tunnels,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,3.0,3.0,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,wormhole_attracted_ratio,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,0.475,0.475,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,wormhole_attracted_trials,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,19.0,19.0,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,wormhole_false_positive_rate,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-0.0005444484277752348,0.20040760869565216,0.2009520571234274,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,wormhole_suspicious_hops,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,2.0,593.0,591.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,wormhole_edges_examined,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,3.0,2944.0,2941.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,t3,base_det,53°,1024,2,20,wormhole_latency_flagged_ratio,wilcoxon,0.0,1.0,0,-1.0,1.0,1.0,1,,0.0013157894736842146,0.975,0.9736842105263157,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,delivery_ratio,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-0.925,0.0,0.925,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,avg_hops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-9.4125,0.0,9.4125,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,avg_latency_ms,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-181.18116334792654,0.0,181.18116334792654,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,avg_success_hops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-10.232456140350877,0.0,10.232456140350877,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,avg_success_latency_ms,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-197.11051530431547,0.0,197.11051530431547,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,total_loops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-4036.0,20995.0,25031.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,attacked_count,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,0.0,0.0,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,dropped_by_attacker,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,0.0,0.0,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,num_success,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-37.0,0.0,37.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,num_trials,wilcoxon,nan,1.0,0,0.0,0.0,0.0,0,所有配对差值为 0，效应量无定义,0.0,40.0,40.0,2,所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理; n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,wormhole_num_tunnels,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,3.0,3.0,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,wormhole_attracted_ratio,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,0.975,0.975,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,wormhole_attracted_trials,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,39.0,39.0,0.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,wormhole_false_positive_rate,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-0.0005444484277752348,0.20040760869565216,0.2009520571234274,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,wormhole_suspicious_hops,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-112.0,479.0,591.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,wormhole_edges_examined,wilcoxon,0.0,0.5,0,-1.0,1.0,3.0,2,,3.0,2944.0,2941.0,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds
+e6_wormhole,extreme,base_det,53°,1024,2,20,wormhole_latency_flagged_ratio,wilcoxon,0.0,0.5,0,-1.0,-1.0,0.0,2,,-0.9736842105263157,0.0,0.9736842105263157,2,n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds

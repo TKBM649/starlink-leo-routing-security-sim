@@ -1,0 +1,50 @@
+# configs/experiments/sweep_e4_sybil.yaml
+# E4 Sybil（虚假身份）攻击 sweep 模板 —— **身份数 vs 效果**梯度实验。
+#
+# 一个无攻击基线（复用 sweep_demo_e3_baseline.yaml）+ 三个 Sybil 攻击臂
+# （num_identities = 2 / 6 / 12），全部同 runner=e3、同匹配键
+# （53° / node_limit=96 / num_eval_epochs=2 / num_flows=20 → trials=40/seed）。
+# Sybil 注入扩展了节点空间（96 → 98/102/108），但 num_nodes 不参与匹配键，
+# 故各攻击臂仍与基线臂严格可比；数据流端点只用真实节点，trials 基数不变。
+#
+# 聚合指标除既有 DEFAULT_METRICS 外，自动附加 Sybil 特有指标（SWEEP_METRICS）：
+#   sybil_attraction_ratio   —— 转发链经过任一虚假身份的 flow-epoch 占比（E4 主指标）
+#   sybil_attracted_trials   —— 被牵引的 flow-epoch 数
+#   sybil_num_identities     —— 该臂注入的虚假身份数（梯度自变量）
+# 基线臂无这些键 → 聚合自动跳过（纯附加，不影响既有臂与比较）。
+#
+# 用法：
+#   1) dry-run（仅校验任务矩阵/攻击窗口/预计注入身份数，不加载 pkl、不跑仿真）
+#      python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_e4_sybil.yaml --dry-run
+#   2) 实跑（默认 comparison = ids6 vs baseline）
+#      python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_e4_sybil.yaml
+#   3) 换一对比较（如高档 vs 基线）
+#      python scripts/run_experiment_sweep.py --sweep-config configs/experiments/sweep_e4_sybil.yaml \
+#          --attack ids12 --baseline baseline
+#
+# 执行前把各臂 node_limit 放大到 >=1024（或全量）、seeds 增到 >=10，方有统计功效。
+
+sweep:
+  name: "sweep_e4_sybil"
+  runner: "e3"
+  seeds: [42, 43, 44]
+  workers: 2
+  raw_dir: "results/sweep_e4_raw/"
+  agg_dir: "results/sweep_e4_agg/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 2000
+  arms:
+    - label: "baseline"
+      config: "configs/experiments/sweep_demo_e3_baseline.yaml"
+    - label: "ids2"
+      config: "configs/experiments/sweep_e4_sybil_ids2.yaml"
+    - label: "ids6"
+      config: "configs/experiments/sweep_e4_sybil_ids6.yaml"
+    - label: "ids12"
+      config: "configs/experiments/sweep_e4_sybil_ids12.yaml"
+  comparison:
+    attack: "ids6"
+    baseline: "baseline"

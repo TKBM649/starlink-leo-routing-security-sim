@@ -1,0 +1,42 @@
+# configs/experiments/sweep_demo_e3_blackhole_degree.yaml
+# Sweep demo —— E3 黑洞攻击臂（placement=degree，小规模）。
+# 与 sweep_demo_e3_baseline.yaml 除 attackers 外完全一致（同 runner=e3、同匹配键）。
+# 攻击窗口常驻（active_until=.inf）：黑洞的数据面丢弃发生在评估 epoch（t≥0s），
+#   若用有限窗口（如 20–40s）而评估在末 epoch，攻击者会静默失活（B3 守卫会告警）。
+
+experiment:
+  name: "sweep_demo_e3_blackhole_degree"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers:
+    - type: "blackhole"
+      count: 3
+      placement: "degree"
+      active_since: 0.0
+      active_until: .inf
+      params:
+        drop_prob: 0.8
+        metric_fake: 0
+
+output:
+  raw_dir: "results/sweep_demo_raw/"
+  agg_dir: "results/sweep_demo_agg/"
+  figures_dir: "results/figures/"

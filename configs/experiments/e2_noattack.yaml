@@ -1,0 +1,32 @@
+# configs/experiments/e2_noattack.yaml
+# E2 无攻击基线 —— 统一 schema v2
+# 与 e2_jamming.yaml 同拓扑/同流量，attack.attackers 为空列表（不部署攻击者）。
+# 供 analyze_e2.py 与攻击组做配对比较。
+
+experiment:
+  name: "e2_noattack"
+  duration: 120              # 仿真时长（秒）
+  seed: null                 # 由命令行 --seeds 传入
+
+topology:
+  shell: "53°"               # 主壳层
+  epoch_interval: 30          # 拓扑快照间隔（秒）
+  node_limit: 96              # BFS 子集规模（null=全量）
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0                  # DV 广告周期（秒）→ wired to DVRouter.adv_interval
+  tick: 0.2                   # 控制面步长（秒）
+  max_hops: 100               # 最大跳数 → wired to DataPlane.compute_path
+
+traffic:
+  num_flows: 100              # 数据流数量
+
+attack:
+  attackers: []               # 基线：不部署攻击者
+
+output:
+  raw_dir: "results/raw/"
+  agg_dir: "results/aggregated/"
+  figures_dir: "results/figures/"

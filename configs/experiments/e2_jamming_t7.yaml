@@ -1,0 +1,42 @@
+# configs/experiments/e2_jamming_t7.yaml
+# T7 门槛验证用 E2 干扰攻击臂 —— 与 e2_noattack_t7.yaml 除 attackers 外完全一致。
+# 同 runner（scripts/run_e2_jamming_experiment.py，Simulator 动态逐 epoch 评估）。
+# 匹配键：53° / node_limit=512 / num_eval_epochs=4（duration=120÷30）/ num_flows=100
+#   → trials = 100 × 4 × 1 = 400 / seed（以 raw JSON 的 num_trials 为准）。
+# 运行：python scripts/run_e2_jamming_experiment.py --config configs/experiments/e2_jamming_t7.yaml --seeds 42 43 44 45 46
+
+experiment:
+  name: "e2_jamming_t7"
+  duration: 120
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 512
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 100
+
+attack:
+  attackers:
+    - type: "JammingAttacker"
+      count: 10
+      placement: "degree"
+      active_since: 20.0
+      active_until: 40.0
+      params:
+        jamming_ratio: 0.9
+        inf_metric: 9999
+
+output:
+  raw_dir: "results/raw_t7/"
+  agg_dir: "results/aggregated_t7/"
+  figures_dir: "results/figures/"

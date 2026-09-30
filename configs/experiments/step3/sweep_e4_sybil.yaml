@@ -1,0 +1,46 @@
+# configs/experiments/step3/sweep_e4_sybil.yaml
+# E4 Sybil：虚假身份数梯度（1/2/4/8/16/32）vs 无攻击基线 —— B 档 nl=1024
+#
+# 梯度可分辨性是本轮重点：nl=96 时身份数梯度已饱和（牵引率不再随身份数上升），
+# nl=1024（真实节点 1024，虚假身份最多 32 = 3.1%）需重新判定饱和点。
+# comparison 字段只支持一对，其余配对（ids1..ids32 两两 / 各自 vs base）由
+# scripts/aggregate_step3.py 从 raw JSON 统一补齐。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— 请勿手工编辑。
+# 任务数 = 7 臂 × 10 seeds = 70。
+#
+# 运行（先 dry-run 核对臂数/匹配键/注入预览，再实跑）::
+#
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e4_sybil.yaml --dry-run
+#   python scripts/run_experiment_sweep.py --sweep-config #       configs/experiments/step3/sweep_e4_sybil.yaml
+
+sweep:
+  name: "e4_sybil"
+  runner: "e3"
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  workers: 10
+  raw_dir: "results/step3_raw/e4_sybil/"
+  agg_dir: "results/step3_agg/e4_sybil/"
+  subset_method: "cumulative_degree"
+  strict_window: false
+  non_strict: false
+  alpha: 0.05
+  n_boot: 4000
+  arms:
+    - label: "base"
+      config: "configs/experiments/step3/a_base_53_1024.yaml"
+    - label: "ids1"
+      config: "configs/experiments/step3/a_ids1_53_1024.yaml"
+    - label: "ids2"
+      config: "configs/experiments/step3/a_ids2_53_1024.yaml"
+    - label: "ids4"
+      config: "configs/experiments/step3/a_ids4_53_1024.yaml"
+    - label: "ids8"
+      config: "configs/experiments/step3/a_ids8_53_1024.yaml"
+    - label: "ids16"
+      config: "configs/experiments/step3/a_ids16_53_1024.yaml"
+    - label: "ids32"
+      config: "configs/experiments/step3/a_ids32_53_1024.yaml"
+  comparison:
+    attack: "ids8"
+    baseline: "base"

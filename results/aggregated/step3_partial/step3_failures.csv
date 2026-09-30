@@ -1,0 +1,6 @@
+﻿sweep,arm,stage,error
+e7_combo,sy8 vs base,compare,"缺少 raw 文件（attack=0, baseline=10）"
+e7_combo,bh3_jm3 vs base,compare,"缺少 raw 文件（attack=0, baseline=10）"
+e7_combo,bh3_sy8 vs base,compare,"缺少 raw 文件（attack=0, baseline=10）"
+e7_combo,jm3_sy8 vs base,compare,"缺少 raw 文件（attack=0, baseline=10）"
+e7_combo,bh3_jm3_sy8 vs base,compare,"缺少 raw 文件（attack=0, baseline=10）"

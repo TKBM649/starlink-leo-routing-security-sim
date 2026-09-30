@@ -1,0 +1,32 @@
+# configs/experiments/e3_noattack_t7.yaml
+# T7 门槛验证用 E3 无攻击基线臂 —— 与 e3_blackhole_t7.yaml 除 attackers 外完全一致。
+# 同 runner（scripts/run_e3_blackhole_experiment.py，保证评估 epoch 约定严格匹配）。
+# 运行：python scripts/run_e3_blackhole_experiment.py --config configs/experiments/e3_noattack_t7.yaml --seeds 42 43 44 45 46
+
+experiment:
+  name: "e3_noattack_t7"
+  duration: 120
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 512
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 100
+
+attack:
+  attackers: []
+
+output:
+  raw_dir: "results/raw_t7/"
+  agg_dir: "results/aggregated_t7/"
+  figures_dir: "results/figures/"

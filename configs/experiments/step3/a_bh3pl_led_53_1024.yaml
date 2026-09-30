@@ -1,0 +1,43 @@
+# configs/experiments/step3/a_bh3pl_led_53_1024.yaml
+# E5 放置策略对比臂：blackhole×3、placement=last_epoch_degree、drop_prob=0.8。与 degree 臂仅 placement 不同 → 严格可比。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— **请勿手工编辑**；
+# 需改口径时改生成器后重跑该脚本（幂等覆盖）。
+# 匹配键四元组 (shell, node_limit, num_eval_epochs, num_flows) = (53°, 1024, 2, 20)；total_trials = 40/seed。
+
+experiment:
+  name: "s3_bh3pl_led_53_1024"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 1024
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers:
+    - type: "blackhole"
+      count: 3
+      placement: "last_epoch_degree"
+      active_since: 0.0
+      active_until: .inf
+      params:
+        drop_prob: 0.8
+        metric_fake: 0
+
+output:
+  raw_dir: "results/step3_raw/"
+  agg_dir: "results/step3_agg/"
+  figures_dir: "results/figures/"

@@ -1,0 +1,50 @@
+# configs/experiments/sweep_e6_wormhole_baseline.yaml
+# E6 Wormhole 的**启用检测**无攻击基线臂 —— 专门度量物理接地检测器的**误报率**。
+#
+# 与 sweep_e6_wormhole_t1.yaml 除 attack 段外完全一致（同 runner=e3、同匹配键
+# 53° / node_limit=96 / num_eval_epochs=2 / num_flows=20 → trials=40/seed）。
+# 关键：本臂**无任何攻击者、无隧道注入**，但 detection.wormhole.enabled=true →
+# e3 runner 仍跑检测器，只发射 WORMHOLE_BASELINE_KEYS（无 TUNNEL 键）。因真实拓扑
+# 所有合法 ISL 单跳 <=2000 km，而检测阈值 = max(max_isl_km*distance_factor,
+# median_hop_km*adaptive_factor) = max(2000*1.5, median*3) >= 3000 km，合法边永不越界
+# → wormhole_false_positive_rate 应恒为 0.0（零误报由构造保证，是 E6 的健全性护栏）。
+#
+# detection 段与所有攻击臂保持**逐字一致**，确保误报率/检测率在同一阈值口径下可比。
+
+experiment:
+  name: "sweep_e6_wormhole_baseline"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 96
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+# E6 检测门控：本臂无虫洞攻击者，靠 enabled=true 显式开启检测以度量误报率。
+detection:
+  wormhole:
+    enabled: true
+    max_isl_km: 2000.0
+    distance_factor: 1.5
+    adaptive_factor: 3.0
+    latency_factor: 1.0
+
+attack:
+  attackers: []
+
+output:
+  raw_dir: "results/sweep_e6_raw/"
+  agg_dir: "results/sweep_e6_agg/"
+  figures_dir: "results/figures/"

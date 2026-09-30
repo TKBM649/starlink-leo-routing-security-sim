@@ -1,0 +1,165 @@
+{
+  "schema_version": 2,
+  "experiment": "sweep_e4_sybil_ids12",
+  "seed": 42,
+  "metadata": {
+    "schema_version": 2,
+    "seed": 42,
+    "shell": "53°",
+    "node_limit": 96,
+    "num_nodes": 108,
+    "num_eval_epochs": 2,
+    "num_flows": 20,
+    "trials_per_flow_epoch": 1,
+    "total_trials": 40,
+    "base_time": 0.0,
+    "start_epoch_idx": 0,
+    "last_epoch_idx": 1,
+    "runner": "e3_blackhole",
+    "cardinality_semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch",
+    "sybil_injected": true,
+    "sybil_num_identities": 12,
+    "num_real_nodes": 96
+  },
+  "config": {
+    "experiment": {
+      "name": "sweep_e4_sybil_ids12",
+      "duration": 60,
+      "seed": null
+    },
+    "topology": {
+      "shell": "53°",
+      "epoch_interval": 30,
+      "node_limit": 96,
+      "cache_path": "data/topology/topology_results.pkl",
+      "positions_cache": null,
+      "subset_method": "cumulative_degree"
+    },
+    "routing": {
+      "t_adv": 2.0,
+      "tick": 0.2,
+      "max_hops": 100
+    },
+    "traffic": {
+      "num_flows": 20
+    },
+    "attack": {
+      "attackers": [
+        {
+          "type": "sybil",
+          "count": 1,
+          "placement": "degree",
+          "active_since": 0.0,
+          "active_until": null,
+          "params": {
+            "num_identities": 12,
+            "attachment": "betweenness",
+            "metric_fake": 0,
+            "seq_lead": 8,
+            "drop_prob": 0.0,
+            "controller_poisons": false
+          }
+        }
+      ]
+    },
+    "output": {
+      "raw_dir": "results/sweep_e4_raw/",
+      "agg_dir": "results/sweep_e4_agg/",
+      "figures_dir": "results/figures/"
+    }
+  },
+  "control_stats": {
+    "total_loops": 2347,
+    "loop_paths_count": 2347
+  },
+  "data_stats": {
+    "delivery_ratio": 0.05,
+    "avg_hops": 0.4,
+    "avg_latency_ms": 8.963147102810819,
+    "avg_success_hops": 8.0,
+    "avg_success_latency_ms": 179.2629420562164,
+    "num_success": 2,
+    "num_trials": 40,
+    "attacked_count": 0,
+    "dropped_by_attacker": 0,
+    "sybil_attraction_ratio": 0.95,
+    "sybil_attracted_trials": 38,
+    "sybil_num_identities": 12
+  },
+  "attacker_stats": [
+    {
+      "node_id": 403,
+      "attracted_count": 0,
+      "dropped_count": 0
+    }
+  ],
+  "sybil_stats": {
+    "num_identities": 12,
+    "sybil_node_ids": [
+      3961,
+      3962,
+      3963,
+      3964,
+      3965,
+      3966,
+      3967,
+      3968,
+      3969,
+      3970,
+      3971,
+      3972
+    ],
+    "attraction_ratio": 0.95,
+    "attracted_trials": 38,
+    "total_trials": 40,
+    "injections": [
+      {
+        "controller_node": 403,
+        "attachment": "betweenness",
+        "num_identities": 12,
+        "sybil_node_ids": [
+          3961,
+          3962,
+          3963,
+          3964,
+          3965,
+          3966,
+          3967,
+          3968,
+          3969,
+          3970,
+          3971,
+          3972
+        ],
+        "attachment_map": {
+          "3961": 22,
+          "3962": 1255,
+          "3963": 3960,
+          "3964": 2248,
+          "3965": 1248,
+          "3966": 845,
+          "3967": 2732,
+          "3968": 426,
+          "3969": 1105,
+          "3970": 403,
+          "3971": 2560,
+          "3972": 2335
+        },
+        "targets": [
+          22,
+          1255,
+          3960,
+          2248,
+          1248,
+          845,
+          2732,
+          426,
+          1105,
+          403,
+          2560,
+          2335
+        ]
+      }
+    ]
+  }
+}

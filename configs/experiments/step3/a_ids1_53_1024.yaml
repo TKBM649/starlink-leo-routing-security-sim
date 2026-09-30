@@ -1,0 +1,47 @@
+# configs/experiments/step3/a_ids1_53_1024.yaml
+# E4 Sybil 身份数梯度臂：1 个被劫持物理节点对外呈现 1 个虚假身份（attachment=betweenness, seq_lead=8, drop_prob=0）。nl=96 小拓扑上该梯度已饱和，nl=1024 需重新验证可分辨性。
+#
+# 本文件由 scripts/gen_step3_configs.py 生成 —— **请勿手工编辑**；
+# 需改口径时改生成器后重跑该脚本（幂等覆盖）。
+# 匹配键四元组 (shell, node_limit, num_eval_epochs, num_flows) = (53°, 1024, 2, 20)；total_trials = 40/seed。
+
+experiment:
+  name: "s3_ids1_53_1024"
+  duration: 60
+  seed: null
+
+topology:
+  shell: "53°"
+  epoch_interval: 30
+  node_limit: 1024
+  subset_method: "cumulative_degree"
+  cache_path: "data/topology/topology_results.pkl"
+  positions_cache: null
+
+routing:
+  t_adv: 2.0
+  tick: 0.2
+  max_hops: 100
+
+traffic:
+  num_flows: 20
+
+attack:
+  attackers:
+    - type: "sybil"
+      count: 1
+      placement: "degree"
+      active_since: 0.0
+      active_until: .inf
+      params:
+        attachment: "betweenness"
+        controller_poisons: false
+        drop_prob: 0.0
+        metric_fake: 0
+        num_identities: 1
+        seq_lead: 8
+
+output:
+  raw_dir: "results/step3_raw/"
+  agg_dir: "results/step3_agg/"
+  figures_dir: "results/figures/"

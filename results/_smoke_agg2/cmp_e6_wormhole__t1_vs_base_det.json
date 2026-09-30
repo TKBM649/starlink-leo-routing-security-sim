@@ -1,0 +1,448 @@
+{
+  "n_groups": 1,
+  "n_comparable_groups": 1,
+  "groups": [
+    {
+      "match_key": {
+        "node_limit": 1024,
+        "num_eval_epochs": 2,
+        "num_flows": 20,
+        "shell": "53°"
+      },
+      "attack_seeds": [
+        42,
+        43
+      ],
+      "baseline_seeds": [
+        42,
+        43
+      ],
+      "cardinality": {
+        "attack": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 1024,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "results\\_smoke_raw\\e6_wormhole\\t1__s3_wh_t1_53_1024_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        },
+        "baseline": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "53°",
+            "node_limit": 1024,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "results\\_smoke_raw\\e6_wormhole\\base_det__s3_base_53_1024_whdet_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        }
+      },
+      "comparable": true,
+      "mismatches": [],
+      "paired_seeds": [
+        42,
+        43
+      ],
+      "comparisons": {
+        "delivery_ratio": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 0.024999999999999967,
+          "median_attack": 0.95,
+          "median_baseline": 0.925,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "avg_hops": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": -0.3250000000000002,
+          "median_attack": 9.087499999999999,
+          "median_baseline": 9.4125,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "avg_latency_ms": {
+          "test": "wilcoxon",
+          "statistic": 1.0,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -0.3333333333333333
+          },
+          "median_diff": 6.101822346958997,
+          "median_attack": 187.28298569488553,
+          "median_baseline": 181.18116334792654,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "avg_success_hops": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": -0.6666666666666665,
+          "median_attack": 9.56578947368421,
+          "median_baseline": 10.232456140350877,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "avg_success_latency_ms": {
+          "test": "wilcoxon",
+          "statistic": 1.0,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -0.3333333333333333
+          },
+          "median_diff": 0.02946963766927979,
+          "median_attack": 197.13998494198478,
+          "median_baseline": 197.11051530431547,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "total_loops": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": -300.0,
+          "median_attack": 24731.0,
+          "median_baseline": 25031.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "attacked_count": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 22.0,
+          "median_attack": 22.0,
+          "median_baseline": 0.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "dropped_by_attacker": {
+          "test": "wilcoxon",
+          "statistic": NaN,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": 0.0
+          },
+          "median_diff": 0.0,
+          "median_attack": 0.0,
+          "median_baseline": 0.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理",
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "num_success": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 1.0,
+          "median_attack": 38.0,
+          "median_baseline": 37.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "num_trials": {
+          "test": "wilcoxon",
+          "statistic": NaN,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": 0.0
+          },
+          "median_diff": 0.0,
+          "median_attack": 40.0,
+          "median_baseline": 40.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理",
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "wormhole_num_tunnels": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 1.0,
+          "median_attack": 1.0,
+          "median_baseline": 0.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "wormhole_attracted_ratio": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 0.21250000000000002,
+          "median_attack": 0.21250000000000002,
+          "median_baseline": 0.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "wormhole_attracted_trials": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 8.5,
+          "median_attack": 8.5,
+          "median_baseline": 0.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "wormhole_false_positive_rate": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": -6.830457414119806e-05,
+          "median_attack": 0.2008837525492862,
+          "median_baseline": 0.2009520571234274,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "wormhole_suspicious_hops": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 1.0,
+          "median_attack": 592.0,
+          "median_baseline": 591.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "wormhole_edges_examined": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "p_value": 0.5,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0
+          },
+          "median_diff": 1.0,
+          "median_attack": 2942.0,
+          "median_baseline": 2941.0,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        },
+        "wormhole_latency_flagged_ratio": {
+          "test": "wilcoxon",
+          "statistic": NaN,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": 0.0
+          },
+          "median_diff": 0.0,
+          "median_attack": 0.9736842105263157,
+          "median_baseline": 0.9736842105263157,
+          "n_pairs": 2,
+          "paired_seeds": [
+            42,
+            43
+          ],
+          "warnings": [
+            "所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理",
+            "n=2 < 10：样本量偏小，CI/检验结果仅供参考，建议 >= 10 seeds"
+          ]
+        }
+      },
+      "warnings": [
+        "匹配键一致，可比较"
+      ]
+    }
+  ],
+  "policy": "攻击臂仅与同匹配键 (shell/node_limit/num_eval_epochs/num_flows) 的基线臂做按 seed 配对比较；不匹配即拒绝"
+}
