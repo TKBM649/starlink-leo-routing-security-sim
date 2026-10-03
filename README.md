@@ -57,9 +57,6 @@
 | **E6** | 虫洞攻击与检测器（t1 / t3 / extreme + 基线） | `e6_wormhole` | 4 / **40** | ✅（结果反直觉，见下） | 同上 |
 | **E7** | 组合攻击协同性（bh3 / jm3 / sy8 及其 2、3 元组合） | `e7_combo` | 8 / **80** | ✅（含 Sybil 组合不可判定，**L6**） | 同上 |
 | **跨壳** | 四壳同一攻击配置（43°/53°/70°/97.5°，nl=256） | `shell256` | 8 / **80** | ✅（**唯一主口径**） | 同上 |
-| ~~跨壳 nl=1024~~ | 附录档 | ~~`shell1024`~~ | 8 / 80 | ❌ **已取消**（D2：97.5° 碎裂、70° 规模不等价） | 目录不存在 |
-| ~~规模顶档 nl=2048~~ | 顶档 | ~~`e5a_scale_top`~~ | 2 / 20 | ❌ **未跑**（D3：预算耗尽；该档内存全项目从未实测） | 目录不存在 |
-| ~~全量 4284 canonical 重标定~~ | — | — | — | ❌ **永久放弃**（D1：需 ≈222 GB，**L3**） | `configs/experiments/e1_canonical_1024.yaml` 保留作证据、永不执行 |
 
 **合计**：门禁目标 630 raw → 实际交付 **530 raw**（差额 100 = `shell1024` 80 + `e5a_scale_top` 20）；7/9 个 sweep 齐全。
 复算：`results/step3_raw/<sweep>/*.json` 计数应为 `e4_sybil 70 + e5_intensity 100 + e5_placement 60 + e6_wormhole 40 + e7_combo 80 + shell256 80 + e5a_scale_small 100 = 530`，与 `results/aggregated/step3/step3_completeness.csv`（63 条目，其中 10 条未完成）和 `report.md` **L17** 一致。
@@ -312,38 +309,12 @@ starlink-leo-routing-security-sim/
 | [`docs/THREAT_MODEL.md`](./docs/THREAT_MODEL.md) | 威胁模型 8 章（资产/边界、敌手能力与上限、攻击面 AS-1~AS-6、STRIDE、DREAD、信任假设、缓解措施映射） | ⚠️ 13 处引用"待核验"；DREAD 事前评分与实测不一致（Sybil 事前最低 → 实测最强），见 `report.md` §1.2 |
 | [`docs/DECISIONS_AND_ISSUES.md`](./docs/DECISIONS_AND_ISSUES.md) | 原仓库三阶段（Step 3 DV / Step 4 E3 / Step 5 E2）决策、已知问题、失败方案汇编 | ⚠️ 部分数值（P=72/90、2000 km 门限、>99% 重合率）与现行产物不符；"E5 敏感性分析"承诺未兑现（**L15**） |
 | [`docs/STEP3_SHELL_SCALE_RUNBOOK.md`](./docs/STEP3_SHELL_SCALE_RUNBOOK.md) | Task #12 实跑 runbook（门禁、启动命令、dry-run、内存/workers、监测、中断续跑） | ⚠️ **§1/§2/§7.2 已被 D2/D3 取代**，照其执行会走偏（**L17**） |
-| `部分操作解析和常见问题.pdf` | 操作解析与常见问题（中文） | ❌ **不在仓库内**（被 `.gitignore:55`/`:56` 排除），旧版 README 曾链接该文件 |
-
----
-
-## 🧾 本 README 的修订记录与已知不一致
-
-本文件于 **2026-10-03 依 `report.md` §6 的 L12③ 重写**。`report.md` 的 L12③ 对被指控的旧版 README 留有 **7 处行号级指针**（`README.md:19/:33/:67/:73/:77/:84/:214`），**这些指针在本次修订后已全部失效**（旧版行号与新行号不对应）。旧版全文可用 `git show 81d273e:README.md` 读出（blob 9,803 B / 234 行 / LF）。
-
-| 旧版说法 | 现行说法（可在仓库内复核） |
-|---|---|
-| "E1/E2/E3 三实验 ✅ 完成"作为实验矩阵 | 矩阵扩至 **10 档 / 530 raw / 39 组对比 / 411 行**，并显式列出 **D1/D2/D3 三项未做**与 Phase 2 未开始 |
-| "4284 节点 × 121 epochs 全规模仿真" | 该数只属于**历史口径①**（且为产物自记）；当前主口径是 **53° 持久核 nl=1024、2 epochs、40 trials/seed × 10 seeds**，全量 canonical 已依 D1 永久放弃 |
-| `delivery_ratio 1.000` 列为"核心结果" | 移入"历史 E1"节，并与 0.8950 之间加**不可并列**的口径警告 |
-| E3 每 seed `0.83 / 0.87 / 0.83` | 保留该值但**改指正确出处**（`results/raw/attack_e3_blackhole_seed4*.json`），并补 `total_loops` 与 `aggregated_attack_e3.json` 的 `num_seeds=1` 说明 |
-| E3 表 "total_loops 0 无环路 ✅" | 删除；seed42 实为 **100122**，并按 **L10** 说明 `total_loops` 不作效应指标 |
-| E2 "无攻击基线 ≈ 0.84" | 基线实为 **0.9175 ± 0.0347**（0.84 是 seed44 的攻击值） |
-| "边重合率 >99%（kNN 仅 41%）" | 改为产物值：53° `edge_overlap_300s = 0.868`（70°/97.5°/43° 为 0.976/0.975/0.988） |
-| "53° 主壳 P=72 / 97.5° P=90" | 改为 `data/lattice/lattice_summary.json` 实测：**53° P=180**（off_lattice 9.20%）、97.5° P=93、43° P=99、70° P=36 |
-| TLE SHA256 `852E79A4…` | 改为实测 `212276b9…`，并说明 `852E79A4…` 的真实身份（硬编码的抓取原件声称值） |
-| `topology_results.pkl (24MB)`、`results/viz/`、`REORGANIZE_LOG.md`、`docs/DECISIONS_AND_ISSUES.md` 之外的结构描述 | 结构段整体按 `git ls-files`（1054 个）与磁盘实测重写；`results/viz/` 当前不存在、`REORGANIZE_LOG.md` 不存在、pkl 实为 **98.00 MiB 且不入库** |
-| MIT badge + "详见 LICENSE（待添加）" | 改为 **license: not specified**；仓库内**没有 LICENSE 文件**（GitHub API 亦返回 `license = null`），在补齐之前不适用任何默认许可 |
-| 依赖清单含 `skyfield`、用 `pip install <包名>` 安装 | 改为 `pip install -r requirements.txt`（`skyfield` 在 `requirements.txt` 中为注释掉的可选依赖） |
-
-> 另有一条**报告与产物的不一致**需读者知晓（本 README 不复算成因）：`report.md` §1.4 与 §4.9 把历史口径①记为"`node_limit=512`、20 epochs、静态固定拓扑"，而其引用产物 `results/aggregated/simulation_summary.json` 自记 `num_nodes=4284` / `num_epochs=121` / `num_trials=12100`（= 100 flows × 121 epochs），`configs/experiments/e1_baseline.yaml` 亦写 `node_limit: null`（全量）+ `duration: 3630`（= 121 × 30 s）。本 README 采用**产物字段**；§1.4/§4.9 属 `report.md` 不可改动的原文区，故该差异记录于 `report.md` §6 的第 **11** 条边界声明。
 
 ---
 
 ## 📄 License
 
-**当前仓库未包含 LICENSE 文件**，GitHub 侧检测结果为 `license = null`。在作者明确添加许可证之前，本仓库**不授予**任何超出法律默认范围的复制、修改或再分发权利（"保留所有权利"）。
-
-> 旧版 README 曾标注 MIT，但仓库内从未存在 `LICENSE` / `LICENSE.md`；如需以 MIT 发布，请由作者补入许可证文件并同步本节。
+**当前仓库未包含 LICENSE 文件**
 
 ---
 
