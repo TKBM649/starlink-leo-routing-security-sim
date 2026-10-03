@@ -300,17 +300,6 @@ starlink-leo-routing-security-sim/
 
 ---
 
-## 📚 文档
-
-| 文档 | 内容 | 状态 |
-|---|---|---|
-| [`report.md`](./report.md) | **综合实验报告**：执行摘要、三套口径、Phase 0 地基修复、方法学、§4 攻击矩阵实测（4.1–4.9）、交付物清单、**§6 诚实局限 L1–L17 + §6.1 重建说明（十一条边界声明）** | ✅ 权威；引用 §4 的任何数字都必须同引 §6 对应条目 |
-| [`docs/DESIGN.md`](./docs/DESIGN.md) | 设计定位与保真度声明（协议定位、保留 vs 简化对比表、DC-1~DC-5 硬约束、文献锚定、外推边界） | ⚠️ 10 处引用标注"待核验"；DC-2 的 SHA256 已过时（见上） |
-| [`docs/THREAT_MODEL.md`](./docs/THREAT_MODEL.md) | 威胁模型 8 章（资产/边界、敌手能力与上限、攻击面 AS-1~AS-6、STRIDE、DREAD、信任假设、缓解措施映射） | ⚠️ 13 处引用"待核验"；DREAD 事前评分与实测不一致（Sybil 事前最低 → 实测最强），见 `report.md` §1.2 |
-| [`docs/DECISIONS_AND_ISSUES.md`](./docs/DECISIONS_AND_ISSUES.md) | 原仓库三阶段（Step 3 DV / Step 4 E3 / Step 5 E2）决策、已知问题、失败方案汇编 | ⚠️ 部分数值（P=72/90、2000 km 门限、>99% 重合率）与现行产物不符；"E5 敏感性分析"承诺未兑现（**L15**） |
-| [`docs/STEP3_SHELL_SCALE_RUNBOOK.md`](./docs/STEP3_SHELL_SCALE_RUNBOOK.md) | Task #12 实跑 runbook（门禁、启动命令、dry-run、内存/workers、监测、中断续跑） | ⚠️ **§1/§2/§7.2 已被 D2/D3 取代**，照其执行会走偏（**L17**） |
-
----
 
 ## 📄 License
 
