@@ -1,0 +1,1080 @@
+{
+  "experiment": "s3_wh_t3_53_1024",
+  "n_seeds": 10,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "cardinality": {
+    "match_key": {
+      "shell": "53°",
+      "node_limit": 1024,
+      "num_eval_epochs": 2,
+      "num_flows": 20
+    },
+    "detail": {
+      "num_flows": 20,
+      "num_eval_epochs": 2,
+      "trials_per_flow_epoch": 1,
+      "total_trials": 40,
+      "match_key": {
+        "shell": "53°",
+        "node_limit": 1024,
+        "num_eval_epochs": 2,
+        "num_flows": 20
+      },
+      "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+      "source": {
+        "has_config_snapshot": true,
+        "has_metadata": true,
+        "overrides_applied": [],
+        "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed42.json",
+        "seed": 42
+      },
+      "aux": {
+        "t_adv": 2.0,
+        "tick": 0.2,
+        "max_hops": 100,
+        "duration": 60
+      }
+    },
+    "consistent_across_seeds": true
+  },
+  "metrics": {
+    "delivery_ratio": {
+      "mean": 0.9450000000000001,
+      "std": 0.04533823502911813,
+      "min": 0.875,
+      "max": 1.0,
+      "ci95_low": 0.9199999999999999,
+      "ci95_high": 0.9724999999999999,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 1.0,
+        "43": 0.925,
+        "44": 0.925,
+        "45": 0.9,
+        "46": 1.0,
+        "47": 0.875,
+        "48": 1.0,
+        "49": 0.925,
+        "50": 0.975,
+        "51": 0.925
+      }
+    },
+    "avg_hops": {
+      "mean": 8.977500000000001,
+      "std": 0.7786607091667077,
+      "min": 7.7,
+      "max": 9.675,
+      "ci95_low": 8.4975,
+      "ci95_high": 9.4025,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 7.7,
+        "43": 9.675,
+        "44": 7.75,
+        "45": 9.55,
+        "46": 9.6,
+        "47": 8.975,
+        "48": 9.15,
+        "49": 9.55,
+        "50": 9.525,
+        "51": 8.3
+      }
+    },
+    "avg_latency_ms": {
+      "mean": 198.34294833297042,
+      "std": 22.049745524195526,
+      "min": 166.7486308530844,
+      "max": 222.7721255604005,
+      "ci95_low": 184.75595845284812,
+      "ci95_high": 210.85033245491462,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 168.8672034619802,
+        "43": 222.7721255604005,
+        "44": 166.7486308530844,
+        "45": 219.65290725419874,
+        "46": 218.88279607344916,
+        "47": 173.81497109806253,
+        "48": 211.00604831829955,
+        "49": 192.74241300662794,
+        "50": 213.62171627640774,
+        "51": 195.32067142719353
+      }
+    },
+    "avg_success_hops": {
+      "mean": 9.522261987261988,
+      "std": 0.965155603402554,
+      "min": 7.7,
+      "max": 10.61111111111111,
+      "ci95_low": 8.927048963798963,
+      "ci95_high": 10.059267589017589,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 7.7,
+        "43": 10.45945945945946,
+        "44": 8.378378378378379,
+        "45": 10.61111111111111,
+        "46": 9.6,
+        "47": 10.257142857142858,
+        "48": 9.15,
+        "49": 10.324324324324325,
+        "50": 9.76923076923077,
+        "51": 8.972972972972974
+      }
+    },
+    "avg_success_latency_ms": {
+      "mean": 210.11908904219723,
+      "std": 23.528043962411207,
+      "min": 168.8672034619802,
+      "max": 244.05878583799853,
+      "ci95_low": 196.41849128461078,
+      "ci95_high": 223.3844114774018,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 168.8672034619802,
+        "43": 240.83473033556814,
+        "44": 180.26879011144257,
+        "45": 244.05878583799853,
+        "46": 218.88279607344916,
+        "47": 198.64568125492863,
+        "48": 211.00604831829955,
+        "49": 208.37017622338155,
+        "50": 219.09919618093096,
+        "51": 211.15748262399296
+      }
+    },
+    "total_loops": {
+      "mean": 24008.0,
+      "std": 0.0,
+      "min": 24008.0,
+      "max": 24008.0,
+      "ci95_low": 24008.0,
+      "ci95_high": 24008.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 24008.0,
+        "43": 24008.0,
+        "44": 24008.0,
+        "45": 24008.0,
+        "46": 24008.0,
+        "47": 24008.0,
+        "48": 24008.0,
+        "49": 24008.0,
+        "50": 24008.0,
+        "51": 24008.0
+      }
+    },
+    "attacked_count": {
+      "mean": 52.9,
+      "std": 11.789354897062386,
+      "min": 40.0,
+      "max": 70.0,
+      "ci95_low": 46.1,
+      "ci95_high": 60.2,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 54.0,
+        "43": 69.0,
+        "44": 40.0,
+        "45": 55.0,
+        "46": 70.0,
+        "47": 41.0,
+        "48": 46.0,
+        "49": 42.0,
+        "50": 66.0,
+        "51": 46.0
+      }
+    },
+    "dropped_by_attacker": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.0,
+        "43": 0.0,
+        "44": 0.0,
+        "45": 0.0,
+        "46": 0.0,
+        "47": 0.0,
+        "48": 0.0,
+        "49": 0.0,
+        "50": 0.0,
+        "51": 0.0
+      }
+    },
+    "num_success": {
+      "mean": 37.8,
+      "std": 1.8135294011647258,
+      "min": 35.0,
+      "max": 40.0,
+      "ci95_low": 36.8,
+      "ci95_high": 38.9,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 40.0,
+        "43": 37.0,
+        "44": 37.0,
+        "45": 36.0,
+        "46": 40.0,
+        "47": 35.0,
+        "48": 40.0,
+        "49": 37.0,
+        "50": 39.0,
+        "51": 37.0
+      }
+    },
+    "num_trials": {
+      "mean": 40.0,
+      "std": 0.0,
+      "min": 40.0,
+      "max": 40.0,
+      "ci95_low": 40.0,
+      "ci95_high": 40.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 40.0,
+        "43": 40.0,
+        "44": 40.0,
+        "45": 40.0,
+        "46": 40.0,
+        "47": 40.0,
+        "48": 40.0,
+        "49": 40.0,
+        "50": 40.0,
+        "51": 40.0
+      }
+    },
+    "wormhole_num_tunnels": {
+      "mean": 3.0,
+      "std": 0.0,
+      "min": 3.0,
+      "max": 3.0,
+      "ci95_low": 3.0,
+      "ci95_high": 3.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 3.0,
+        "43": 3.0,
+        "44": 3.0,
+        "45": 3.0,
+        "46": 3.0,
+        "47": 3.0,
+        "48": 3.0,
+        "49": 3.0,
+        "50": 3.0,
+        "51": 3.0
+      }
+    },
+    "wormhole_attracted_ratio": {
+      "mean": 0.39499999999999996,
+      "std": 0.12572014777097407,
+      "min": 0.2,
+      "max": 0.6,
+      "ci95_low": 0.3224375,
+      "ci95_high": 0.47000000000000003,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.35,
+        "43": 0.6,
+        "44": 0.3,
+        "45": 0.425,
+        "46": 0.5,
+        "47": 0.2,
+        "48": 0.45,
+        "49": 0.275,
+        "50": 0.525,
+        "51": 0.325
+      }
+    },
+    "wormhole_attracted_trials": {
+      "mean": 15.8,
+      "std": 5.028805910838963,
+      "min": 8.0,
+      "max": 24.0,
+      "ci95_low": 12.8975,
+      "ci95_high": 18.8,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 14.0,
+        "43": 24.0,
+        "44": 12.0,
+        "45": 17.0,
+        "46": 20.0,
+        "47": 8.0,
+        "48": 18.0,
+        "49": 11.0,
+        "50": 21.0,
+        "51": 13.0
+      }
+    },
+    "wormhole_false_positive_rate": {
+      "mean": 0.20040760869565216,
+      "std": 0.0,
+      "min": 0.20040760869565216,
+      "max": 0.20040760869565216,
+      "ci95_low": 0.20040760869565216,
+      "ci95_high": 0.20040760869565216,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.20040760869565216,
+        "43": 0.20040760869565216,
+        "44": 0.20040760869565216,
+        "45": 0.20040760869565216,
+        "46": 0.20040760869565216,
+        "47": 0.20040760869565216,
+        "48": 0.20040760869565216,
+        "49": 0.20040760869565216,
+        "50": 0.20040760869565216,
+        "51": 0.20040760869565216
+      }
+    },
+    "wormhole_suspicious_hops": {
+      "mean": 593.0,
+      "std": 0.0,
+      "min": 593.0,
+      "max": 593.0,
+      "ci95_low": 593.0,
+      "ci95_high": 593.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 593.0,
+        "43": 593.0,
+        "44": 593.0,
+        "45": 593.0,
+        "46": 593.0,
+        "47": 593.0,
+        "48": 593.0,
+        "49": 593.0,
+        "50": 593.0,
+        "51": 593.0
+      }
+    },
+    "wormhole_edges_examined": {
+      "mean": 2944.0,
+      "std": 0.0,
+      "min": 2944.0,
+      "max": 2944.0,
+      "ci95_low": 2944.0,
+      "ci95_high": 2944.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 2944.0,
+        "43": 2944.0,
+        "44": 2944.0,
+        "45": 2944.0,
+        "46": 2944.0,
+        "47": 2944.0,
+        "48": 2944.0,
+        "49": 2944.0,
+        "50": 2944.0,
+        "51": 2944.0
+      }
+    },
+    "wormhole_latency_flagged_ratio": {
+      "mean": 0.9922972972972973,
+      "std": 0.017117709804817208,
+      "min": 0.95,
+      "max": 1.0,
+      "ci95_low": 0.9799999999999999,
+      "ci95_high": 1.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.95,
+        "43": 1.0,
+        "44": 1.0,
+        "45": 1.0,
+        "46": 1.0,
+        "47": 1.0,
+        "48": 1.0,
+        "49": 1.0,
+        "50": 1.0,
+        "51": 0.972972972972973
+      }
+    },
+    "wormhole_detection_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci95_low": 1.0,
+      "ci95_high": 1.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 1.0,
+        "43": 1.0,
+        "44": 1.0,
+        "45": 1.0,
+        "46": 1.0,
+        "47": 1.0,
+        "48": 1.0,
+        "49": 1.0,
+        "50": 1.0,
+        "51": 1.0
+      }
+    },
+    "wormhole_detected_tunnels": {
+      "mean": 3.0,
+      "std": 0.0,
+      "min": 3.0,
+      "max": 3.0,
+      "ci95_low": 3.0,
+      "ci95_high": 3.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 3.0,
+        "43": 3.0,
+        "44": 3.0,
+        "45": 3.0,
+        "46": 3.0,
+        "47": 3.0,
+        "48": 3.0,
+        "49": 3.0,
+        "50": 3.0,
+        "51": 3.0
+      }
+    },
+    "wormhole_path_stretch": {
+      "mean": 0.9184582287559515,
+      "std": 0.0368582462373965,
+      "min": 0.8648522564675014,
+      "max": 0.9922195765804787,
+      "ci95_low": 0.8976054213938275,
+      "ci95_high": 0.9409450193518871,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.9250667388167388,
+        "43": 0.8648522564675014,
+        "44": 0.9287614477831869,
+        "45": 0.9182439437831594,
+        "46": 0.9300329184704186,
+        "47": 0.9922195765804787,
+        "48": 0.9142967307416333,
+        "49": 0.9465260715260716,
+        "50": 0.8721086456989761,
+        "51": 0.8924739576913491
+      }
+    },
+    "wormhole_geo_stretch": {
+      "mean": 1.1249167894636347,
+      "std": 0.046810251519244214,
+      "min": 1.051466373217743,
+      "max": 1.2059488539288497,
+      "ci95_low": 1.0982368939030192,
+      "ci95_high": 1.1524831453873992,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 1.082103269271504,
+        "43": 1.116291905631712,
+        "44": 1.1319380797547616,
+        "45": 1.2059488539288497,
+        "46": 1.1915272824160574,
+        "47": 1.132572363478105,
+        "48": 1.1060583339607013,
+        "49": 1.0958913671280592,
+        "50": 1.051466373217743,
+        "51": 1.1353700658488541
+      }
+    },
+    "wormhole_mean_tunnel_km": {
+      "mean": 13482.5010884493,
+      "std": 0.0,
+      "min": 13482.5010884493,
+      "max": 13482.5010884493,
+      "ci95_low": 13482.5010884493,
+      "ci95_high": 13482.5010884493,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 13482.5010884493,
+        "43": 13482.5010884493,
+        "44": 13482.5010884493,
+        "45": 13482.5010884493,
+        "46": 13482.5010884493,
+        "47": 13482.5010884493,
+        "48": 13482.5010884493,
+        "49": 13482.5010884493,
+        "50": 13482.5010884493,
+        "51": 13482.5010884493
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed42.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 7.7,
+        "avg_latency_ms": 168.8672034619802,
+        "avg_success_hops": 7.7,
+        "avg_success_latency_ms": 168.8672034619802,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 54.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.35,
+        "wormhole_attracted_trials": 14.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 0.95,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.9250667388167388,
+        "wormhole_geo_stretch": 1.082103269271504,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed42.json",
+          "seed": 42
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed43.json",
+      "metrics": {
+        "delivery_ratio": 0.925,
+        "avg_hops": 9.675,
+        "avg_latency_ms": 222.7721255604005,
+        "avg_success_hops": 10.45945945945946,
+        "avg_success_latency_ms": 240.83473033556814,
+        "num_success": 37.0,
+        "num_trials": 40.0,
+        "attacked_count": 69.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.6,
+        "wormhole_attracted_trials": 24.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.8648522564675014,
+        "wormhole_geo_stretch": 1.116291905631712,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed43.json",
+          "seed": 43
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed44.json",
+      "metrics": {
+        "delivery_ratio": 0.925,
+        "avg_hops": 7.75,
+        "avg_latency_ms": 166.7486308530844,
+        "avg_success_hops": 8.378378378378379,
+        "avg_success_latency_ms": 180.26879011144257,
+        "num_success": 37.0,
+        "num_trials": 40.0,
+        "attacked_count": 40.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.3,
+        "wormhole_attracted_trials": 12.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.9287614477831869,
+        "wormhole_geo_stretch": 1.1319380797547616,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed44.json",
+          "seed": 44
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 45,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed45.json",
+      "metrics": {
+        "delivery_ratio": 0.9,
+        "avg_hops": 9.55,
+        "avg_latency_ms": 219.65290725419874,
+        "avg_success_hops": 10.61111111111111,
+        "avg_success_latency_ms": 244.05878583799853,
+        "num_success": 36.0,
+        "num_trials": 40.0,
+        "attacked_count": 55.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.425,
+        "wormhole_attracted_trials": 17.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.9182439437831594,
+        "wormhole_geo_stretch": 1.2059488539288497,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed45.json",
+          "seed": 45
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 46,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed46.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 9.6,
+        "avg_latency_ms": 218.88279607344916,
+        "avg_success_hops": 9.6,
+        "avg_success_latency_ms": 218.88279607344916,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 70.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.5,
+        "wormhole_attracted_trials": 20.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.9300329184704186,
+        "wormhole_geo_stretch": 1.1915272824160574,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed46.json",
+          "seed": 46
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed47.json",
+      "metrics": {
+        "delivery_ratio": 0.875,
+        "avg_hops": 8.975,
+        "avg_latency_ms": 173.81497109806253,
+        "avg_success_hops": 10.257142857142858,
+        "avg_success_latency_ms": 198.64568125492863,
+        "num_success": 35.0,
+        "num_trials": 40.0,
+        "attacked_count": 41.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.2,
+        "wormhole_attracted_trials": 8.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.9922195765804787,
+        "wormhole_geo_stretch": 1.132572363478105,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed47.json",
+          "seed": 47
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 48,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed48.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 9.15,
+        "avg_latency_ms": 211.00604831829955,
+        "avg_success_hops": 9.15,
+        "avg_success_latency_ms": 211.00604831829955,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 46.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.45,
+        "wormhole_attracted_trials": 18.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.9142967307416333,
+        "wormhole_geo_stretch": 1.1060583339607013,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed48.json",
+          "seed": 48
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 49,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed49.json",
+      "metrics": {
+        "delivery_ratio": 0.925,
+        "avg_hops": 9.55,
+        "avg_latency_ms": 192.74241300662794,
+        "avg_success_hops": 10.324324324324325,
+        "avg_success_latency_ms": 208.37017622338155,
+        "num_success": 37.0,
+        "num_trials": 40.0,
+        "attacked_count": 42.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.275,
+        "wormhole_attracted_trials": 11.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.9465260715260716,
+        "wormhole_geo_stretch": 1.0958913671280592,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed49.json",
+          "seed": 49
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 50,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed50.json",
+      "metrics": {
+        "delivery_ratio": 0.975,
+        "avg_hops": 9.525,
+        "avg_latency_ms": 213.62171627640774,
+        "avg_success_hops": 9.76923076923077,
+        "avg_success_latency_ms": 219.09919618093096,
+        "num_success": 39.0,
+        "num_trials": 40.0,
+        "attacked_count": 66.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.525,
+        "wormhole_attracted_trials": 21.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 1.0,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.8721086456989761,
+        "wormhole_geo_stretch": 1.051466373217743,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed50.json",
+          "seed": 50
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 51,
+      "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed51.json",
+      "metrics": {
+        "delivery_ratio": 0.925,
+        "avg_hops": 8.3,
+        "avg_latency_ms": 195.32067142719353,
+        "avg_success_hops": 8.972972972972974,
+        "avg_success_latency_ms": 211.15748262399296,
+        "num_success": 37.0,
+        "num_trials": 40.0,
+        "attacked_count": 46.0,
+        "dropped_by_attacker": 0.0,
+        "wormhole_num_tunnels": 3.0,
+        "wormhole_attracted_ratio": 0.325,
+        "wormhole_attracted_trials": 13.0,
+        "wormhole_false_positive_rate": 0.20040760869565216,
+        "wormhole_suspicious_hops": 593.0,
+        "wormhole_edges_examined": 2944.0,
+        "wormhole_latency_flagged_ratio": 0.972972972972973,
+        "wormhole_detection_rate": 1.0,
+        "wormhole_detected_tunnels": 3.0,
+        "wormhole_path_stretch": 0.8924739576913491,
+        "wormhole_geo_stretch": 1.1353700658488541,
+        "wormhole_mean_tunnel_km": 13482.5010884493,
+        "total_loops": 24008.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\e6_wormhole\\t3__s3_wh_t3_53_1024_seed51.json",
+          "seed": 51
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    }
+  ],
+  "warnings": []
+}

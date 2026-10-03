@@ -1,0 +1,1810 @@
+{
+  "generated_utc": "2026-09-30T15:42:38+00:00",
+  "raw_root": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw",
+  "out_dir": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\aggregated\\step3",
+  "n_boot": 4000,
+  "alpha": 0.05,
+  "metrics_universe": [
+    "delivery_ratio",
+    "avg_hops",
+    "avg_latency_ms",
+    "avg_success_hops",
+    "avg_success_latency_ms",
+    "total_loops",
+    "attacked_count",
+    "dropped_by_attacker",
+    "num_success",
+    "num_trials",
+    "sybil_attraction_ratio",
+    "sybil_attracted_trials",
+    "sybil_num_identities",
+    "wormhole_num_tunnels",
+    "wormhole_attracted_ratio",
+    "wormhole_attracted_trials",
+    "wormhole_false_positive_rate",
+    "wormhole_suspicious_hops",
+    "wormhole_edges_examined",
+    "wormhole_latency_flagged_ratio",
+    "wormhole_detection_rate",
+    "wormhole_detected_tunnels",
+    "wormhole_path_stretch",
+    "wormhole_geo_stretch",
+    "wormhole_mean_tunnel_km"
+  ],
+  "policy": "bootstrap 95% CI；同 seed≥2 用 Wilcoxon，否则 Mann-Whitney U；compare_attack_vs_baseline(strict=True) —— 匹配键不一致即判为不可比，不做任何放宽",
+  "known_upstream_bug": {
+    "status": "RESOLVED（已正式修复，不再是待解决问题）",
+    "where": "starlink_sim/analytics/stats.py paired_by_seed() 的配对 rank-biserial",
+    "what": "scipy>=1.7 下 wilcoxon(alternative='two-sided').statistic 返回 min(T+,T-) 而非 T+，但旧代码按 T+ 口径代入 r=(2V-T)/T",
+    "impact_when_unfixed": "配对效应量 rank_biserial 符号失效：全部差值同号时恒得 -1，与 median_diff 方向矛盾。**从未影响 p 值与显著性判定**（修复前后所有对比行的 p_value / significant 逐位不变，已逐条校验）",
+    "evidence": "scipy 1.15.3: wilcoxon([1,2]).statistic == 0.0（T+ 应为 3.0）；wilcoxon([-1,-2]).statistic == 0.0（与全正不可区分）。实例：修复前 e6_wormhole/t3 的 delivery_ratio median_diff=+0.0500 但 rank_biserial=-1.000（方向矛盾），修复后为 +1.000",
+    "fix": "stats.py 新增公开函数 signed_rank_biserial()，直接从配对差值重算 T+（按 |差值| 升序赋秩、并列取平均秩、T+ = 正差值秩和），paired_by_seed() 改为调用它并以其作为 effect_size.rank_biserial 的唯一来源；本脚本删除自有的重复实现 _signed_rank_biserial，改为 import 并调用同一个 stats.signed_rank_biserial（单一实现点）。effect_size 新增 t_plus / n_eff / note 审计字段；paired_by_seed 新增 statistic_semantics 说明 statistic 仍为 scipy 的 min(T+,T-)。mannwhitney_test 非配对路径符号本来就正确，本次未动。",
+    "fix_commit": "89c6dcb65076802f2f10b0dcb93e1ef89a535311",
+    "fix_commit_semantics": "git log -1 --format=%H -- starlink_sim/analytics/stats.py（本次聚合时刻 stats.py 的最后一次修改 = 该符号修复）",
+    "fix_regression_tests": [
+      "tests/test_analytics_stats.py::test_signed_rank_biserial_direction_and_magnitude",
+      "tests/test_analytics_stats.py::test_signed_rank_biserial_ties_use_average_rank",
+      "tests/test_analytics_stats.py::test_signed_rank_biserial_degenerate_zero_diff",
+      "tests/test_analytics_stats.py::test_paired_by_seed_sign_follows_median_diff_direction",
+      "tests/test_analytics_stats.py::test_paired_by_seed_sign_fix_does_not_change_p_value",
+      "tests/test_analytics_stats.py::test_mannwhitney_sign_convention_unchanged",
+      "tests/test_analytics_stats.py::test_paired_and_unpaired_sign_conventions_agree"
+    ],
+    "backward_compat": "CSV 列 rank_biserial / rank_biserial_signed / t_plus / n_eff / rb_note 全部保留；修复后两列在 Wilcoxon 行上数值相等（同一实现），并存便于与修复前的历史产物逐行对照",
+    "residual": "results/aggregated/step3_partial/ 与 results/step3_agg/ 是修复**前**产出的历史快照，其 rank_biserial 列符号不可信；本次全量重算的 results/aggregated/step3/ 才是修复后的权威产物"
+  },
+  "sweeps": {
+    "e4_sybil": {
+      "arms": [
+        "base",
+        "ids1",
+        "ids16",
+        "ids2",
+        "ids32",
+        "ids4",
+        "ids8"
+      ],
+      "n_arms": 7,
+      "n_seeds": {
+        "base": 10,
+        "ids16": 10,
+        "ids1": 10,
+        "ids2": 10,
+        "ids32": 10,
+        "ids4": 10,
+        "ids8": 10
+      },
+      "match_keys": {
+        "base": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "ids16": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "ids1": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "ids2": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "ids32": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "ids4": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "ids8": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    },
+    "e5_intensity": {
+      "arms": [
+        "base",
+        "c1",
+        "c12",
+        "c24",
+        "c3",
+        "c6",
+        "p00",
+        "p100",
+        "p20",
+        "p50"
+      ],
+      "n_arms": 10,
+      "n_seeds": {
+        "base": 10,
+        "c12": 10,
+        "c1": 10,
+        "c24": 10,
+        "c3": 10,
+        "c6": 10,
+        "p00": 10,
+        "p100": 10,
+        "p20": 10,
+        "p50": 10
+      },
+      "match_keys": {
+        "base": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "c12": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "c1": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "c24": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "c3": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "c6": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "p00": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "p100": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "p20": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "p50": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    },
+    "e5_placement": {
+      "arms": [
+        "base",
+        "btw",
+        "degree",
+        "kcore",
+        "led",
+        "rnd"
+      ],
+      "n_arms": 6,
+      "n_seeds": {
+        "base": 10,
+        "btw": 10,
+        "degree": 10,
+        "kcore": 10,
+        "led": 10,
+        "rnd": 10
+      },
+      "match_keys": {
+        "base": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "btw": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "degree": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "kcore": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "led": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "rnd": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    },
+    "e5a_scale_small": {
+      "arms": [
+        "base_n1024",
+        "base_n256",
+        "base_n48",
+        "base_n512",
+        "base_n96",
+        "bh3_n1024",
+        "bh3_n256",
+        "bh3_n48",
+        "bh3_n512",
+        "bh3_n96"
+      ],
+      "n_arms": 10,
+      "n_seeds": {
+        "base_n1024": 10,
+        "base_n256": 10,
+        "base_n48": 10,
+        "base_n512": 10,
+        "base_n96": 10,
+        "bh3_n1024": 10,
+        "bh3_n256": 10,
+        "bh3_n48": 10,
+        "bh3_n512": 10,
+        "bh3_n96": 10
+      },
+      "match_keys": {
+        "base_n1024": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "base_n256": {
+          "shell": "53°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "base_n48": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "base_n512": {
+          "shell": "53°",
+          "node_limit": 512,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "base_n96": {
+          "shell": "53°",
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_n1024": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_n256": {
+          "shell": "53°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_n48": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_n512": {
+          "shell": "53°",
+          "node_limit": 512,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_n96": {
+          "shell": "53°",
+          "node_limit": 96,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    },
+    "e6_wormhole": {
+      "arms": [
+        "base_det",
+        "extreme",
+        "t1",
+        "t3"
+      ],
+      "n_arms": 4,
+      "n_seeds": {
+        "base_det": 10,
+        "extreme": 10,
+        "t1": 10,
+        "t3": 10
+      },
+      "match_keys": {
+        "base_det": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "extreme": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "t1": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "t3": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    },
+    "e7_combo": {
+      "arms": [
+        "base",
+        "bh3",
+        "bh3_jm3",
+        "bh3_jm3_sy8",
+        "bh3_sy8",
+        "jm3",
+        "jm3_sy8",
+        "sy8"
+      ],
+      "n_arms": 8,
+      "n_seeds": {
+        "base": 10,
+        "bh3": 10,
+        "bh3_jm3": 10,
+        "bh3_jm3_sy8": 10,
+        "bh3_sy8": 10,
+        "jm3": 10,
+        "jm3_sy8": 10,
+        "sy8": 10
+      },
+      "match_keys": {
+        "base": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_jm3": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_jm3_sy8": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_sy8": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "jm3": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "jm3_sy8": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "sy8": {
+          "shell": "53°",
+          "node_limit": 1024,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    },
+    "shell256": {
+      "arms": [
+        "base_43",
+        "base_53",
+        "base_70",
+        "base_975",
+        "bh3_43",
+        "bh3_53",
+        "bh3_70",
+        "bh3_975"
+      ],
+      "n_arms": 8,
+      "n_seeds": {
+        "base_43": 10,
+        "base_53": 10,
+        "base_70": 10,
+        "base_975": 10,
+        "bh3_43": 10,
+        "bh3_53": 10,
+        "bh3_70": 10,
+        "bh3_975": 10
+      },
+      "match_keys": {
+        "base_43": {
+          "shell": "43°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "base_53": {
+          "shell": "53°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "base_70": {
+          "shell": "70°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "base_975": {
+          "shell": "97.5°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_43": {
+          "shell": "43°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_53": {
+          "shell": "53°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_70": {
+          "shell": "70°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "bh3_975": {
+          "shell": "97.5°",
+          "node_limit": 256,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        }
+      }
+    }
+  },
+  "n_comparisons": 39,
+  "n_comparison_rows": 411,
+  "completeness": [
+    {
+      "sweep": "e4_sybil",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids1",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids2",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids4",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids8",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids16",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e4_sybil",
+      "arm": "ids32",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c3",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c1",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c6",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c12",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "c24",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p00",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p20",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p50",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_intensity",
+      "arm": "p100",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "degree",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "rnd",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "btw",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "kcore",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5_placement",
+      "arm": "led",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n48",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n48",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n96",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n96",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n256",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n256",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n512",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n512",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "base_n1024",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_small",
+      "arm": "bh3_n1024",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e5a_scale_top",
+      "arm": "base_n2048",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e5a_scale_top",
+      "arm": "bh3_n2048",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "base_det",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "t1",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "t3",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e6_wormhole",
+      "arm": "extreme",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "base",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "jm3",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "sy8",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3_jm3",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3_sy8",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "jm3_sy8",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "e7_combo",
+      "arm": "bh3_jm3_sy8",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_53",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_53",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_70",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_70",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_975",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_975",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "base_43",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell1024",
+      "arm": "bh3_43",
+      "n_expected": 10,
+      "n_found": 0,
+      "seeds_found": [],
+      "seeds_missing": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "complete": false
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_53",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_53",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_70",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_70",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_975",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_975",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell256",
+      "arm": "base_43",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    },
+    {
+      "sweep": "shell256",
+      "arm": "bh3_43",
+      "n_expected": 10,
+      "n_found": 10,
+      "seeds_found": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "seeds_missing": [],
+      "complete": true
+    }
+  ],
+  "failures": []
+}

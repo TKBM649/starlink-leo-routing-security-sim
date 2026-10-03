@@ -1,0 +1,10 @@
+﻿[matrix] 璁″垝 9 涓?sweep / 630 浠诲姟锛堜覆琛?sweep銆乻weep 鍐呭苟琛岋級
+    e6_wormhole        arms=4   seeds=10  tasks=40   workers=10  complete=True
+    e4_sybil           arms=7   seeds=10  tasks=70   workers=10  complete=True
+    e5_placement       arms=6   seeds=10  tasks=60   workers=10  complete=True
+    e5_intensity       arms=10  seeds=10  tasks=100  workers=10  complete=True
+    e7_combo           arms=8   seeds=10  tasks=80   workers=10  complete=True
+    e5a_scale_small    arms=10  seeds=10  tasks=100  workers=10  complete=False
+    shell256           arms=8   seeds=10  tasks=80   workers=8   complete=False
+    shell1024          arms=8   seeds=10  tasks=80   workers=8   complete=False
+    e5a_scale_top      arms=2   seeds=10  tasks=20   workers=2   complete=False

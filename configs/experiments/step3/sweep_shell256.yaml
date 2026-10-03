@@ -1,12 +1,46 @@
 # configs/experiments/step3/sweep_shell256.yaml
 # 壳层对比（nl=256）：53° / 70° / 97.5° / 43° 四壳同一攻击配置
 #
-# nl=256 是四壳**都能**保持逐 epoch 最大连通分量占比 = 1.000 的最大公共规模
-# （实测 97.5° 壳持久核 GCC 仅 287 → nl=256 是其可用上界附近）。
-# 跨壳不做 compare_attack_vs_baseline（shell 属匹配键，跨壳必然不可比）；
-# 跨壳对比口径 = 各壳**壳内**配对得到的效应量 / 中位差，再横向制表。
+# ★ 定位：本 sweep 是**跨壳对比的唯一主口径**。nl=256 是四壳同时满足
+#   「规模等价（子集大小恰为 256）+ 100% 落在严格持久核内 + 逐 epoch 全连通」
+#   的**最大公共档位**。sweep_shell1024 只是附录档（仅 53°/43° 有效）。
 #
-# 本文件由 scripts/gen_step3_configs.py 生成 —— 请勿手工编辑。
+# Task #12 实测复核（探测工具 tools/probe_shell_scale_equivalence.py，只读生产路径
+#   starlink_sim.topology.subset，证据 results/step3_logs/shell_scale_equivalence.json）。
+#   strict core GCC = 「边存在于**全部 121 个 epoch**」的持久图之最大连通分量：
+#
+#   壳      节点数(出现于边中)  strict core GCC  nl=256 子集  inside_core  连通比 min/mean
+#   53°     4284                1064             256          1.000        1.000 / 1.000
+#   70°      702                 380             256          1.000        1.000 / 1.000
+#   97.5°   1075 (summary 1076)  287             256          1.000        1.000 / 1.000
+#   43°     3262                3249             256          1.000        1.000 / 1.000
+#
+#   → 四壳 GCC 最小值 = **287**（97.5°），故最大公共 2 的幂档位 = **256**。
+#   → 连通比在**两套口径下均为 1.000**：全 121 epoch（子集选择器的设计保证口径），
+#     以及 e3 runner 在 duration=60/epoch_interval=30 下**实际触达的评估窗口
+#     epoch[0:2]**（last_epoch_idx = 60//30 - 1 = 1）。
+#   → 97.5° summary 记 1076 颗卫星而边中只出现 1075 个节点：该壳有 1 颗卫星在
+#     全部 121 epoch 中度数为 0（degree_distribution 里的 "0": 1），从不参与建链。
+#
+# 为什么**不能**折中到 nl=512（实测）：
+#   70°   nl=512 → core_frac 放宽到 0.0（聚合图），全 121 epoch min=0.557 / mean=0.898
+#         （评估窗口内 min=1.000，尚可）；
+#   97.5° nl=512 → inside_core=0.377，**评估窗口内** min=mean=**0.377** → 已严重碎裂。
+#   故 nl≥512 时跨壳等价性破裂，256 是唯一干净的公共档。
+#
+# 跨壳不做 compare_attack_vs_baseline（shell 属匹配键四字段之一，跨壳必然抛
+#   TrialsCardinalityError）；跨壳对比口径 = 各壳**壳内**配对（bh3_X vs base_X）得到
+#   的效应量 / 中位差，再横向制表。comparison 字段只支持一对，此处仅示例 53° 配对，
+#   其余三壳的壳内配对由 scripts/aggregate_step3.py 从 raw JSON 统一补齐。
+#
+# ⚠️ 平均度协变量（解读跨壳差异时必读）：四壳在 nl=256 的评估窗口平均度并不相同
+#   —— 70°=4.820、97.5°=5.125、53°=3.359、43°=2.672。即「同规模」不等于「同密度」，
+#   壳间效应量差异**混杂了拓扑密度差异**，不得纯归因于轨道倾角/壳层本身。
+#
+# 本文件原由 scripts/gen_step3_configs.py 生成；头注已按 Task #12 实测数据**手工订正**
+#   （**仅注释**，无任何行为字段改动：8 臂 × 10 seeds = 80 任务、workers=8、
+#   匹配键四字段 {shell, 256, 2, 20} 均保持原样）。重跑生成器会覆盖这些订正，
+#   届时请把 results/step3_logs/shell_scale_equivalence.json 的数字同步回生成器。
 # 任务数 = 8 臂 × 10 seeds = 80。
 #
 # 运行（先 dry-run 核对臂数/匹配键/注入预览，再实跑）::

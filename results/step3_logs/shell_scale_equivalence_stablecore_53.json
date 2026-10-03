@@ -1,0 +1,412 @@
+{
+  "generated_utc": "2026-09-30T15:03:06+00:00",
+  "tool": "tools/probe_shell_scale_equivalence.py",
+  "pkl": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\data\\topology\\topology_results.pkl",
+  "pkl_bytes": 102763675,
+  "subset_method": "stable_core",
+  "shells_in_pkl": [
+    "53°",
+    "70°",
+    "97.5°",
+    "43°"
+  ],
+  "shells_probed": [
+    "53°"
+  ],
+  "shells_missing": [],
+  "ladder": [
+    48,
+    96,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "eval_window_epochs": 2,
+  "free_ram_gb_before_load": 11.41,
+  "peak_rss_gb": 1.226,
+  "shells": [
+    {
+      "shell": "53°",
+      "num_satellites_summary": 4284,
+      "num_nodes_in_edges": 4284,
+      "num_epochs": 121,
+      "num_unique_edges_all_time": 43141,
+      "avg_degree_summary": 5.713352007469655,
+      "edge_overlap_300s_summary": 0.8682073951089357,
+      "strict_persistent_core": {
+        "frac": 1.0,
+        "gcc_size": 1064,
+        "num_persistent_edges": 10830,
+        "core_coverage_of_shell": 0.248366
+      },
+      "eval_window_epochs": 2,
+      "subset_method": "stable_core",
+      "ladder": [
+        {
+          "node_limit": 48,
+          "subset_size": 48,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 48,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 64,
+            "mean_edges": 64.0,
+            "mean_avg_degree": 2.6667
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 64,
+            "mean_edges": 64.0,
+            "mean_avg_degree": 2.6667
+          },
+          "probe_seconds": 4.02
+        },
+        {
+          "node_limit": 96,
+          "subset_size": 96,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 96,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 146,
+            "mean_edges": 146.0,
+            "mean_avg_degree": 3.0417
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 146,
+            "mean_edges": 146.0,
+            "mean_avg_degree": 3.0417
+          },
+          "probe_seconds": 3.87
+        },
+        {
+          "node_limit": 256,
+          "subset_size": 256,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 256,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 442,
+            "mean_edges": 442.0,
+            "mean_avg_degree": 3.4531
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 442,
+            "mean_edges": 442.0,
+            "mean_avg_degree": 3.4531
+          },
+          "probe_seconds": 3.72
+        },
+        {
+          "node_limit": 512,
+          "subset_size": 512,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 512,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 1181,
+            "mean_edges": 1181.0,
+            "mean_avg_degree": 4.6133
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 1181,
+            "mean_edges": 1181.0,
+            "mean_avg_degree": 4.6133
+          },
+          "probe_seconds": 4.1
+        },
+        {
+          "node_limit": 1024,
+          "subset_size": 1024,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 1024,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 2927,
+            "mean_edges": 2928.07,
+            "mean_avg_degree": 5.7189
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 2929,
+            "mean_edges": 2929.0,
+            "mean_avg_degree": 5.7207
+          },
+          "probe_seconds": 4.69
+        },
+        {
+          "node_limit": 2048,
+          "subset_size": 2048,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 0.35,
+          "core_gcc_at_that_frac": 4211,
+          "inside_strict_core": 20,
+          "inside_strict_core_ratio": 0.009766,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 0.900879,
+            "mean_ratio": 0.99408,
+            "fully_connected": false
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 0.990723,
+            "mean_ratio": 0.990723,
+            "fully_connected": false
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 5566,
+            "mean_edges": 5584.76,
+            "mean_avg_degree": 5.4539
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 5594,
+            "mean_edges": 5595.5,
+            "mean_avg_degree": 5.4644
+          },
+          "probe_seconds": 6.31
+        }
+      ],
+      "nesting": {
+        "pairs": [
+          {
+            "smaller_nl": 48,
+            "larger_nl": 96,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 256,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 512,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 1024,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.046875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 2048,
+            "intersect": 19,
+            "containment_of_smaller": 0.395833,
+            "jaccard": 0.009148,
+            "nested": false
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 256,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 512,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 1024,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 2048,
+            "intersect": 19,
+            "containment_of_smaller": 0.197917,
+            "jaccard": 0.008941,
+            "nested": false
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 512,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 1024,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.25,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 2048,
+            "intersect": 19,
+            "containment_of_smaller": 0.074219,
+            "jaccard": 0.008315,
+            "nested": false
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 1024,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 2048,
+            "intersect": 19,
+            "containment_of_smaller": 0.037109,
+            "jaccard": 0.007477,
+            "nested": false
+          },
+          {
+            "smaller_nl": 1024,
+            "larger_nl": 2048,
+            "intersect": 19,
+            "containment_of_smaller": 0.018555,
+            "jaccard": 0.006223,
+            "nested": false
+          }
+        ],
+        "adjacent_chain_all_nested": false,
+        "all_pairs_nested": false
+      },
+      "probe_seconds_total": 30.71,
+      "peak_rss_gb_after_shell": 1.226
+    }
+  ],
+  "max_common_nl_all_epochs": {
+    "criterion": "conn_all_epochs",
+    "fully_connected_nls": [
+      48,
+      96,
+      256,
+      512,
+      1024
+    ],
+    "max_common_nl": 1024,
+    "max_common_power_of_two": 1024
+  },
+  "max_common_nl_eval_window": {
+    "criterion": "conn_eval_window",
+    "fully_connected_nls": [
+      48,
+      96,
+      256,
+      512,
+      1024
+    ],
+    "max_common_nl": 1024,
+    "max_common_power_of_two": 1024
+  },
+  "finished_utc": "2026-09-30T15:03:37+00:00"
+}

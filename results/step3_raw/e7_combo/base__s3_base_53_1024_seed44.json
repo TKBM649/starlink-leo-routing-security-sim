@@ -17,13 +17,14 @@
     "last_epoch_idx": 1,
     "runner": "e3_blackhole",
     "cardinality_semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch",
-    "git_commit": null,
+    "git_commit": "89c6dcb65076802f2f10b0dcb93e1ef89a535311",
     "python_version": "3.11.9",
     "tle_path": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\data\\tle\\starlink.tle",
     "tle_sha256": "212276b98b2b75d05abeda23e091cf7e9a9c20dd6a373d1d887eb76a4b6c9be1",
     "topology_cache_sha256": "f23f7ecdef8972e0e4d7292a0576116f06713baa0c1a3dbc51cf8cab8d940f9d",
     "topology_cache": "data/topology/topology_results.pkl",
-    "timestamp_utc": "2026-09-29T23:30:46+00:00"
+    "timestamp_utc": "2026-09-30T15:00:08+00:00",
+    "subset_method": "cumulative_degree"
   },
   "config": {
     "experiment": {

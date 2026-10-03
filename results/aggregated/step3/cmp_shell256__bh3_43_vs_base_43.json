@@ -1,0 +1,424 @@
+{
+  "n_groups": 1,
+  "n_comparable_groups": 1,
+  "groups": [
+    {
+      "match_key": {
+        "node_limit": 256,
+        "num_eval_epochs": 2,
+        "num_flows": 20,
+        "shell": "43°"
+      },
+      "attack_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "baseline_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "cardinality": {
+        "attack": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "43°",
+            "node_limit": 256,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\shell256\\bh3_43__s3_bh3_43_256_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        },
+        "baseline": {
+          "num_flows": 20,
+          "num_eval_epochs": 2,
+          "trials_per_flow_epoch": 1,
+          "total_trials": 40,
+          "match_key": {
+            "shell": "43°",
+            "node_limit": 256,
+            "num_eval_epochs": 2,
+            "num_flows": 20
+          },
+          "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+          "source": {
+            "has_config_snapshot": true,
+            "has_metadata": true,
+            "overrides_applied": [],
+            "file": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_raw\\shell256\\base_43__s3_base_43_256_seed42.json",
+            "seed": 42
+          },
+          "aux": {
+            "t_adv": 2.0,
+            "tick": 0.2,
+            "max_hops": 100,
+            "duration": 60
+          }
+        }
+      },
+      "comparable": true,
+      "mismatches": [],
+      "paired_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "comparisons": {
+        "delivery_ratio": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.001953125,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0,
+            "t_plus": 0.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": -0.44999999999999996,
+          "median_attack": 0.2625,
+          "median_baseline": 0.7,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "avg_hops": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.001953125,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0,
+            "t_plus": 0.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": -7.362500000000001,
+          "median_attack": 2.7625,
+          "median_baseline": 10.75,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "avg_latency_ms": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.001953125,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0,
+            "t_plus": 0.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": -130.05206435231872,
+          "median_attack": 45.61096279921236,
+          "median_baseline": 193.32972441498873,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "avg_success_hops": {
+          "test": "wilcoxon",
+          "statistic": 6.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.02734375,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -0.7818181818181819,
+            "t_plus": 6.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": -3.5559829059829067,
+          "median_attack": 10.503030303030304,
+          "median_baseline": 16.85989010989011,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "avg_success_latency_ms": {
+          "test": "wilcoxon",
+          "statistic": 8.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.048828125,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -0.7090909090909091,
+            "t_plus": 8.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": -45.2901579577691,
+          "median_attack": 203.84327748857237,
+          "median_baseline": 299.2457620786829,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "total_loops": {
+          "test": "wilcoxon",
+          "statistic": NaN,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": 0.0,
+            "t_plus": 0.0,
+            "n_eff": 0,
+            "note": "所有配对差值为 0，效应量无定义"
+          },
+          "median_diff": 0.0,
+          "median_attack": 6019.0,
+          "median_baseline": 6019.0,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": [
+            "所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理"
+          ]
+        },
+        "attacked_count": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.001953125,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": 1.0,
+            "t_plus": 55.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": 22.5,
+          "median_attack": 22.5,
+          "median_baseline": 0.0,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "dropped_by_attacker": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.001953125,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": 1.0,
+            "t_plus": 55.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": 18.0,
+          "median_attack": 18.0,
+          "median_baseline": 0.0,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "num_success": {
+          "test": "wilcoxon",
+          "statistic": 0.0,
+          "statistic_semantics": "scipy wilcoxon(alternative=\"two-sided\"): min(T+, T-)",
+          "p_value": 0.001953125,
+          "significant": true,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": -1.0,
+            "t_plus": 0.0,
+            "n_eff": 10,
+            "note": ""
+          },
+          "median_diff": -18.0,
+          "median_attack": 10.5,
+          "median_baseline": 28.0,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": []
+        },
+        "num_trials": {
+          "test": "wilcoxon",
+          "statistic": NaN,
+          "p_value": 1.0,
+          "significant": false,
+          "alpha": 0.05,
+          "effect_size": {
+            "rank_biserial": 0.0,
+            "t_plus": 0.0,
+            "n_eff": 0,
+            "note": "所有配对差值为 0，效应量无定义"
+          },
+          "median_diff": 0.0,
+          "median_attack": 40.0,
+          "median_baseline": 40.0,
+          "n_pairs": 10,
+          "paired_seeds": [
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
+          "warnings": [
+            "所有配对差值为 0，Wilcoxon 统计量无定义，按 p=1.0 不显著处理"
+          ]
+        }
+      },
+      "warnings": [
+        "匹配键一致，可比较"
+      ]
+    }
+  ],
+  "policy": "攻击臂仅与同匹配键 (shell/node_limit/num_eval_epochs/num_flows) 的基线臂做按 seed 配对比较；不匹配即拒绝"
+}

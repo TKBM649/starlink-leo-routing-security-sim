@@ -1,0 +1,1478 @@
+{
+  "generated_utc": "2026-09-30T15:00:55+00:00",
+  "tool": "tools/probe_shell_scale_equivalence.py",
+  "pkl": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\data\\topology\\topology_results.pkl",
+  "pkl_bytes": 102763675,
+  "subset_method": "cumulative_degree",
+  "shells_in_pkl": [
+    "53°",
+    "70°",
+    "97.5°",
+    "43°"
+  ],
+  "shells_probed": [
+    "53°",
+    "70°",
+    "97.5°",
+    "43°"
+  ],
+  "shells_missing": [],
+  "ladder": [
+    48,
+    96,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "eval_window_epochs": 2,
+  "free_ram_gb_before_load": 9.51,
+  "peak_rss_gb": 1.226,
+  "shells": [
+    {
+      "shell": "53°",
+      "num_satellites_summary": 4284,
+      "num_nodes_in_edges": 4284,
+      "num_epochs": 121,
+      "num_unique_edges_all_time": 43141,
+      "avg_degree_summary": 5.713352007469655,
+      "edge_overlap_300s_summary": 0.8682073951089357,
+      "strict_persistent_core": {
+        "frac": 1.0,
+        "gcc_size": 1064,
+        "num_persistent_edges": 10830,
+        "core_coverage_of_shell": 0.248366
+      },
+      "eval_window_epochs": 2,
+      "ladder": [
+        {
+          "node_limit": 48,
+          "subset_size": 48,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 48,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 69,
+            "mean_edges": 69.0,
+            "mean_avg_degree": 2.875
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 69,
+            "mean_edges": 69.0,
+            "mean_avg_degree": 2.875
+          },
+          "probe_seconds": 4.12
+        },
+        {
+          "node_limit": 96,
+          "subset_size": 96,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 96,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 138,
+            "mean_edges": 138.0,
+            "mean_avg_degree": 2.875
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 138,
+            "mean_edges": 138.0,
+            "mean_avg_degree": 2.875
+          },
+          "probe_seconds": 3.77
+        },
+        {
+          "node_limit": 256,
+          "subset_size": 256,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 256,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 430,
+            "mean_edges": 430.0,
+            "mean_avg_degree": 3.3594
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 430,
+            "mean_edges": 430.0,
+            "mean_avg_degree": 3.3594
+          },
+          "probe_seconds": 3.94
+        },
+        {
+          "node_limit": 512,
+          "subset_size": 512,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 512,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 1136,
+            "mean_edges": 1139.02,
+            "mean_avg_degree": 4.4493
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 1141,
+            "mean_edges": 1141.0,
+            "mean_avg_degree": 4.457
+          },
+          "probe_seconds": 4.1
+        },
+        {
+          "node_limit": 1024,
+          "subset_size": 1024,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 1064,
+          "inside_strict_core": 1024,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 2923,
+            "mean_edges": 2930.19,
+            "mean_avg_degree": 5.723
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 2930,
+            "mean_edges": 2931.5,
+            "mean_avg_degree": 5.7256
+          },
+          "probe_seconds": 4.46
+        },
+        {
+          "node_limit": 2048,
+          "subset_size": 2048,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 0.35,
+          "core_gcc_at_that_frac": 4211,
+          "inside_strict_core": 70,
+          "inside_strict_core_ratio": 0.03418,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 0.996094,
+            "mean_ratio": 0.999027,
+            "fully_connected": false
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 0.999512,
+            "mean_ratio": 0.999756,
+            "fully_connected": false
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 5459,
+            "mean_edges": 5502.46,
+            "mean_avg_degree": 5.3735
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 5516,
+            "mean_edges": 5521.0,
+            "mean_avg_degree": 5.3916
+          },
+          "probe_seconds": 6.14
+        }
+      ],
+      "nesting": {
+        "pairs": [
+          {
+            "smaller_nl": 48,
+            "larger_nl": 96,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 256,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 512,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 1024,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.046875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 2048,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.023438,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 256,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 512,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 1024,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 2048,
+            "intersect": 69,
+            "containment_of_smaller": 0.71875,
+            "jaccard": 0.033253,
+            "nested": false
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 512,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 1024,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.25,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 2048,
+            "intersect": 69,
+            "containment_of_smaller": 0.269531,
+            "jaccard": 0.030872,
+            "nested": false
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 1024,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 2048,
+            "intersect": 69,
+            "containment_of_smaller": 0.134766,
+            "jaccard": 0.0277,
+            "nested": false
+          },
+          {
+            "smaller_nl": 1024,
+            "larger_nl": 2048,
+            "intersect": 70,
+            "containment_of_smaller": 0.068359,
+            "jaccard": 0.023318,
+            "nested": false
+          }
+        ],
+        "adjacent_chain_all_nested": false,
+        "all_pairs_nested": false
+      },
+      "probe_seconds_total": 30.22,
+      "peak_rss_gb_after_shell": 1.226
+    },
+    {
+      "shell": "70°",
+      "num_satellites_summary": 702,
+      "num_nodes_in_edges": 702,
+      "num_epochs": 121,
+      "num_unique_edges_all_time": 2424,
+      "avg_degree_summary": 5.635327635327635,
+      "edge_overlap_300s_summary": 0.9756995212352928,
+      "strict_persistent_core": {
+        "frac": 1.0,
+        "gcc_size": 380,
+        "num_persistent_edges": 1941,
+        "core_coverage_of_shell": 0.541311
+      },
+      "eval_window_epochs": 2,
+      "ladder": [
+        {
+          "node_limit": 48,
+          "subset_size": 48,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 380,
+          "inside_strict_core": 48,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 69,
+            "mean_edges": 69.0,
+            "mean_avg_degree": 2.875
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 69,
+            "mean_edges": 69.0,
+            "mean_avg_degree": 2.875
+          },
+          "probe_seconds": 0.5
+        },
+        {
+          "node_limit": 96,
+          "subset_size": 96,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 380,
+          "inside_strict_core": 96,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 124,
+            "mean_edges": 124.0,
+            "mean_avg_degree": 2.5833
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 124,
+            "mean_edges": 124.0,
+            "mean_avg_degree": 2.5833
+          },
+          "probe_seconds": 0.47
+        },
+        {
+          "node_limit": 256,
+          "subset_size": 256,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 380,
+          "inside_strict_core": 256,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 617,
+            "mean_edges": 617.0,
+            "mean_avg_degree": 4.8203
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 617,
+            "mean_edges": 617.0,
+            "mean_avg_degree": 4.8203
+          },
+          "probe_seconds": 0.57
+        },
+        {
+          "node_limit": 512,
+          "subset_size": 512,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 0.0,
+          "core_gcc_at_that_frac": 702,
+          "inside_strict_core": 284,
+          "inside_strict_core_ratio": 0.554688,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 0.556641,
+            "mean_ratio": 0.89784,
+            "fully_connected": false
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 1297,
+            "mean_edges": 1298.87,
+            "mean_avg_degree": 5.0737
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 1299,
+            "mean_edges": 1299.0,
+            "mean_avg_degree": 5.0742
+          },
+          "probe_seconds": 0.82
+        },
+        {
+          "node_limit": 1024,
+          "subset_size": 702,
+          "subset_size_equals_node_limit": false,
+          "degenerate_full_shell": true,
+          "core_frac_used": 0.0,
+          "core_gcc_at_that_frac": 702,
+          "inside_strict_core": 380,
+          "inside_strict_core_ratio": 0.541311,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 1977,
+            "mean_edges": 1978.11,
+            "mean_avg_degree": 5.6356
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 1978,
+            "mean_edges": 1978.0,
+            "mean_avg_degree": 5.6353
+          },
+          "probe_seconds": 0.74
+        },
+        {
+          "node_limit": 2048,
+          "subset_size": 702,
+          "subset_size_equals_node_limit": false,
+          "degenerate_full_shell": true,
+          "core_frac_used": 0.0,
+          "core_gcc_at_that_frac": 702,
+          "inside_strict_core": 380,
+          "inside_strict_core_ratio": 0.541311,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 1977,
+            "mean_edges": 1978.11,
+            "mean_avg_degree": 5.6356
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 1978,
+            "mean_edges": 1978.0,
+            "mean_avg_degree": 5.6353
+          },
+          "probe_seconds": 0.7
+        }
+      ],
+      "nesting": {
+        "pairs": [
+          {
+            "smaller_nl": 48,
+            "larger_nl": 96,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 256,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 512,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 1024,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.068376,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 2048,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.068376,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 256,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 512,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 1024,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.136752,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 2048,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.136752,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 512,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 1024,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.364672,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 2048,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.364672,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 1024,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.729345,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 2048,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.729345,
+            "nested": true
+          },
+          {
+            "smaller_nl": 1024,
+            "larger_nl": 2048,
+            "intersect": 702,
+            "containment_of_smaller": 1.0,
+            "jaccard": 1.0,
+            "nested": true
+          }
+        ],
+        "adjacent_chain_all_nested": true,
+        "all_pairs_nested": true
+      },
+      "probe_seconds_total": 4.91,
+      "peak_rss_gb_after_shell": 1.226
+    },
+    {
+      "shell": "97.5°",
+      "num_satellites_summary": 1076,
+      "num_nodes_in_edges": 1075,
+      "num_epochs": 121,
+      "num_unique_edges_all_time": 3362,
+      "avg_degree_summary": 4.646840148698884,
+      "edge_overlap_300s_summary": 0.9752143665288401,
+      "strict_persistent_core": {
+        "frac": 1.0,
+        "gcc_size": 287,
+        "num_persistent_edges": 2451,
+        "core_coverage_of_shell": 0.266977
+      },
+      "eval_window_epochs": 2,
+      "ladder": [
+        {
+          "node_limit": 48,
+          "subset_size": 48,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 287,
+          "inside_strict_core": 48,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 67,
+            "mean_edges": 67.0,
+            "mean_avg_degree": 2.7917
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 67,
+            "mean_edges": 67.0,
+            "mean_avg_degree": 2.7917
+          },
+          "probe_seconds": 0.62
+        },
+        {
+          "node_limit": 96,
+          "subset_size": 96,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 287,
+          "inside_strict_core": 96,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 153,
+            "mean_edges": 153.0,
+            "mean_avg_degree": 3.1875
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 153,
+            "mean_edges": 153.0,
+            "mean_avg_degree": 3.1875
+          },
+          "probe_seconds": 0.59
+        },
+        {
+          "node_limit": 256,
+          "subset_size": 256,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 287,
+          "inside_strict_core": 256,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 656,
+            "mean_edges": 656.0,
+            "mean_avg_degree": 5.125
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 656,
+            "mean_edges": 656.0,
+            "mean_avg_degree": 5.125
+          },
+          "probe_seconds": 0.77
+        },
+        {
+          "node_limit": 512,
+          "subset_size": 512,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 0.0,
+          "core_gcc_at_that_frac": 1075,
+          "inside_strict_core": 193,
+          "inside_strict_core_ratio": 0.376953,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 0.376953,
+            "mean_ratio": 0.436354,
+            "fully_connected": false
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 0.376953,
+            "mean_ratio": 0.376953,
+            "fully_connected": false
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 1094,
+            "mean_edges": 1101.26,
+            "mean_avg_degree": 4.3018
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 1101,
+            "mean_edges": 1101.5,
+            "mean_avg_degree": 4.3027
+          },
+          "probe_seconds": 0.97
+        },
+        {
+          "node_limit": 1024,
+          "subset_size": 1024,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 0.0,
+          "core_gcc_at_that_frac": 1075,
+          "inside_strict_core": 287,
+          "inside_strict_core_ratio": 0.280273,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 0.280273,
+            "mean_ratio": 0.615299,
+            "fully_connected": false
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 0.633789,
+            "mean_ratio": 0.669434,
+            "fully_connected": false
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 2414,
+            "mean_edges": 2416.33,
+            "mean_avg_degree": 4.7194
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 2416,
+            "mean_edges": 2416.0,
+            "mean_avg_degree": 4.7188
+          },
+          "probe_seconds": 1.27
+        },
+        {
+          "node_limit": 2048,
+          "subset_size": 1075,
+          "subset_size_equals_node_limit": false,
+          "degenerate_full_shell": true,
+          "core_frac_used": 0.0,
+          "core_gcc_at_that_frac": 1075,
+          "inside_strict_core": 287,
+          "inside_strict_core_ratio": 0.266977,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 0.266977,
+            "mean_ratio": 0.629529,
+            "fully_connected": false
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 0.684651,
+            "mean_ratio": 0.695814,
+            "fully_connected": false
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 2498,
+            "mean_edges": 2500.33,
+            "mean_avg_degree": 4.6518
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 2500,
+            "mean_edges": 2500.0,
+            "mean_avg_degree": 4.6512
+          },
+          "probe_seconds": 0.88
+        }
+      ],
+      "nesting": {
+        "pairs": [
+          {
+            "smaller_nl": 48,
+            "larger_nl": 96,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 256,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 512,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 1024,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.046875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 2048,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.044651,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 256,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 512,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 1024,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 2048,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.089302,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 512,
+            "intersect": 193,
+            "containment_of_smaller": 0.753906,
+            "jaccard": 0.335652,
+            "nested": false
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 1024,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.25,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 2048,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.23814,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 1024,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 2048,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.476279,
+            "nested": true
+          },
+          {
+            "smaller_nl": 1024,
+            "larger_nl": 2048,
+            "intersect": 1024,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.952558,
+            "nested": true
+          }
+        ],
+        "adjacent_chain_all_nested": false,
+        "all_pairs_nested": false
+      },
+      "probe_seconds_total": 6.27,
+      "peak_rss_gb_after_shell": 1.226
+    },
+    {
+      "shell": "43°",
+      "num_satellites_summary": 3262,
+      "num_nodes_in_edges": 3262,
+      "num_epochs": 121,
+      "num_unique_edges_all_time": 10561,
+      "avg_degree_summary": 5.50337216431637,
+      "edge_overlap_300s_summary": 0.9875812581486215,
+      "strict_persistent_core": {
+        "frac": 1.0,
+        "gcc_size": 3249,
+        "num_persistent_edges": 8892,
+        "core_coverage_of_shell": 0.996015
+      },
+      "eval_window_epochs": 2,
+      "ladder": [
+        {
+          "node_limit": 48,
+          "subset_size": 48,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 3249,
+          "inside_strict_core": 48,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 57,
+            "mean_edges": 57.0,
+            "mean_avg_degree": 2.375
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 57,
+            "mean_edges": 57.0,
+            "mean_avg_degree": 2.375
+          },
+          "probe_seconds": 2.65
+        },
+        {
+          "node_limit": 96,
+          "subset_size": 96,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 3249,
+          "inside_strict_core": 96,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 124,
+            "mean_edges": 124.0,
+            "mean_avg_degree": 2.5833
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 124,
+            "mean_edges": 124.0,
+            "mean_avg_degree": 2.5833
+          },
+          "probe_seconds": 2.72
+        },
+        {
+          "node_limit": 256,
+          "subset_size": 256,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 3249,
+          "inside_strict_core": 256,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 342,
+            "mean_edges": 342.0,
+            "mean_avg_degree": 2.6719
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 342,
+            "mean_edges": 342.0,
+            "mean_avg_degree": 2.6719
+          },
+          "probe_seconds": 2.87
+        },
+        {
+          "node_limit": 512,
+          "subset_size": 512,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 3249,
+          "inside_strict_core": 512,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 802,
+            "mean_edges": 802.0,
+            "mean_avg_degree": 3.1328
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 802,
+            "mean_edges": 802.0,
+            "mean_avg_degree": 3.1328
+          },
+          "probe_seconds": 2.82
+        },
+        {
+          "node_limit": 1024,
+          "subset_size": 1024,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 3249,
+          "inside_strict_core": 1024,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 1724,
+            "mean_edges": 1724.0,
+            "mean_avg_degree": 3.3672
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 1724,
+            "mean_edges": 1724.0,
+            "mean_avg_degree": 3.3672
+          },
+          "probe_seconds": 3.15
+        },
+        {
+          "node_limit": 2048,
+          "subset_size": 2048,
+          "subset_size_equals_node_limit": true,
+          "degenerate_full_shell": false,
+          "core_frac_used": 1.0,
+          "core_gcc_at_that_frac": 3249,
+          "inside_strict_core": 2048,
+          "inside_strict_core_ratio": 1.0,
+          "conn_all_epochs": {
+            "num_epochs": 121,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "conn_eval_window": {
+            "num_epochs": 2,
+            "min_ratio": 1.0,
+            "mean_ratio": 1.0,
+            "fully_connected": true
+          },
+          "density_all_epochs": {
+            "num_epochs": 121,
+            "min_edges": 4696,
+            "mean_edges": 4696.0,
+            "mean_avg_degree": 4.5859
+          },
+          "density_eval_window": {
+            "num_epochs": 2,
+            "min_edges": 4696,
+            "mean_edges": 4696.0,
+            "mean_avg_degree": 4.5859
+          },
+          "probe_seconds": 3.76
+        }
+      ],
+      "nesting": {
+        "pairs": [
+          {
+            "smaller_nl": 48,
+            "larger_nl": 96,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 256,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 512,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 1024,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.046875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 48,
+            "larger_nl": 2048,
+            "intersect": 48,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.023438,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 256,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 512,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.1875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 1024,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.09375,
+            "nested": true
+          },
+          {
+            "smaller_nl": 96,
+            "larger_nl": 2048,
+            "intersect": 96,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.046875,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 512,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 1024,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.25,
+            "nested": true
+          },
+          {
+            "smaller_nl": 256,
+            "larger_nl": 2048,
+            "intersect": 256,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.125,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 1024,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          },
+          {
+            "smaller_nl": 512,
+            "larger_nl": 2048,
+            "intersect": 512,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.25,
+            "nested": true
+          },
+          {
+            "smaller_nl": 1024,
+            "larger_nl": 2048,
+            "intersect": 1024,
+            "containment_of_smaller": 1.0,
+            "jaccard": 0.5,
+            "nested": true
+          }
+        ],
+        "adjacent_chain_all_nested": true,
+        "all_pairs_nested": true
+      },
+      "probe_seconds_total": 20.49,
+      "peak_rss_gb_after_shell": 1.226
+    }
+  ],
+  "max_common_nl_all_epochs": {
+    "criterion": "conn_all_epochs",
+    "fully_connected_nls": [
+      48,
+      96,
+      256
+    ],
+    "max_common_nl": 256,
+    "max_common_power_of_two": 256
+  },
+  "max_common_nl_eval_window": {
+    "criterion": "conn_eval_window",
+    "fully_connected_nls": [
+      48,
+      96,
+      256
+    ],
+    "max_common_nl": 256,
+    "max_common_power_of_two": 256
+  },
+  "finished_utc": "2026-09-30T15:01:59+00:00"
+}

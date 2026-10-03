@@ -1,0 +1,696 @@
+{
+  "experiment": "s3_base_53_48",
+  "n_seeds": 10,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    47,
+    46,
+    48,
+    49,
+    50,
+    51
+  ],
+  "cardinality": {
+    "match_key": {
+      "shell": "53°",
+      "node_limit": 48,
+      "num_eval_epochs": 2,
+      "num_flows": 20
+    },
+    "detail": {
+      "num_flows": 20,
+      "num_eval_epochs": 2,
+      "trials_per_flow_epoch": 1,
+      "total_trials": 40,
+      "match_key": {
+        "shell": "53°",
+        "node_limit": 48,
+        "num_eval_epochs": 2,
+        "num_flows": 20
+      },
+      "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+      "source": {
+        "has_config_snapshot": true,
+        "has_metadata": true,
+        "overrides_applied": [],
+        "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed42.json",
+        "seed": 42
+      },
+      "aux": {
+        "t_adv": 2.0,
+        "tick": 0.2,
+        "max_hops": 100,
+        "duration": 60
+      }
+    },
+    "consistent_across_seeds": true
+  },
+  "metrics": {
+    "delivery_ratio": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci95_low": 1.0,
+      "ci95_high": 1.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 1.0,
+        "43": 1.0,
+        "44": 1.0,
+        "45": 1.0,
+        "47": 1.0,
+        "46": 1.0,
+        "48": 1.0,
+        "49": 1.0,
+        "50": 1.0,
+        "51": 1.0
+      }
+    },
+    "avg_hops": {
+      "mean": 4.985,
+      "std": 0.7063403334559528,
+      "min": 4.2,
+      "max": 6.3,
+      "ci95_low": 4.610000000000001,
+      "ci95_high": 5.4151250000000015,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 5.45,
+        "43": 4.2,
+        "44": 4.5,
+        "45": 5.05,
+        "47": 4.85,
+        "46": 4.7,
+        "48": 6.3,
+        "49": 4.55,
+        "50": 4.3,
+        "51": 5.95
+      }
+    },
+    "avg_latency_ms": {
+      "mean": 134.35968844433978,
+      "std": 24.681995211233414,
+      "min": 108.81772914729427,
+      "max": 174.0563208519547,
+      "ci95_low": 121.55025160669763,
+      "ci95_high": 150.08570657719613,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 159.21935367265564,
+        "43": 118.98067954345083,
+        "44": 120.57498861830452,
+        "45": 132.79796457697012,
+        "47": 122.43272326946953,
+        "46": 118.15400516857669,
+        "48": 172.61754528799463,
+        "49": 115.94557430672674,
+        "50": 108.81772914729427,
+        "51": 174.0563208519547
+      }
+    },
+    "avg_success_hops": {
+      "mean": 4.985,
+      "std": 0.7063403334559528,
+      "min": 4.2,
+      "max": 6.3,
+      "ci95_low": 4.610000000000001,
+      "ci95_high": 5.4151250000000015,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 5.45,
+        "43": 4.2,
+        "44": 4.5,
+        "45": 5.05,
+        "47": 4.85,
+        "46": 4.7,
+        "48": 6.3,
+        "49": 4.55,
+        "50": 4.3,
+        "51": 5.95
+      }
+    },
+    "avg_success_latency_ms": {
+      "mean": 134.35968844433978,
+      "std": 24.681995211233414,
+      "min": 108.81772914729427,
+      "max": 174.0563208519547,
+      "ci95_low": 121.55025160669763,
+      "ci95_high": 150.08570657719613,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 159.21935367265564,
+        "43": 118.98067954345083,
+        "44": 120.57498861830452,
+        "45": 132.79796457697012,
+        "47": 122.43272326946953,
+        "46": 118.15400516857669,
+        "48": 172.61754528799463,
+        "49": 115.94557430672674,
+        "50": 108.81772914729427,
+        "51": 174.0563208519547
+      }
+    },
+    "total_loops": {
+      "mean": 1274.0,
+      "std": 0.0,
+      "min": 1274.0,
+      "max": 1274.0,
+      "ci95_low": 1274.0,
+      "ci95_high": 1274.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 1274.0,
+        "43": 1274.0,
+        "44": 1274.0,
+        "45": 1274.0,
+        "47": 1274.0,
+        "46": 1274.0,
+        "48": 1274.0,
+        "49": 1274.0,
+        "50": 1274.0,
+        "51": 1274.0
+      }
+    },
+    "attacked_count": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.0,
+        "43": 0.0,
+        "44": 0.0,
+        "45": 0.0,
+        "47": 0.0,
+        "46": 0.0,
+        "48": 0.0,
+        "49": 0.0,
+        "50": 0.0,
+        "51": 0.0
+      }
+    },
+    "dropped_by_attacker": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 0.0,
+        "43": 0.0,
+        "44": 0.0,
+        "45": 0.0,
+        "47": 0.0,
+        "46": 0.0,
+        "48": 0.0,
+        "49": 0.0,
+        "50": 0.0,
+        "51": 0.0
+      }
+    },
+    "num_success": {
+      "mean": 40.0,
+      "std": 0.0,
+      "min": 40.0,
+      "max": 40.0,
+      "ci95_low": 40.0,
+      "ci95_high": 40.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 40.0,
+        "43": 40.0,
+        "44": 40.0,
+        "45": 40.0,
+        "47": 40.0,
+        "46": 40.0,
+        "48": 40.0,
+        "49": 40.0,
+        "50": 40.0,
+        "51": 40.0
+      }
+    },
+    "num_trials": {
+      "mean": 40.0,
+      "std": 0.0,
+      "min": 40.0,
+      "max": 40.0,
+      "ci95_low": 40.0,
+      "ci95_high": 40.0,
+      "n_boot": 4000,
+      "n": 10,
+      "per_seed": {
+        "42": 40.0,
+        "43": 40.0,
+        "44": 40.0,
+        "45": 40.0,
+        "47": 40.0,
+        "46": 40.0,
+        "48": 40.0,
+        "49": 40.0,
+        "50": 40.0,
+        "51": 40.0
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed42.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 5.45,
+        "avg_latency_ms": 159.21935367265564,
+        "avg_success_hops": 5.45,
+        "avg_success_latency_ms": 159.21935367265564,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed42.json",
+          "seed": 42
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed43.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 4.2,
+        "avg_latency_ms": 118.98067954345083,
+        "avg_success_hops": 4.2,
+        "avg_success_latency_ms": 118.98067954345083,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed43.json",
+          "seed": 43
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed44.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 4.5,
+        "avg_latency_ms": 120.57498861830452,
+        "avg_success_hops": 4.5,
+        "avg_success_latency_ms": 120.57498861830452,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed44.json",
+          "seed": 44
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 45,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed45.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 5.05,
+        "avg_latency_ms": 132.79796457697012,
+        "avg_success_hops": 5.05,
+        "avg_success_latency_ms": 132.79796457697012,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed45.json",
+          "seed": 45
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed47.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 4.85,
+        "avg_latency_ms": 122.43272326946953,
+        "avg_success_hops": 4.85,
+        "avg_success_latency_ms": 122.43272326946953,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed47.json",
+          "seed": 47
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 46,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed46.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 4.7,
+        "avg_latency_ms": 118.15400516857669,
+        "avg_success_hops": 4.7,
+        "avg_success_latency_ms": 118.15400516857669,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed46.json",
+          "seed": 46
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 48,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed48.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 6.3,
+        "avg_latency_ms": 172.61754528799463,
+        "avg_success_hops": 6.3,
+        "avg_success_latency_ms": 172.61754528799463,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed48.json",
+          "seed": 48
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 49,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed49.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 4.55,
+        "avg_latency_ms": 115.94557430672674,
+        "avg_success_hops": 4.55,
+        "avg_success_latency_ms": 115.94557430672674,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed49.json",
+          "seed": 49
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 50,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed50.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 4.3,
+        "avg_latency_ms": 108.81772914729427,
+        "avg_success_hops": 4.3,
+        "avg_success_latency_ms": 108.81772914729427,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed50.json",
+          "seed": 50
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    },
+    {
+      "seed": 51,
+      "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed51.json",
+      "metrics": {
+        "delivery_ratio": 1.0,
+        "avg_hops": 5.95,
+        "avg_latency_ms": 174.0563208519547,
+        "avg_success_hops": 5.95,
+        "avg_success_latency_ms": 174.0563208519547,
+        "num_success": 40.0,
+        "num_trials": 40.0,
+        "attacked_count": 0.0,
+        "dropped_by_attacker": 0.0,
+        "total_loops": 1274.0
+      },
+      "cardinality": {
+        "num_flows": 20,
+        "num_eval_epochs": 2,
+        "trials_per_flow_epoch": 1,
+        "total_trials": 40,
+        "match_key": {
+          "shell": "53°",
+          "node_limit": 48,
+          "num_eval_epochs": 2,
+          "num_flows": 20
+        },
+        "semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch；跨实验比较要求匹配键 (shell, node_limit, num_eval_epochs, num_flows) 完全一致",
+        "source": {
+          "has_config_snapshot": true,
+          "has_metadata": true,
+          "overrides_applied": [],
+          "file": "results\\step3_raw\\e5a_scale_small\\base_n48__s3_base_53_48_seed51.json",
+          "seed": 51
+        },
+        "aux": {
+          "t_adv": 2.0,
+          "tick": 0.2,
+          "max_hops": 100,
+          "duration": 60
+        }
+      }
+    }
+  ],
+  "warnings": []
+}

@@ -1,7 +1,7 @@
 {
-  "updated_utc": "2026-09-29T23:28:50+00:00",
-  "finished": false,
-  "wall_all_s": 3078.7,
+  "updated_utc": "2026-09-30T15:18:52+00:00",
+  "finished": true,
+  "wall_all_s": 4311.7,
   "skipped_complete": [],
   "runs": [
     {
@@ -51,6 +51,27 @@
       "exit_code": 0,
       "log": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_logs\\e5_intensity.log",
       "n_raw_found": 100
+    },
+    {
+      "key": "e7_combo",
+      "cmd": "C:\\Users\\CWQ20\\AppData\\Local\\Programs\\Python\\Python311\\python.exe C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\scripts\\run_experiment_sweep.py --sweep-config C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\configs\\experiments\\step3\\sweep_e7_combo.yaml",
+      "n_tasks": 80,
+      "workers": 10,
+      "start_utc": "2026-09-30T14:58:19+00:00",
+      "end_utc": "2026-09-30T15:18:52+00:00",
+      "wall_s": 1233.2,
+      "exit_code": 0,
+      "log": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\results\\step3_logs\\e7_combo.log",
+      "n_raw_found": 80
     }
-  ]
+  ],
+  "_merge_provenance": {
+    "reason": "run_step3_matrix.py::_write_summary uses open(...,'w') truncate-rewrite and only carries the CURRENT invocation's records, so the '--only e7_combo' run overwrote the 4 historical timing records.",
+    "recovered_from": "git show 89c6dcb:results/step3_logs/_matrix_summary.json -> _matrix_summary_prev.json (4 records, updated_utc=2026-09-29T23:28:50+00:00, wall_all_s=3078.7)",
+    "merged_from": "post-run _matrix_summary.json (1 record: e7_combo)",
+    "merged_utc": "2026-09-30T15:18:52+00:00",
+    "wall_all_s_semantics": "SUM across 5 sweeps from 2 SEPARATE invocations, NOT a single wall-clock span.",
+    "s_task_semantics": "s/task = wall_s / n_tasks (墙钟均摊到每个任务的吞吐倒数，与 _matrix_summary 历史口径一致；因 sweep 内并行，单任务真实串行耗时 ≈ 该值 × workers)",
+    "code_changed": false
+  }
 }

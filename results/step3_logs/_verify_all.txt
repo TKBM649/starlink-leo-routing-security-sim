@@ -1,0 +1,32 @@
+﻿============================================================
+sweep              tasks  found  miss  inval  warn  complete
+------------------------------------------------------------
+e6_wormhole           40     40     0      0     0  YES
+e4_sybil              70     70     0      0     0  YES
+e5_placement          60     60     0      0     0  YES
+e5_intensity         100    100     0      0     0  YES
+e7_combo              80     80     0      0     0  YES
+e5a_scale_small      100      0   100      0     0  NO
+shell256              80      0    80      0     0  NO
+shell1024             80      0    80      0     0  NO
+e5a_scale_top         20      0    20      0     0  NO
+============================================================
+鍚堣锛?50/630 浠诲姟鐭╅樀榻愬叏锛岀己澶?280锛孖NVALID 0
+
+[e5a_scale_small] ERROR: raw 鐩綍涓嶅瓨鍦細C:\Users\CWQ20\Documents\QoderCN\2026-09-29\chat-3\starlink-leo-routing-security-sim-main\starlink-leo-routing-security-sim-main\results\step3_raw\e5a_scale_small
+
+[e5a_scale_small] 缂哄け 100 椤癸紙label, seed锛夛細[('base_n48', 42), ('base_n48', 43), ('base_n48', 44), ('base_n48', 45), ('base_n48', 46), ('base_n48', 47), ('base_n48', 48), ('base_n48', 49), ('base_n48', 50), ('base_n48', 51), ('bh3_n48', 42), ('bh3_n48', 43), ('bh3_n48', 44), ('bh3_n48', 45), ('bh3_n48', 46), ('bh3_n48', 47), ('bh3_n48', 48), ('bh3_n48', 49), ('bh3_n48', 50), ('bh3_n48', 51)] 鈥?+80)
+
+[shell256] ERROR: raw 鐩綍涓嶅瓨鍦細C:\Users\CWQ20\Documents\QoderCN\2026-09-29\chat-3\starlink-leo-routing-security-sim-main\starlink-leo-routing-security-sim-main\results\step3_raw\shell256
+
+[shell256] 缂哄け 80 椤癸紙label, seed锛夛細[('base_53', 42), ('base_53', 43), ('base_53', 44), ('base_53', 45), ('base_53', 46), ('base_53', 47), ('base_53', 48), ('base_53', 49), ('base_53', 50), ('base_53', 51), ('bh3_53', 42), ('bh3_53', 43), ('bh3_53', 44), ('bh3_53', 45), ('bh3_53', 46), ('bh3_53', 47), ('bh3_53', 48), ('bh3_53', 49), ('bh3_53', 50), ('bh3_53', 51)] 鈥?+60)
+
+[shell1024] ERROR: raw 鐩綍涓嶅瓨鍦細C:\Users\CWQ20\Documents\QoderCN\2026-09-29\chat-3\starlink-leo-routing-security-sim-main\starlink-leo-routing-security-sim-main\results\step3_raw\shell1024
+
+[shell1024] 缂哄け 80 椤癸紙label, seed锛夛細[('base_53', 42), ('base_53', 43), ('base_53', 44), ('base_53', 45), ('base_53', 46), ('base_53', 47), ('base_53', 48), ('base_53', 49), ('base_53', 50), ('base_53', 51), ('bh3_53', 42), ('bh3_53', 43), ('bh3_53', 44), ('bh3_53', 45), ('bh3_53', 46), ('bh3_53', 47), ('bh3_53', 48), ('bh3_53', 49), ('bh3_53', 50), ('bh3_53', 51)] 鈥?+60)
+
+[e5a_scale_top] ERROR: raw 鐩綍涓嶅瓨鍦細C:\Users\CWQ20\Documents\QoderCN\2026-09-29\chat-3\starlink-leo-routing-security-sim-main\starlink-leo-routing-security-sim-main\results\step3_raw\e5a_scale_top
+
+[e5a_scale_top] 缂哄け 20 椤癸紙label, seed锛夛細[('base_n2048', 42), ('base_n2048', 43), ('base_n2048', 44), ('base_n2048', 45), ('base_n2048', 46), ('base_n2048', 47), ('base_n2048', 48), ('base_n2048', 49), ('base_n2048', 50), ('base_n2048', 51), ('bh3_n2048', 42), ('bh3_n2048', 43), ('bh3_n2048', 44), ('bh3_n2048', 45), ('bh3_n2048', 46), ('bh3_n2048', 47), ('bh3_n2048', 48), ('bh3_n2048', 49), ('bh3_n2048', 50), ('bh3_n2048', 51)]
+
+缁撹锛歂OT COMPLETE / HAS INVALID

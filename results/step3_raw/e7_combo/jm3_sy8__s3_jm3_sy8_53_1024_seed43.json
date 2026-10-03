@@ -1,0 +1,183 @@
+{
+  "schema_version": 2,
+  "experiment": "s3_jm3_sy8_53_1024",
+  "seed": 43,
+  "metadata": {
+    "schema_version": 2,
+    "seed": 43,
+    "shell": "53°",
+    "node_limit": 1024,
+    "num_nodes": 1032,
+    "num_eval_epochs": 2,
+    "num_flows": 20,
+    "trials_per_flow_epoch": 1,
+    "total_trials": 40,
+    "base_time": 0.0,
+    "start_epoch_idx": 0,
+    "last_epoch_idx": 1,
+    "runner": "e3_blackhole",
+    "cardinality_semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch",
+    "sybil_injected": true,
+    "sybil_num_identities": 8,
+    "num_real_nodes": 1024,
+    "git_commit": "89c6dcb65076802f2f10b0dcb93e1ef89a535311",
+    "python_version": "3.11.9",
+    "tle_path": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\data\\tle\\starlink.tle",
+    "tle_sha256": "212276b98b2b75d05abeda23e091cf7e9a9c20dd6a373d1d887eb76a4b6c9be1",
+    "topology_cache_sha256": "f23f7ecdef8972e0e4d7292a0576116f06713baa0c1a3dbc51cf8cab8d940f9d",
+    "topology_cache": "data/topology/topology_results.pkl",
+    "timestamp_utc": "2026-09-30T15:16:40+00:00",
+    "subset_method": "cumulative_degree"
+  },
+  "config": {
+    "experiment": {
+      "name": "s3_jm3_sy8_53_1024",
+      "duration": 60,
+      "seed": null
+    },
+    "topology": {
+      "shell": "53°",
+      "epoch_interval": 30,
+      "node_limit": 1024,
+      "cache_path": "data/topology/topology_results.pkl",
+      "positions_cache": null,
+      "subset_method": "cumulative_degree"
+    },
+    "routing": {
+      "t_adv": 2.0,
+      "tick": 0.2,
+      "max_hops": 100
+    },
+    "traffic": {
+      "num_flows": 20
+    },
+    "attack": {
+      "attackers": [
+        {
+          "type": "jamming",
+          "count": 3,
+          "placement": "degree",
+          "active_since": 0.0,
+          "active_until": null,
+          "params": {
+            "inf_metric": 9999,
+            "jamming_ratio": 0.3
+          }
+        },
+        {
+          "type": "sybil",
+          "count": 1,
+          "placement": "degree",
+          "active_since": 0.0,
+          "active_until": null,
+          "params": {
+            "attachment": "betweenness",
+            "controller_poisons": false,
+            "drop_prob": 0.0,
+            "metric_fake": 0,
+            "num_identities": 8,
+            "seq_lead": 8
+          }
+        }
+      ]
+    },
+    "output": {
+      "raw_dir": "results/step3_raw/",
+      "agg_dir": "results/step3_agg/",
+      "figures_dir": "results/figures/"
+    }
+  },
+  "control_stats": {
+    "total_loops": 20652,
+    "loop_paths_count": 20652
+  },
+  "data_stats": {
+    "delivery_ratio": 0.0,
+    "avg_hops": 0.0,
+    "avg_latency_ms": 0.0,
+    "avg_success_hops": 0.0,
+    "avg_success_latency_ms": 0.0,
+    "num_success": 0,
+    "num_trials": 40,
+    "attacked_count": 0,
+    "dropped_by_attacker": 0,
+    "sybil_attraction_ratio": 1.0,
+    "sybil_attracted_trials": 40,
+    "sybil_num_identities": 8
+  },
+  "attacker_stats": [
+    {
+      "node_id": 403,
+      "attracted_count": 0,
+      "dropped_count": 0
+    },
+    {
+      "node_id": 22,
+      "attracted_count": 0,
+      "dropped_count": 0
+    },
+    {
+      "node_id": 269,
+      "attracted_count": 0,
+      "dropped_count": 0
+    },
+    {
+      "node_id": 403,
+      "attracted_count": 0,
+      "dropped_count": 0
+    }
+  ],
+  "sybil_stats": {
+    "num_identities": 8,
+    "sybil_node_ids": [
+      4226,
+      4227,
+      4228,
+      4229,
+      4230,
+      4231,
+      4232,
+      4233
+    ],
+    "attraction_ratio": 1.0,
+    "attracted_trials": 40,
+    "total_trials": 40,
+    "injections": [
+      {
+        "controller_node": 403,
+        "attachment": "betweenness",
+        "num_identities": 8,
+        "sybil_node_ids": [
+          4226,
+          4227,
+          4228,
+          4229,
+          4230,
+          4231,
+          4232,
+          4233
+        ],
+        "attachment_map": {
+          "4226": 403,
+          "4227": 22,
+          "4228": 264,
+          "4229": 269,
+          "4230": 2681,
+          "4231": 89,
+          "4232": 850,
+          "4233": 985
+        },
+        "targets": [
+          403,
+          22,
+          264,
+          269,
+          2681,
+          89,
+          850,
+          985
+        ]
+      }
+    ]
+  }
+}

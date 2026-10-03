@@ -1,0 +1,512 @@
+{
+  "base__s3_base_53_1024_seed42.json": {
+    "sha256": "3a4dc32b6b427f55d311255026d8e60ba2f4455c31bf53a56d27962946a7e00a",
+    "metrics": {
+      "delivery_ratio": 0.95,
+      "avg_hops": 7.725,
+      "avg_latency_ms": 143.7045838136186,
+      "avg_success_hops": 8.131578947368421,
+      "avg_success_latency_ms": 151.26798296170378,
+      "num_success": 38,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:43+00:00"
+  },
+  "base__s3_base_53_1024_seed43.json": {
+    "sha256": "c41c3fd18f5220afeb590f015eb5724d42c80203c6e64c0bfba652d091ebcde5",
+    "metrics": {
+      "delivery_ratio": 0.9,
+      "avg_hops": 11.1,
+      "avg_latency_ms": 218.65774288223446,
+      "avg_success_hops": 12.333333333333334,
+      "avg_success_latency_ms": 242.9530476469272,
+      "num_success": 36,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:43+00:00"
+  },
+  "base__s3_base_53_1024_seed44.json": {
+    "sha256": "63523a032e60312ceea22aa3a75e23f46535b60f454c06f67d4b1146dbd9bfa7",
+    "metrics": {
+      "delivery_ratio": 0.925,
+      "avg_hops": 8.75,
+      "avg_latency_ms": 164.1058553032122,
+      "avg_success_hops": 9.45945945945946,
+      "avg_success_latency_ms": 177.41173546293209,
+      "num_success": 37,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:46+00:00"
+  },
+  "base__s3_base_53_1024_seed45.json": {
+    "sha256": "36ca5acaad5a29f2eb97ccf61bced52444200640f822d4174d6869c468a4f86f",
+    "metrics": {
+      "delivery_ratio": 0.8,
+      "avg_hops": 9.25,
+      "avg_latency_ms": 175.55919724174558,
+      "avg_success_hops": 11.5625,
+      "avg_success_latency_ms": 219.448996552182,
+      "num_success": 32,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:43+00:00"
+  },
+  "base__s3_base_53_1024_seed46.json": {
+    "sha256": "dd7682ff6af1f5e35d64736ab3c4b5f824ea209213d597978e83e93b9e1e0676",
+    "metrics": {
+      "delivery_ratio": 0.975,
+      "avg_hops": 10.3,
+      "avg_latency_ms": 189.79866603281886,
+      "avg_success_hops": 10.564102564102564,
+      "avg_success_latency_ms": 194.66529849519884,
+      "num_success": 39,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:46+00:00"
+  },
+  "base__s3_base_53_1024_seed47.json": {
+    "sha256": "7777ebb60cbe395a56590830288b04b83ba195a9f07e6f5ea2e8d06d49499ba8",
+    "metrics": {
+      "delivery_ratio": 0.775,
+      "avg_hops": 7.85,
+      "avg_latency_ms": 137.74136467998727,
+      "avg_success_hops": 10.129032258064516,
+      "avg_success_latency_ms": 177.7307931354675,
+      "num_success": 31,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:46+00:00"
+  },
+  "base__s3_base_53_1024_seed48.json": {
+    "sha256": "a6ffcf7e9ab41bb1712a8f0bcbda518f54694fad685d6b94e20588d883bd37d3",
+    "metrics": {
+      "delivery_ratio": 0.95,
+      "avg_hops": 9.45,
+      "avg_latency_ms": 189.48945068781478,
+      "avg_success_hops": 9.947368421052632,
+      "avg_success_latency_ms": 199.46257967138402,
+      "num_success": 38,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:44+00:00"
+  },
+  "base__s3_base_53_1024_seed49.json": {
+    "sha256": "8204adfcda2943c5b5c90b5fc33263e4735fc5b047a5e3bb301d4013f9d12539",
+    "metrics": {
+      "delivery_ratio": 0.9,
+      "avg_hops": 10.25,
+      "avg_latency_ms": 194.23285657535303,
+      "avg_success_hops": 11.38888888888889,
+      "avg_success_latency_ms": 215.81428508372557,
+      "num_success": 36,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:43+00:00"
+  },
+  "base__s3_base_53_1024_seed50.json": {
+    "sha256": "939486a6cc2fa0125eb242bcfe70dfa352534d93dc817030f32bf64355610e8b",
+    "metrics": {
+      "delivery_ratio": 0.9,
+      "avg_hops": 9.825,
+      "avg_latency_ms": 188.2938795623337,
+      "avg_success_hops": 10.916666666666666,
+      "avg_success_latency_ms": 209.2154217359263,
+      "num_success": 36,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:46+00:00"
+  },
+  "base__s3_base_53_1024_seed51.json": {
+    "sha256": "638f4dc44c4d203337fc3d0c6019367ed22e50c4f365d65c16e5574378b12a37",
+    "metrics": {
+      "delivery_ratio": 0.875,
+      "avg_hops": 8.85,
+      "avg_latency_ms": 172.69363921196143,
+      "avg_success_hops": 10.114285714285714,
+      "avg_success_latency_ms": 197.3641590993845,
+      "num_success": 35,
+      "num_trials": 40,
+      "attacked_count": 0,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:30:46+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed42.json": {
+    "sha256": "04cf14060eb7b0d5b0b5383cef8e6c69b4fa13311cf0d04bb7f09214cdfff814",
+    "metrics": {
+      "delivery_ratio": 0.3,
+      "avg_hops": 1.975,
+      "avg_latency_ms": 38.27133046160192,
+      "avg_success_hops": 6.583333333333333,
+      "avg_success_latency_ms": 127.57110153867306,
+      "num_success": 12,
+      "num_trials": 40,
+      "attacked_count": 19,
+      "dropped_by_attacker": 17
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:52+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed43.json": {
+    "sha256": "4ad686884cf38a356dfa654295a731a4c01cea989f5e9f3321aa8f186b4cf2ec",
+    "metrics": {
+      "delivery_ratio": 0.25,
+      "avg_hops": 1.95,
+      "avg_latency_ms": 40.04829004716939,
+      "avg_success_hops": 7.8,
+      "avg_success_latency_ms": 160.19316018867758,
+      "num_success": 10,
+      "num_trials": 40,
+      "attacked_count": 7,
+      "dropped_by_attacker": 7
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:52+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed44.json": {
+    "sha256": "40946777e808a9f07a992b81e6f88c3562f11787e597c3e643d0e9dd83415f8a",
+    "metrics": {
+      "delivery_ratio": 0.45,
+      "avg_hops": 3.6,
+      "avg_latency_ms": 57.75676285161931,
+      "avg_success_hops": 8.0,
+      "avg_success_latency_ms": 128.34836189248736,
+      "num_success": 18,
+      "num_trials": 40,
+      "attacked_count": 10,
+      "dropped_by_attacker": 9
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:53+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed45.json": {
+    "sha256": "c4a2ce65e72c9eaa8bd0653527d161e8f325bfac430a5b8c9a89932c7fe3c0a9",
+    "metrics": {
+      "delivery_ratio": 0.15,
+      "avg_hops": 1.85,
+      "avg_latency_ms": 42.0232311860968,
+      "avg_success_hops": 12.333333333333334,
+      "avg_success_latency_ms": 280.1548745739787,
+      "num_success": 6,
+      "num_trials": 40,
+      "attacked_count": 11,
+      "dropped_by_attacker": 11
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:52+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed46.json": {
+    "sha256": "6841ae674735b479f010ffd41c10116ffc34194ce679b9b17694b40ceb572a55",
+    "metrics": {
+      "delivery_ratio": 0.2,
+      "avg_hops": 2.325,
+      "avg_latency_ms": 49.14437815553684,
+      "avg_success_hops": 11.625,
+      "avg_success_latency_ms": 245.72189077768425,
+      "num_success": 8,
+      "num_trials": 40,
+      "attacked_count": 15,
+      "dropped_by_attacker": 9
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:53+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed47.json": {
+    "sha256": "c736c3f6ba5f6ebeaa821d44e45d49a260cb75eeca832ae71561d835d5c39f74",
+    "metrics": {
+      "delivery_ratio": 0.275,
+      "avg_hops": 2.325,
+      "avg_latency_ms": 45.26754224680538,
+      "avg_success_hops": 8.454545454545455,
+      "avg_success_latency_ms": 164.6092445338377,
+      "num_success": 11,
+      "num_trials": 40,
+      "attacked_count": 14,
+      "dropped_by_attacker": 13
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:56+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed48.json": {
+    "sha256": "f1227ff93b7c43c7219619491d2ff663c0fb63ce854359b8868601dd2526e3d3",
+    "metrics": {
+      "delivery_ratio": 0.425,
+      "avg_hops": 2.25,
+      "avg_latency_ms": 48.88171798678955,
+      "avg_success_hops": 5.294117647058823,
+      "avg_success_latency_ms": 115.01580702774015,
+      "num_success": 17,
+      "num_trials": 40,
+      "attacked_count": 5,
+      "dropped_by_attacker": 4
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:55+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed49.json": {
+    "sha256": "5c17c734159773f0d31078e8fd5bd8676dff04cf70fc85f4b8ce90dd3ecfd77e",
+    "metrics": {
+      "delivery_ratio": 0.3,
+      "avg_hops": 2.425,
+      "avg_latency_ms": 49.923949949774325,
+      "avg_success_hops": 8.083333333333334,
+      "avg_success_latency_ms": 166.41316649924775,
+      "num_success": 12,
+      "num_trials": 40,
+      "attacked_count": 7,
+      "dropped_by_attacker": 7
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:53+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed50.json": {
+    "sha256": "d3def077d1c10b7b7ee896f08ff9e383507a54e05e5298d0b969f2acbef41c66",
+    "metrics": {
+      "delivery_ratio": 0.175,
+      "avg_hops": 2.525,
+      "avg_latency_ms": 53.57636612979202,
+      "avg_success_hops": 14.428571428571429,
+      "avg_success_latency_ms": 306.15066359881155,
+      "num_success": 7,
+      "num_trials": 40,
+      "attacked_count": 19,
+      "dropped_by_attacker": 15
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:57+00:00"
+  },
+  "bh3__s3_bh3_53_1024_seed51.json": {
+    "sha256": "f2839ef9337986143c8c3ed7f41d40e630678bd277c19941885f573650aef898",
+    "metrics": {
+      "delivery_ratio": 0.475,
+      "avg_hops": 3.95,
+      "avg_latency_ms": 84.34192275908201,
+      "avg_success_hops": 8.31578947368421,
+      "avg_success_latency_ms": 177.56194265069897,
+      "num_success": 19,
+      "num_trials": 40,
+      "attacked_count": 9,
+      "dropped_by_attacker": 6
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:32:56+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed42.json": {
+    "sha256": "4f630f52ac63bed85cfdc654b174487f618a6a9e00acd0eca6bc07c5f03c06b9",
+    "metrics": {
+      "delivery_ratio": 0.95,
+      "avg_hops": 7.725,
+      "avg_latency_ms": 143.7045838136186,
+      "avg_success_hops": 8.131578947368421,
+      "avg_success_latency_ms": 151.26798296170378,
+      "num_success": 38,
+      "num_trials": 40,
+      "attacked_count": 21,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:06+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed43.json": {
+    "sha256": "ae7ce3cfb49fb012497197a3cc0dc6ebac44eb4aa022fbf23ca9226256aa613f",
+    "metrics": {
+      "delivery_ratio": 0.9,
+      "avg_hops": 11.1,
+      "avg_latency_ms": 218.65774288223446,
+      "avg_success_hops": 12.333333333333334,
+      "avg_success_latency_ms": 242.9530476469272,
+      "num_success": 36,
+      "num_trials": 40,
+      "attacked_count": 16,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:10+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed44.json": {
+    "sha256": "01552f64cdf85aca1af919ff407f496f38d9d75909f81c345f00bdd2fb036486",
+    "metrics": {
+      "delivery_ratio": 0.925,
+      "avg_hops": 8.75,
+      "avg_latency_ms": 164.1058553032122,
+      "avg_success_hops": 9.45945945945946,
+      "avg_success_latency_ms": 177.41173546293209,
+      "num_success": 37,
+      "num_trials": 40,
+      "attacked_count": 20,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:10+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed45.json": {
+    "sha256": "4b62681e44f061095402794bc7c029da6e9860fea1716ce6017b406789e4c1fa",
+    "metrics": {
+      "delivery_ratio": 0.8,
+      "avg_hops": 9.25,
+      "avg_latency_ms": 173.12107093000083,
+      "avg_success_hops": 11.5625,
+      "avg_success_latency_ms": 216.40133866250108,
+      "num_success": 32,
+      "num_trials": 40,
+      "attacked_count": 19,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:10+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed46.json": {
+    "sha256": "ac27169c519492a0bc3d5008847eb4bca011d1432b049f2e3e124f5f0ee316e4",
+    "metrics": {
+      "delivery_ratio": 0.975,
+      "avg_hops": 10.3,
+      "avg_latency_ms": 189.79866603281886,
+      "avg_success_hops": 10.564102564102564,
+      "avg_success_latency_ms": 194.66529849519884,
+      "num_success": 39,
+      "num_trials": 40,
+      "attacked_count": 31,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:10+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed47.json": {
+    "sha256": "2cfe6f2b974b3b72dbc85f6a95bb2856ef5e0dd0b0a7cb0505af3ed610e4b83f",
+    "metrics": {
+      "delivery_ratio": 0.775,
+      "avg_hops": 7.85,
+      "avg_latency_ms": 137.74136467998727,
+      "avg_success_hops": 10.129032258064516,
+      "avg_success_latency_ms": 177.7307931354675,
+      "num_success": 31,
+      "num_trials": 40,
+      "attacked_count": 15,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:07+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed48.json": {
+    "sha256": "0ec36b08b3ab660a7b69a721c9f0c1694955c4f77d9b23b066ea399c04550c9c",
+    "metrics": {
+      "delivery_ratio": 0.95,
+      "avg_hops": 9.45,
+      "avg_latency_ms": 189.48945068781478,
+      "avg_success_hops": 9.947368421052632,
+      "avg_success_latency_ms": 199.46257967138402,
+      "num_success": 38,
+      "num_trials": 40,
+      "attacked_count": 14,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:11+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed49.json": {
+    "sha256": "0fc5f1c978ac5cf336694cef5cd2833994f936bab14b03cb4401ec6e2fcbfb6d",
+    "metrics": {
+      "delivery_ratio": 0.9,
+      "avg_hops": 10.25,
+      "avg_latency_ms": 194.23285657535303,
+      "avg_success_hops": 11.38888888888889,
+      "avg_success_latency_ms": 215.81428508372557,
+      "num_success": 36,
+      "num_trials": 40,
+      "attacked_count": 21,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:11+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed50.json": {
+    "sha256": "866495627dc38628ee1dd6de4ddd4abfa9f7744c93bf550daca6b72a5a32eb9c",
+    "metrics": {
+      "delivery_ratio": 0.9,
+      "avg_hops": 9.825,
+      "avg_latency_ms": 188.2938795623337,
+      "avg_success_hops": 10.916666666666666,
+      "avg_success_latency_ms": 209.2154217359263,
+      "num_success": 36,
+      "num_trials": 40,
+      "attacked_count": 28,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:13+00:00"
+  },
+  "jm3__s3_jm3_53_1024_seed51.json": {
+    "sha256": "24051e98cd50f4a4b44e85bc9f2273462fc523c8705a76425551359cafa8257f",
+    "metrics": {
+      "delivery_ratio": 0.875,
+      "avg_hops": 8.85,
+      "avg_latency_ms": 172.69363921196143,
+      "avg_success_hops": 10.114285714285714,
+      "avg_success_latency_ms": 197.3641590993845,
+      "num_success": 35,
+      "num_trials": 40,
+      "attacked_count": 14,
+      "dropped_by_attacker": 0
+    },
+    "git_commit": null,
+    "subset_method": null,
+    "timestamp_utc": "2026-09-29T23:35:12+00:00"
+  }
+}

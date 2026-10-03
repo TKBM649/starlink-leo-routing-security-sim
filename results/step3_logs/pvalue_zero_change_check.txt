@@ -1,0 +1,83 @@
+[cmp] pre_rows=271 (unique keys=271)
+[cmp] post_rows=411 (unique keys=411)
+[cmp] shared=271  only_post=140  only_pre=0
+[cmp] only_post 按 sweep 分布: {'e5a_scale_small': 50, 'e7_combo': 50, 'shell256': 40}
+
+===== 核心断言 =====
+[1] p_value 不一致行数      = 0   (期望 0)
+[2] significant 不一致行数  = 0  (期望 0)
+[3] 其他检验列不一致行数    = 0 (期望 0；含 NaN==NaN 语义与原始字符串双保险)
+[3b] pre/post 同为 NaN 的 statistic 对数 = 49（退化检验，属预期）
+[4] post.rank_biserial != pre.rank_biserial_signed 行数 = 0 (期望 0)
+[5] rank_biserial 发生变化的行数 = 58
+[5b] 变化行中方向判据不成立的行数 = 0 (期望 0)
+[5c] 变化行中 median_diff == 0 的行数 = 3（合法：过半差值为 0 但非零差值全同号/偏正）
+    - e5_placement/rnd/total_loops: t_plus=5.0 n_eff=3 rb -0.667 → 0.667  p=0.5
+    - e6_wormhole/t1/wormhole_latency_flagged_ratio: t_plus=1.0 n_eff=1 rb -1.000 → 1.000  p=1.0
+    - e6_wormhole/t3/wormhole_latency_flagged_ratio: t_plus=6.0 n_eff=3 rb -1.000 → 1.000  p=0.25
+
+===== 自洽性：post.rank_biserial vs (2·t_plus − T)/T =====
+[6] 自洽性不符行数 = 0 (期望 0)
+
+===== rank_biserial 变化明细（修复前 → 修复后）=====
+sweep            attack         metric                                 medD   pre_rb  post_rb  t_plus n_eff            p    sig
+e5_intensity     c1             attacked_count                       4.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c1             dropped_by_attacker                  4.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c12            attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c12            dropped_by_attacker                  9.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c12            total_loops                         14.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c24            attacked_count                       8.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c24            dropped_by_attacker                  7.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c3             attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c3             dropped_by_attacker                  9.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c6             attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     c6             dropped_by_attacker                  8.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     p00            attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     p100           attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     p100           dropped_by_attacker                 10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     p20            attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     p20            dropped_by_attacker                  3.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     p50            attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_intensity     p50            dropped_by_attacker                  6.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     btw            attacked_count                       8.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     btw            dropped_by_attacker                  7.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     degree         attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     degree         dropped_by_attacker                  9.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     kcore          attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     kcore          dropped_by_attacker                  9.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     led            attacked_count                      12.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     led            dropped_by_attacker                 10.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     rnd            attacked_count                       5.0000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     rnd            dropped_by_attacker                  4.5000   -1.000    1.000    55.0    10  0.001953125      1
+e5_placement     rnd            total_loops                          0.0000   -0.667    0.667     5.0     3          0.5      0
+e6_wormhole      extreme        wormhole_attracted_ratio             0.9625   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      extreme        wormhole_attracted_trials           38.5000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      extreme        wormhole_edges_examined              3.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      extreme        wormhole_num_tunnels                 3.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t1             attacked_count                      23.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t1             avg_latency_ms                      11.9300   -0.709    0.709    47.0    10  0.048828125      1
+e6_wormhole      t1             avg_success_latency_ms               4.7719   -0.564    0.564    43.0    10  0.130859375      0
+e6_wormhole      t1             delivery_ratio                       0.0125   -1.000    1.000    15.0     5       0.0625      0
+e6_wormhole      t1             num_success                          0.5000   -1.000    1.000    15.0     5       0.0625      0
+e6_wormhole      t1             wormhole_attracted_ratio             0.2375   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t1             wormhole_attracted_trials            9.5000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t1             wormhole_edges_examined              1.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t1             wormhole_latency_flagged_ratio       0.0000   -1.000    1.000     1.0     1          1.0      0
+e6_wormhole      t1             wormhole_num_tunnels                 1.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t1             wormhole_suspicious_hops             1.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t3             attacked_count                      50.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t3             avg_latency_ms                      23.8948   -0.964    0.964    54.0    10   0.00390625      1
+e6_wormhole      t3             avg_success_latency_ms              12.6684   -0.855    0.855    51.0    10  0.013671875      1
+e6_wormhole      t3             delivery_ratio                       0.0500   -1.000    1.000    45.0     9   0.00390625      1
+e6_wormhole      t3             num_success                          2.0000   -1.000    1.000    45.0     9   0.00390625      1
+e6_wormhole      t3             wormhole_attracted_ratio             0.3875   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t3             wormhole_attracted_trials           15.5000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t3             wormhole_edges_examined              3.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t3             wormhole_latency_flagged_ratio       0.0000   -1.000    1.000     6.0     3         0.25      0
+e6_wormhole      t3             wormhole_num_tunnels                 3.0000   -1.000    1.000    55.0    10  0.001953125      1
+e6_wormhole      t3             wormhole_suspicious_hops             2.0000   -1.000    1.000    55.0    10  0.001953125      1
+e7_combo         bh3            attacked_count                      10.5000   -1.000    1.000    55.0    10  0.001953125      1
+e7_combo         bh3            dropped_by_attacker                  9.0000   -1.000    1.000    55.0    10  0.001953125      1
+e7_combo         jm3            attacked_count                      19.5000   -1.000    1.000    55.0    10  0.001953125      1
+
+[cmp] VERDICT: P-VALUE ZERO-CHANGE CONFIRMED

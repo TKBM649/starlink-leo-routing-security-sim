@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "experiment": "s3_bh3_975_256",
+  "seed": 51,
+  "metadata": {
+    "schema_version": 2,
+    "seed": 51,
+    "shell": "97.5°",
+    "node_limit": 256,
+    "num_nodes": 256,
+    "num_eval_epochs": 2,
+    "num_flows": 20,
+    "trials_per_flow_epoch": 1,
+    "total_trials": 40,
+    "base_time": 0.0,
+    "start_epoch_idx": 0,
+    "last_epoch_idx": 1,
+    "runner": "e3_blackhole",
+    "cardinality_semantics": "total_trials = num_flows × num_eval_epochs × trials_per_flow_epoch",
+    "git_commit": "89c6dcb65076802f2f10b0dcb93e1ef89a535311",
+    "python_version": "3.11.9",
+    "tle_path": "C:\\Users\\CWQ20\\Documents\\QoderCN\\2026-09-29\\chat-3\\starlink-leo-routing-security-sim-main\\starlink-leo-routing-security-sim-main\\data\\tle\\starlink.tle",
+    "tle_sha256": "212276b98b2b75d05abeda23e091cf7e9a9c20dd6a373d1d887eb76a4b6c9be1",
+    "topology_cache_sha256": "f23f7ecdef8972e0e4d7292a0576116f06713baa0c1a3dbc51cf8cab8d940f9d",
+    "topology_cache": "data/topology/topology_results.pkl",
+    "timestamp_utc": "2026-09-30T15:29:11+00:00",
+    "subset_method": "cumulative_degree"
+  },
+  "config": {
+    "experiment": {
+      "name": "s3_bh3_975_256",
+      "duration": 60,
+      "seed": null
+    },
+    "topology": {
+      "shell": "97.5°",
+      "epoch_interval": 30,
+      "node_limit": 256,
+      "cache_path": "data/topology/topology_results.pkl",
+      "positions_cache": null,
+      "subset_method": "cumulative_degree"
+    },
+    "routing": {
+      "t_adv": 2.0,
+      "tick": 0.2,
+      "max_hops": 100
+    },
+    "traffic": {
+      "num_flows": 20
+    },
+    "attack": {
+      "attackers": [
+        {
+          "type": "blackhole",
+          "count": 3,
+          "placement": "degree",
+          "active_since": 0.0,
+          "active_until": null,
+          "params": {
+            "drop_prob": 0.8,
+            "metric_fake": 0
+          }
+        }
+      ]
+    },
+    "output": {
+      "raw_dir": "results/step3_raw/",
+      "agg_dir": "results/step3_agg/",
+      "figures_dir": "results/figures/"
+    }
+  },
+  "control_stats": {
+    "total_loops": 6288,
+    "loop_paths_count": 6288
+  },
+  "data_stats": {
+    "delivery_ratio": 0.625,
+    "avg_hops": 3.45,
+    "avg_latency_ms": 46.20413660980272,
+    "avg_success_hops": 5.52,
+    "avg_success_latency_ms": 73.92661857568436,
+    "num_success": 25,
+    "num_trials": 40,
+    "attacked_count": 21,
+    "dropped_by_attacker": 15
+  },
+  "attacker_stats": [
+    {
+      "node_id": 395,
+      "attracted_count": 4,
+      "dropped_count": 3
+    },
+    {
+      "node_id": 863,
+      "attracted_count": 9,
+      "dropped_count": 7
+    },
+    {
+      "node_id": 869,
+      "attracted_count": 8,
+      "dropped_count": 5
+    }
+  ]
+}
